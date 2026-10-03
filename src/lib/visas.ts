@@ -1,215 +1,139 @@
+// Visa list. The full text of each visa page lives in src/content/visas/<slug>.md.
 export type Visa = {
   slug: string;
   title: string;
   short: string;
+  forWhom: string;
   duration: string;
-  intro: string[];
-  whoFor: string[];
-  requirements: string[];
-  howWeHelp: string[];
+  image: string;
+  facts: [string, string][];
   highlight?: string;
 };
 
 export const visas: Visa[] = [
   {
-    slug: "thailand-privilege-membership",
-    title: "Thailand Privilege Membership",
-    short:
-      "Formerly the Thailand Elite Visa — long-stay residency of up to 20 years with VIP privileges.",
-    duration: "5 – 20 years",
-    highlight: "Registered Thailand Privilege Card agent",
-    intro: [
-      "Thailand Privilege Membership (formerly known as the Thailand Elite Visa) is a government-run long-stay program that lets members live in Thailand for up to 20 years, depending on the membership tier.",
-      "As registered agents for the Thailand Privilege Card, we guide you through every step — from choosing the right package to submitting your application and welcoming you on arrival.",
-    ],
-    whoFor: [
-      "Expats and digital nomads who want a hassle-free long stay",
-      "Families who want to live in Thailand together",
-      "Business people who travel in and out of Thailand often",
-      "Anyone who wants to avoid repeated visa runs and border trips",
-    ],
-    requirements: [
-      "Valid passport with at least 6 months validity",
-      "Completed application form and passport-size photo",
-      "No criminal record and not on any immigration blacklist",
-      "Membership fee according to the selected tier",
-    ],
-    howWeHelp: [
-      "Compare membership tiers and benefits for your situation",
-      "Prepare and submit your application to Thailand Privilege Card Co., Ltd.",
-      "Track your background check and approval",
-      "Arrange visa stamping and VIP airport services",
-    ],
-  },
-  {
     slug: "retirement-visa",
     title: "Retirement Visa",
-    short:
-      "Non-Immigrant O / O-A / O-X visas for people aged 50 and over who want to retire in Thailand.",
-    duration: "1 – 10 years",
-    intro: [
-      "Thailand is one of the most popular retirement destinations in the world. The retirement visa allows foreigners aged 50 and over to stay in Thailand long-term, renewable every year.",
-      "There are several retirement visa options — Non-Immigrant O, O-A and O-X — each with different financial and insurance requirements. We help you pick the right one and handle the paperwork with Thai Immigration.",
-    ],
-    whoFor: [
-      "Applicants aged 50 years or older",
-      "Retirees with savings in a Thai bank account or a stable monthly pension",
-      "Retirees who want to stay in Thailand without working",
-    ],
-    requirements: [
-      "Passport valid for at least 18 months",
-      "Proof of age (50+)",
-      "Financial proof: bank deposit in a Thai bank, monthly income, or a combination (amounts depend on visa type)",
-      "Health insurance (required for O-A and O-X)",
-      "Proof of address in Thailand",
-    ],
-    howWeHelp: [
-      "Advise on O vs. O-A vs. O-X — see our comparison chart",
-      "Assist with opening a Thai bank account",
-      "Prepare all documents and accompany you to Immigration",
-      "Handle annual extensions and 90-day reporting",
+    short: "Non-Immigrant O, O-A and O-X visas for people aged 50 and over who want to retire in the Land of Smiles.",
+    forWhom: "People aged 50 and over",
+    duration: "1 year renewable; O-X up to 10 years",
+    image: "/images/Retiment-visa.jpg",
+    facts: [
+      ["Minimum age", "50"],
+      ["Length", "1 year, renewable (O-X: 5 + 5 years)"],
+      ["Funds (O, O-A)", "฿800,000 deposit or ฿65,000/month income"],
+      ["Apply", "O in Thailand; O-A and O-X at a Thai embassy abroad"],
+      ["Work allowed", "No"],
     ],
   },
   {
-    slug: "ltr-visa",
-    title: "Long-Term Resident (LTR) Visa",
-    short:
-      "10-year visa for wealthy global citizens, pensioners, remote workers and highly-skilled professionals.",
+    slug: "thailand-privilege-membership",
+    title: "Thailand Privilege Membership",
+    short: "Formerly the Thailand Elite Visa: exclusive residency for up to 20 years, with VIP privileges.",
+    forWhom: "Anyone who wants a long, hassle-free stay",
+    duration: "5 to 20 years",
+    image: "/images/Thailand-Privilege-.jpg",
+    highlight: "We are a registered Thailand Privilege Card agent.",
+    facts: [
+      ["Length", "5, 10, 15 or 20 years"],
+      ["From", "฿900,000 (Gold, 5 years)"],
+      ["Approval", "Usually 30 to 90 days"],
+      ["Application fee", "฿50,000, included in the membership fee"],
+    ],
+  },
+  {
+    slug: "long-term-resident-visa",
+    title: "Long Term Resident (LTR) Visa",
+    short: "A 10-year visa for wealthy global citizens, wealthy pensioners, remote workers and highly-skilled professionals.",
+    forWhom: "High earners, pensioners, remote workers, specialists",
     duration: "10 years",
-    intro: [
-      "The Long-Term Resident (LTR) Visa is a 10-year visa introduced by the Thai Board of Investment (BOI) to attract high-potential foreigners to live and work in Thailand.",
-      "LTR holders enjoy benefits such as 1-year reporting instead of 90-day reporting, a digital work permit and fast-track services at international airports.",
+    image: "/images/LTR-Visa.png",
+    facts: [
+      ["Length", "10 years (5 + 5)"],
+      ["Visa fee", "฿50,000"],
+      ["Reporting", "Once a year instead of every 90 days"],
+      ["Work allowed", "Yes, with a digital work permit"],
     ],
-    whoFor: [
-      "Wealthy Global Citizens",
-      "Wealthy Pensioners",
-      "Work-from-Thailand Professionals",
-      "Highly-Skilled Professionals",
-    ],
-    requirements: [
-      "Valid passport",
-      "Proof of income, assets or investment depending on category",
-      "Health insurance or sufficient deposit",
-      "Employment or business documents (for working categories)",
-    ],
-    howWeHelp: [
-      "Check your eligibility for each LTR category",
-      "Prepare and submit your application to the BOI",
-      "Follow up until endorsement and visa issuance",
-      "Help with your digital work permit if needed",
+  },
+  {
+    slug: "business-visa",
+    title: "Business Visa",
+    short: "Non-Immigrant “B” visa for working or doing business in Thailand, plus company registration and work permits.",
+    forWhom: "Employees, business owners and investors",
+    duration: "Up to 15 months, renewable",
+    image: "/images/Business-visa.jpg",
+    facts: [
+      ["Categories", "B, B-A, IB"],
+      ["Length", "Up to 15 months initially, renewable yearly"],
+      ["Processing", "Usually 5 to 10 business days"],
+      ["Work permit", "Always required to work"],
     ],
   },
   {
     slug: "education-visa",
     title: "Education Visa",
-    short:
-      "Study Thai language or other courses in Thailand with a Non-Immigrant ED visa.",
-    duration: "Up to 1 year (renewable)",
-    intro: [
-      "The Education Visa (Non-Immigrant ED) allows you to stay in Thailand while studying at an accredited school, language institute or university.",
-      "Our comprehensive service includes school referrals, documentation preparation and ongoing support with extensions and reporting.",
-    ],
-    whoFor: [
-      "Students of Thai language or other accredited courses",
-      "Exchange students and university students",
-      "Anyone who wants to learn while living in Thailand",
-    ],
-    requirements: [
-      "Valid passport",
-      "Acceptance letter from an accredited school",
-      "School registration documents and license",
-      "Proof of tuition payment",
-    ],
-    howWeHelp: [
-      "Refer you to reputable, accredited schools",
-      "Prepare your visa documentation",
-      "Assist with visa extensions",
-      "Handle 90-day reporting",
+    short: "Non-Immigrant “ED” visa to study in Thailand, with school referrals and document preparation.",
+    forWhom: "Students, interns and Buddhism studies",
+    duration: "Up to 1 year",
+    image: "/images/Education.jpg",
+    facts: [
+      ["Length", "Up to 1 year"],
+      ["Reporting", "Every 90 days"],
+      ["Requires", "Enrolment at a recognised school"],
+      ["Work allowed", "No"],
     ],
   },
   {
     slug: "muay-thai-education-visa",
     title: "Muay Thai Education Visa",
-    short:
-      "Train Muay Thai at a certified camp and stay in Thailand for up to one year.",
-    duration: "1 year (90-day reporting)",
-    intro: [
-      "Muay Thai is Thailand's national sport and a way of life. The Muay Thai Education Visa allows you to stay in Thailand to study Muay Thai at a certified training centre.",
-      "The visa is valid for one year and requires renewal / reporting every 90 days. We connect you with certified camps and take care of the paperwork so you can focus on training.",
-    ],
-    whoFor: [
-      "Fighters and enthusiasts who want to train seriously",
-      "People who want to combine fitness and a long stay in Thailand",
-      "Aspiring Muay Thai trainers",
-    ],
-    requirements: [
-      "Valid passport",
-      "Enrolment at a Muay Thai school certified by the Ministry of Education",
-      "Acceptance letter and school documents",
-      "Proof of course payment",
-    ],
-    howWeHelp: [
-      "Recommend certified Muay Thai camps",
-      "Prepare the visa application",
-      "Assist with extensions every 90 days",
-      "Support throughout your training stay",
+    short: "Study Muay Thai at a certified training centre and stay in Thailand for up to a year.",
+    forWhom: "Anyone training at a certified Muay Thai centre",
+    duration: "1 year",
+    image: "/images/12686-1.jpg",
+    facts: [
+      ["Length", "1 year"],
+      ["Enrolment", "Usually two semesters of about 90 days"],
+      ["Apply", "At a Thai embassy outside Thailand"],
+      ["Reporting", "Every 90 days"],
     ],
   },
   {
     slug: "smart-visa",
-    title: "SMART Visa",
-    short:
-      "For highly-skilled talents, investors, executives and startup entrepreneurs in targeted industries.",
-    duration: "Up to 4 years",
-    intro: [
-      "The SMART Visa is designed to attract highly-skilled workers, investors, executives and startup entrepreneurs to work or invest in Thailand's targeted industries.",
-      "There are several categories: SMART T (Talent), SMART I (Investor), SMART E (Executive), SMART S (Startup) and SMART O (Other — spouses and children).",
+    title: "Smart Visa",
+    short: "For highly-skilled talent, investors, executives and startup entrepreneurs in Thailand’s targeted industries.",
+    forWhom: "Specialists, investors, executives, founders",
+    duration: "Category dependent",
+    image: "/images/Smart-Visa.jpg",
+    facts: [
+      ["Categories", "T, I, E, S and O (family)"],
+      ["Industries", "12 targeted industries"],
     ],
-    whoFor: [
-      "T — Highly-skilled professionals in targeted industries",
-      "I — Investors in technology-based companies",
-      "E — Senior executives",
-      "S — Startup entrepreneurs",
-      "O — Spouses and children of SMART visa holders",
-    ],
-    requirements: [
-      "Valid passport",
-      "Employment contract, investment proof or startup business plan",
-      "Proof of qualifications and income (depending on category)",
-      "Health insurance",
-    ],
-    howWeHelp: [
-      "Identify the correct SMART category",
-      "Prepare and submit the endorsement application",
-      "Coordinate with the relevant government agencies",
-      "Help family members apply for SMART O",
+  },
+  {
+    slug: "marriage-visa",
+    title: "Marriage Visa",
+    short: "For foreigners married to a Thai citizen who want to build a life together in Thailand.",
+    forWhom: "Spouses of Thai citizens",
+    duration: "1 year, renewable",
+    image: "/images/Married-visa.jpg",
+    facts: [
+      ["Length", "1 year, renewable"],
+      ["Funds", "฿400,000 in a Thai bank or ฿40,000/month income"],
+      ["Reporting", "Every 90 days"],
+      ["Work allowed", "Yes"],
     ],
   },
   {
     slug: "follower-visa",
     title: "Follower Visa",
-    short:
-      "For spouses and children of retirees or expats who plan to live in Thailand for one year or more.",
-    duration: "1 year (renewable)",
-    intro: [
-      "The Follower Visa (Non-Immigrant O — dependent) allows the spouse or children of a retiree or expat with a valid long-term visa to live in Thailand together with them.",
-      "It is ideal for families planning to stay in Thailand for a year or more.",
-    ],
-    whoFor: [
-      "Legally married spouses of long-term visa holders",
-      "Children under 20 of long-term visa holders",
-    ],
-    requirements: [
-      "Valid passport",
-      "Marriage certificate or birth certificate (translated and legalised)",
-      "Copy of the main visa holder's passport and visa",
-      "Financial proof as required by Immigration",
-    ],
-    howWeHelp: [
-      "Translate and certify family documents",
-      "Prepare the visa application",
-      "Align the follower visa with the main applicant's visa",
-      "Handle extensions and 90-day reporting",
+    short: "For the spouses and children of retirees or expats who will live in Thailand for a year or more.",
+    forWhom: "Spouses and children of long-stay visa holders",
+    duration: "Up to 1 year",
+    image: "/images/Follower-Visa.jpg",
+    facts: [
+      ["Initial stay", "90 days, single entry"],
+      ["Extension", "Up to 1 year from first entry"],
+      ["Children", "Usually under 20"],
     ],
   },
 ];
@@ -217,35 +141,3 @@ export const visas: Visa[] = [
 export function getVisa(slug: string) {
   return visas.find((v) => v.slug === slug);
 }
-
-// Short "fact sheet" shown beside each visa page and in the visa index.
-export const visaFacts: Record<string, { forWhom: string; facts: [string, string][] }> = {
-  "thailand-privilege-membership": {
-    forWhom: "Anyone who wants a long, hassle-free stay",
-    facts: [["Length", "5 to 20 years"], ["Apply from", "Anywhere"], ["Age limit", "None"], ["Work allowed", "No"]],
-  },
-  "retirement-visa": {
-    forWhom: "People aged 50 and over",
-    facts: [["Length", "1 year, renewable (O-X up to 10)"], ["Minimum age", "50"], ["Apply from", "Thailand or abroad"], ["Work allowed", "No"]],
-  },
-  "ltr-visa": {
-    forWhom: "High earners, pensioners, remote workers, specialists",
-    facts: [["Length", "10 years"], ["Apply via", "BOI, online"], ["Reporting", "Once a year"], ["Work allowed", "Yes, with digital work permit"]],
-  },
-  "education-visa": {
-    forWhom: "Students of Thai or other accredited courses",
-    facts: [["Length", "Up to 1 year, renewable"], ["Requires", "Accredited school"], ["Reporting", "Every 90 days"], ["Work allowed", "No"]],
-  },
-  "muay-thai-education-visa": {
-    forWhom: "Anyone training at a certified Muay Thai camp",
-    facts: [["Length", "1 year"], ["Requires", "Certified camp"], ["Reporting", "Every 90 days"], ["Work allowed", "No"]],
-  },
-  "smart-visa": {
-    forWhom: "Specialists, investors, executives, startup founders",
-    facts: [["Length", "Up to 4 years"], ["Categories", "T, I, E, S, O"], ["Reporting", "Once a year"], ["Work allowed", "Yes, in the endorsed role"]],
-  },
-  "follower-visa": {
-    forWhom: "Spouses and children of long-stay visa holders",
-    facts: [["Length", "Follows the main visa"], ["Requires", "Marriage or birth certificate"], ["Reporting", "Every 90 days"], ["Work allowed", "No"]],
-  },
-};

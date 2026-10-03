@@ -3,6 +3,7 @@ import { Cinzel, Cormorant_Garamond, Jost } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ChatButtons from "@/components/ChatButtons";
 import { site } from "@/lib/site";
 
 const display = Cormorant_Garamond({
@@ -32,6 +33,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <ChatButtons />
       </body>
     </html>
   );

@@ -1,19 +1,13 @@
 import type { MetadataRoute } from "next";
-import { posts } from "@/lib/posts";
+import { getAllPosts } from "@/lib/content";
 import { site } from "@/lib/site";
 import { visas } from "@/lib/visas";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const paths = [
-    "/",
-    "/visas/",
-    "/services/",
-    "/about/",
-    "/contact/",
-    "/blog/",
-    "/o-retirement-visas-features-comparison-chart/",
-    ...visas.map((v) => `/${v.slug}/`),
-    ...posts.map((p) => `/${p.slug}/`),
+  const pages = ["/", "/service/", "/about/", "/customer/", "/blog/", "/contact-us/", "/privacy-policy-2/"];
+  return [
+    ...pages.map((p) => ({ url: `${site.url}${p}` })),
+    ...visas.map((v) => ({ url: `${site.url}/${v.slug}/` })),
+    ...getAllPosts().map((p) => ({ url: `${site.url}/${p.slug}/`, lastModified: p.date })),
   ];
-  return paths.map((p) => ({ url: `${site.url}${p}` }));
 }

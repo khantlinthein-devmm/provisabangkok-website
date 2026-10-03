@@ -1,10 +1,11 @@
+// "We go beyond just visa processing": the additional services listed on the original site.
 export const services = [
-  { title: "Visa extensions", short: "Prepared and filed", text: "We prepare your documents and go with you to Immigration for your extension of stay." },
-  { title: "90-day reporting", short: "Done for you", text: "We file your 90-day address reports so you never pay a late fine." },
-  { title: "Bank account opening", short: "Introductions and paperwork", text: "We help you open a Thai bank account, which you’ll need for most long-stay visas." },
-  { title: "Thai driving licence", short: "New or converted", text: "Help getting a Thai licence or converting your foreign one." },
-  { title: "Health and travel insurance", short: "Visa-compliant policies", text: "We arrange insurance that meets the requirements of your visa." },
-  { title: "Translation", short: "Certified documents", text: "Certified translations of documents for Immigration and other official use." },
-  { title: "Property or business rental", short: "Homes and offices", text: "Help finding a home, condo or commercial space to rent." },
-  { title: "Business consultation", short: "Setting up in Thailand", text: "Guidance and support for starting or running a business in Thailand." },
+  { title: "Visa extensions and re-entry permits", short: "Single or multiple re-entry", text: "Expert guidance and support in extending your visa, and single or multiple re-entry permits so you can travel freely." },
+  { title: "90-day reporting", short: "Done for you", text: "We file your 90-day reports with Immigration so you stay compliant." },
+  { title: "Bank account opening", short: "Guidance and support", text: "Comprehensive guidance and support in opening a bank account in Thailand." },
+  { title: "Thai driver licence", short: "Step-by-step help", text: "We guide you through getting a Thai driver’s licence, in line with local regulations." },
+  { title: "Health and travel insurance", short: "Arranged for you", text: "Stay protected with comprehensive health and travel insurance arranged by us." },
+  { title: "Translation services", short: "For official documents", text: "Translation of documents for Immigration and other official use." },
+  { title: "Property or business rental", short: "Homes and workspaces", text: "Help finding the ideal rental home or workspace." },
+  { title: "Business consultation", short: "New or growing ventures", text: "Whether you’re starting a new venture or expanding an existing one, our consultants provide insight and assistance." },
 ];

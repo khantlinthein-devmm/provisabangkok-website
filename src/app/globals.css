@@ -68,3 +68,113 @@ body {
     @apply mt-4;
   }
 }
+
+/* Long-form content rendered from Markdown (visa pages, blog posts). */
+.prose-content {
+  font-size: 1.075rem;
+  line-height: 1.75;
+  color: var(--color-ink);
+}
+.prose-content > * + * {
+  margin-top: 1.1em;
+}
+.prose-content h2,
+.prose-content h3,
+.prose-content h4 {
+  font-variant-numeric: lining-nums;
+}
+.prose-content h2 {
+  margin-top: 2.4em;
+  padding-top: 1.2em;
+  border-top: 1px solid var(--color-line);
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: 2rem;
+  line-height: 1.15;
+}
+.prose-content h3,
+.prose-content h4 {
+  margin-top: 1.8em;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+.prose-content h2:first-child,
+.prose-content h3:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: 0;
+}
+.prose-content a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.prose-content strong {
+  font-weight: 600;
+}
+.prose-content ul {
+  list-style: none;
+  padding-left: 0;
+}
+.prose-content ul > li {
+  position: relative;
+  padding-left: 1.4rem;
+}
+.prose-content ul > li + li,
+.prose-content ol > li + li {
+  margin-top: 0.45em;
+}
+.prose-content ul > li::before {
+  content: "";
+  position: absolute;
+  left: 0.15rem;
+  top: 0.7em;
+  width: 0.35rem;
+  height: 0.35rem;
+  background: var(--color-gold);
+  transform: rotate(45deg);
+}
+.prose-content ol {
+  list-style: decimal;
+  padding-left: 1.4rem;
+}
+.prose-content ol > li::marker {
+  color: var(--color-accent);
+  font-family: var(--font-serif);
+}
+.prose-content li > ul,
+.prose-content li > ol {
+  margin-top: 0.45em;
+}
+.prose-content img {
+  width: 100%;
+  height: auto;
+  margin-block: 2em;
+}
+.prose-content table {
+  display: block;
+  overflow-x: auto;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+}
+.prose-content th,
+.prose-content td {
+  border-bottom: 1px solid var(--color-line);
+  padding: 0.7rem 1rem 0.7rem 0;
+  text-align: left;
+  vertical-align: top;
+}
+.prose-content th {
+  font-weight: 600;
+  border-bottom-color: var(--color-ink);
+}
+.prose-content blockquote {
+  border-left: 2px solid var(--color-gold);
+  padding-left: 1.2rem;
+  font-family: var(--font-serif);
+  font-size: 1.3rem;
+  font-style: italic;
+}

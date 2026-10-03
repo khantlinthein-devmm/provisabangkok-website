@@ -1,56 +1,78 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import ContactBlock from "@/components/ContactBlock";
 import PageHero from "@/components/PageHero";
-import Image from "next/image";
-import logo from "../../../public/brand/logo.png";
+import Testimonials from "@/components/Testimonials";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About Us",
-  description: "Pro Visa Bangkok is a Bangkok visa agency and a registered Thailand Privilege Card agent.",
+  description: "Pro Visa Bangkok is a trusted visa agent in Thailand and a registered agent for the Thailand Privilege Card.",
 };
-
-const principles = [
-  ["We tell you the truth", "If you don’t qualify, or a different visa would suit you better, we say so."],
-  ["Clear prices", "You know what it will cost before we start."],
-  ["We stay in touch", "We keep you updated from the first call until your visa is approved."],
-  ["We keep up with the rules", "Thai immigration rules change often. Keeping up with them is our job."],
-];
 
 export default function AboutPage() {
   return (
     <>
-      <PageHero title="A small Bangkok agency that does one thing well" />
+      <PageHero title="We are a trusted visa agent" crumb={{ label: "About", href: "/about/" }} />
+
       <section className="wrap grid gap-14 py-16 md:py-20 lg:grid-cols-12">
-        <div className="prose-body text-xl leading-relaxed lg:col-span-7">
+        <div className="prose-content lg:col-span-7">
+          <p className="font-serif text-2xl leading-snug">Welcome to Miss P’s ProVisa Bangkok information portal!</p>
           <p>
-            Pro Visa Bangkok is a visa agency based on Soi On Nut 10 in Suan Luang. We specialise in Long-Term
-            Resident (LTR) visas, retirement visas and the other visas people ask about most, along with everything
-            that comes after: extensions, 90-day reports and re-entry permits.
+            Experience straightforward and simplified visa assistance with the expert team at ProVisa Bangkok. As
+            seasoned visa services specialists, we are proud to be registered agents for the Thailand Privilege Card,
+            offering in-depth expertise and personalised guidance. We also specialise in Long Term Visas (LTR),
+            retirement visas, and other commonly sought-after visas, along with their associated processes. Our
+            experience ensures a streamlined experience for our clients at every step.
           </p>
           <p>
-            We are also a registered agent for the Thailand Privilege Card (formerly the Thailand Elite Visa).
+            Navigating the visa process, especially those with financial requirements, can present challenges. It’s
+            crucial to gather information from trustworthy sources, as Thailand Immigration policies may change. For
+            instance, relying solely on a combination of income and a deposit to fulfil retirement visa requirements
+            isn’t assured, despite what some sources may indicate. Our team strongly cautions against such dependence.
+            Banking practices in Thailand may not always align with commonly stated online information.
           </p>
-          <p className="text-muted">
-            Our goal is simple: make the process straightforward, so you can get on with living in Thailand.
+          <p>
+            Visa application processes vary in complexity, and Immigration Officers have the authority to exercise
+            discretion. Their decisions may not always adhere strictly to standard requirements, and they can reject
+            applications without providing reasons. Citizens of certain countries may also face added document
+            requirements or eligibility constraints.
+          </p>
+          <p>
+            Strict adherence to visa regulations is paramount for a hassle-free stay in Thailand. You can trust that we
+            offer up-to-date information on all immigration matters and will provide guidance and support at every step
+            of the way. If you ever feel uncertain about your next move, don’t hesitate to reach out. We are dedicated
+            to ensuring that our actions match our commitments.
           </p>
         </div>
-        <div className="flex justify-center lg:col-span-4 lg:col-start-9">
-          <Image src={logo} alt="Pro Visa Bangkok logo" className="h-auto w-64" />
-        </div>
-      </section>
-      <section className="border-t border-line py-16 md:py-20">
-        <div className="wrap">
-          <h2 className="h-display text-4xl">How we work</h2>
-          <div className="mt-10 grid gap-x-16 md:grid-cols-2">
-            {principles.map(([t, d]) => (
-              <div key={t} className="border-t border-line py-6">
-                <h3 className="font-serif text-2xl">{t}</h3>
-                <p className="mt-2 text-muted">{d}</p>
+
+        <aside className="lg:col-span-4 lg:col-start-9">
+          <figure className="lg:sticky lg:top-28">
+            <div className="border border-gold/60 p-2">
+              <div className="relative aspect-[3/4] overflow-hidden">
+                <Image src="/images/miss-p.jpg" alt="Miss P, Managing Director of Pro Visa Bangkok" fill sizes="(min-width: 1024px) 24rem, 100vw" className="object-cover object-top" />
               </div>
-            ))}
-          </div>
-        </div>
+            </div>
+            <figcaption className="mt-4">
+              <p className="font-serif text-3xl">Miss P</p>
+              <p className="label mt-1 text-accent">Managing Director</p>
+            </figcaption>
+          </figure>
+        </aside>
       </section>
+
+      <section className="border-t border-line py-14">
+        <dl className="wrap grid grid-cols-3 gap-6">
+          {site.stats.map((s) => (
+            <div key={s.label} className="flex flex-col gap-1">
+              <dd className="text-metal font-serif text-5xl lining-nums md:text-6xl">{s.value}</dd>
+              <dt className="text-sm text-muted">{s.label}</dt>
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      <Testimonials />
       <ContactBlock />
     </>
   );

@@ -31,7 +31,7 @@ export default function Header() {
           <a href={`tel:${site.phoneIntl}`} className="tabular-nums text-muted hover:text-accent">
             {site.phone}
           </a>
-          <Link href="/contact/" className="btn py-2">Book a consultation</Link>
+          <Link href="/contact-us/" className="btn py-2">Book a consultation</Link>
         </nav>
 
         <button
