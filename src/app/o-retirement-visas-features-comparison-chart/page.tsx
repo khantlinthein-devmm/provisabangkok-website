@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import CtaBanner from "@/components/CtaBanner";
+import ContactBlock from "@/components/ContactBlock";
 import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
@@ -23,41 +23,39 @@ export default function ComparisonPage() {
   return (
     <>
       <PageHero
-        title="O Retirement Visas Comparison Chart"
-        subtitle="Non-Immigrant O vs. O-A vs. O-X — which retirement visa suits you?"
+        title="O, O-A or O-X?"
+        subtitle="The three Thai retirement visas, side by side."
         crumb={{ label: "Retirement Visa", href: "/retirement-visa/" }}
       />
-      <section className="py-16">
-        <div className="container-x">
-          <div className="overflow-x-auto rounded-2xl border border-gray-100 shadow-sm">
-            <table className="w-full min-w-[640px] text-left text-sm">
-              <thead className="bg-navy text-white">
-                <tr>
-                  <th className="p-4">Feature</th>
-                  <th className="p-4">Non-Immigrant O</th>
-                  <th className="p-4">Non-Immigrant O-A</th>
-                  <th className="p-4">Non-Immigrant O-X</th>
+      <section className="wrap py-16">
+        <div className="overflow-x-auto border-t border-ink">
+          <table className="w-full min-w-[44rem] text-left">
+            <thead>
+              <tr className="border-b border-line">
+                <th className="w-1/4 py-5 pr-6 text-sm font-normal text-muted">Feature</th>
+                <th className="py-5 pr-6 font-serif text-2xl font-normal">Non-Imm O</th>
+                <th className="py-5 pr-6 font-serif text-2xl font-normal">Non-Imm O-A</th>
+                <th className="py-5 font-serif text-2xl font-normal">Non-Imm O-X</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map(([f, ...cells]) => (
+                <tr key={f} className="border-b border-line align-top">
+                  <th className="py-4 pr-6 text-sm font-normal text-muted">{f}</th>
+                  {cells.map((c, i) => (
+                    <td key={i} className="py-4 pr-6">{c}</td>
+                  ))}
                 </tr>
-              </thead>
-              <tbody>
-                {rows.map(([f, ...cells]) => (
-                  <tr key={f} className="border-t border-gray-100 even:bg-gray-50">
-                    <th className="p-4 font-semibold text-navy">{f}</th>
-                    {cells.map((c, i) => (
-                      <td key={i} className="p-4 text-gray-700">{c}</td>
-                    ))}
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <p className="mt-4 text-sm text-gray-500">
-            Exact amounts and conditions are set by Thai Immigration and change from time to time. Contact us for the
-            current requirements.
-          </p>
+              ))}
+            </tbody>
+          </table>
         </div>
+        <p className="mt-6 max-w-2xl text-sm text-muted">
+          Exact amounts and conditions are set by Thai Immigration and change from time to time. Contact us for the
+          current requirements.
+        </p>
       </section>
-      <CtaBanner />
+      <ContactBlock />
     </>
   );
 }

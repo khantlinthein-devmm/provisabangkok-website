@@ -1,83 +1,44 @@
 import Link from "next/link";
-import { nav, site } from "@/lib/site";
+import { site } from "@/lib/site";
 import { visas } from "@/lib/visas";
-import Icon from "./Icon";
 
 export default function Footer() {
   return (
-    <footer className="bg-navy text-white/80">
-      <div className="container-x grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
-        <div>
-          <p className="text-xl font-bold text-white">
-            Pro Visa <span className="text-gold">Bangkok</span>
+    <footer className="border-t border-line">
+      <div className="wrap grid gap-10 py-14 md:grid-cols-12">
+        <div className="md:col-span-5">
+          <p className="font-serif text-3xl tracking-tight">
+            Pro Visa <em className="text-accent">Bangkok</em>
           </p>
-          <p className="mt-4 text-sm leading-relaxed">
-            Trusted visa consultant in Thailand and registered agent for the Thailand Privilege Card.
+          <p className="mt-4 max-w-sm text-sm text-muted">
+            {site.address.line1}, {site.address.line2}.<br />
+            {site.hours}.
           </p>
         </div>
-
-        <div>
-          <p className="font-semibold text-white">Visas</p>
-          <ul className="mt-4 space-y-2 text-sm">
+        <div className="md:col-span-4">
+          <p className="label">Visas</p>
+          <ul className="mt-3 space-y-1.5 text-sm">
             {visas.map((v) => (
               <li key={v.slug}>
-                <Link href={`/${v.slug}/`} className="hover:text-gold">
-                  {v.title}
-                </Link>
+                <Link href={`/${v.slug}/`} className="hover:text-accent">{v.title}</Link>
               </li>
             ))}
           </ul>
         </div>
-
-        <div>
-          <p className="font-semibold text-white">Quick Links</p>
-          <ul className="mt-4 space-y-2 text-sm">
-            {nav.map((n) => (
-              <li key={n.href}>
-                <Link href={n.href} className="hover:text-gold">
-                  {n.label}
-                </Link>
-              </li>
-            ))}
-            <li>
-              <Link href="/o-retirement-visas-features-comparison-chart/" className="hover:text-gold">
-                Retirement Visa Comparison
-              </Link>
-            </li>
-          </ul>
-        </div>
-
-        <div>
-          <p className="font-semibold text-white">Contact Us</p>
-          <ul className="mt-4 space-y-3 text-sm">
-            <li className="flex gap-3">
-              <Icon name="pin" className="h-5 w-5 shrink-0 text-gold" />
-              <span>
-                {site.address.line1}
-                <br />
-                {site.address.line2}
-              </span>
-            </li>
-            <li>
-              <a href={`tel:${site.phoneIntl}`} className="flex gap-3 hover:text-gold">
-                <Icon name="phone" className="h-5 w-5 shrink-0 text-gold" /> {site.phone}
-              </a>
-            </li>
-            <li>
-              <a href={`mailto:${site.email}`} className="flex gap-3 break-all hover:text-gold">
-                <Icon name="mail" className="h-5 w-5 shrink-0 text-gold" /> {site.email}
-              </a>
-            </li>
-            <li className="flex gap-3">
-              <Icon name="clock" className="h-5 w-5 shrink-0 text-gold" /> {site.hours}
-            </li>
+        <div className="md:col-span-3">
+          <p className="label">Contact</p>
+          <ul className="mt-3 space-y-1.5 text-sm">
+            <li><a href={`tel:${site.phoneIntl}`} className="hover:text-accent">{site.phone}</a></li>
+            <li><a href={`mailto:${site.email}`} className="break-all hover:text-accent">{site.email}</a></li>
+            <li><a href={site.whatsapp} target="_blank" rel="noopener noreferrer" className="hover:text-accent">WhatsApp</a></li>
+            <li><Link href="/blog/" className="hover:text-accent">Blog</Link></li>
+            <li><Link href="/about/" className="hover:text-accent">About us</Link></li>
           </ul>
         </div>
       </div>
-      <div className="border-t border-white/10">
-        <div className="container-x py-5 text-center text-xs text-white/60">
-          © {new Date().getFullYear()} {site.name}. All rights reserved.
-        </div>
+      <div className="wrap flex flex-col justify-between gap-2 border-t border-line py-6 text-xs text-muted sm:flex-row">
+        <span>© {new Date().getFullYear()} {site.name}</span>
+        <span>Requirements change often. Always confirm with us before you apply.</span>
       </div>
     </footer>
   );

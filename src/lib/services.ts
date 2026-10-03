@@ -1,10 +1,10 @@
 export const services = [
-  { title: "Visa extensions support", text: "We prepare documents and accompany you to Immigration for your extension of stay." },
-  { title: "90-day reporting", text: "Never miss a report — we handle your 90-day address notifications." },
-  { title: "Business consultation & assistance", text: "Company setup guidance and support for doing business in Thailand." },
-  { title: "Thai driver license", text: "Help obtaining or converting your driving license in Thailand." },
-  { title: "Bank account opening", text: "Guidance in opening a Thai bank account." },
-  { title: "Property or business rental", text: "Help finding a home, condo or commercial space to rent." },
-  { title: "Health & travel insurance", text: "Arranging insurance that meets visa requirements." },
-  { title: "Translation services", text: "Certified translation of documents for immigration and official use." },
+  { title: "Visa extensions", short: "Prepared and filed", text: "We prepare your documents and go with you to Immigration for your extension of stay." },
+  { title: "90-day reporting", short: "Done for you", text: "We file your 90-day address reports so you never pay a late fine." },
+  { title: "Bank account opening", short: "Introductions and paperwork", text: "We help you open a Thai bank account, which you’ll need for most long-stay visas." },
+  { title: "Thai driving licence", short: "New or converted", text: "Help getting a Thai licence or converting your foreign one." },
+  { title: "Health and travel insurance", short: "Visa-compliant policies", text: "We arrange insurance that meets the requirements of your visa." },
+  { title: "Translation", short: "Certified documents", text: "Certified translations of documents for Immigration and other official use." },
+  { title: "Property or business rental", short: "Homes and offices", text: "Help finding a home, condo or commercial space to rent." },
+  { title: "Business consultation", short: "Setting up in Thailand", text: "Guidance and support for starting or running a business in Thailand." },
 ];

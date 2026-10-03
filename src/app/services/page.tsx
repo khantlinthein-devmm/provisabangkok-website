@@ -1,35 +1,32 @@
 import type { Metadata } from "next";
-import CtaBanner from "@/components/CtaBanner";
-import Icon from "@/components/Icon";
+import ContactBlock from "@/components/ContactBlock";
 import PageHero from "@/components/PageHero";
 import { services } from "@/lib/services";
 
 export const metadata: Metadata = {
   title: "Services",
-  description: "Visa extensions, 90-day reporting, bank accounts, driver licenses, insurance, translation and more.",
+  description: "Visa extensions, 90-day reporting, bank accounts, driving licences, insurance, translation and more.",
 };
 
 export default function ServicesPage() {
   return (
     <>
       <PageHero
-        title="Our Services"
-        subtitle="Beyond visa processing, we support you with everything you need to settle in Thailand."
+        title="Beyond the visa"
+        subtitle="Getting the visa is step one. These are the other things we help with once you’re living here."
       />
-      <section className="py-16">
-        <div className="container-x grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map((s) => (
-            <div key={s.title} className="rounded-2xl border border-gray-100 p-7 shadow-sm">
-              <span className="grid h-12 w-12 place-items-center rounded-full bg-gold/15 text-gold">
-                <Icon name="check" className="h-6 w-6" />
-              </span>
-              <h2 className="mt-5 text-lg font-semibold text-navy">{s.title}</h2>
-              <p className="mt-2 text-sm text-gray-600">{s.text}</p>
+      <section className="wrap grid gap-x-16 py-16 md:grid-cols-2">
+        {services.map((s, i) => (
+          <div key={s.title} className="grid grid-cols-[3rem_1fr] border-b border-line py-8">
+            <span className="font-serif text-xl italic text-accent">{i + 1}.</span>
+            <div>
+              <h2 className="text-xl font-medium">{s.title}</h2>
+              <p className="mt-2 leading-relaxed text-muted">{s.text}</p>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </section>
-      <CtaBanner />
+      <ContactBlock />
     </>
   );
 }

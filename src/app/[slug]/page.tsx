@@ -1,14 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import CtaBanner from "@/components/CtaBanner";
-import Icon from "@/components/Icon";
+import Arrow from "@/components/Arrow";
+import ContactBlock from "@/components/ContactBlock";
 import PageHero from "@/components/PageHero";
-import VisaCard from "@/components/VisaCard";
-import { getPost, posts } from "@/lib/posts";
+import { getPost, posts, type Post } from "@/lib/posts";
 import { site } from "@/lib/site";
-import { getVisa, visas, type Visa } from "@/lib/visas";
-import type { Post } from "@/lib/posts";
+import { getVisa, visaFacts, visas, type Visa } from "@/lib/visas";
 
 // Visa pages and blog posts both live at the top level (e.g. /retirement-visa/),
 // matching the URLs of the original site.
@@ -36,124 +34,108 @@ export default async function Page(props: PageProps<"/[slug]">) {
   notFound();
 }
 
-function List({ items }: { items: string[] }) {
+function Section({ title, items }: { title: string; items: string[] }) {
   return (
-    <ul className="mt-5 space-y-3">
-      {items.map((item) => (
-        <li key={item} className="flex gap-3 text-gray-700">
-          <Icon name="check" className="mt-0.5 h-5 w-5 shrink-0 text-gold" />
-          <span>{item}</span>
-        </li>
-      ))}
-    </ul>
+    <section className="grid gap-4 border-t border-line pt-8 md:grid-cols-[12rem_1fr] md:gap-10">
+      <h2 className="font-serif text-2xl italic">{title}</h2>
+      <ul className="space-y-3">
+        {items.map((item) => (
+          <li key={item} className="flex gap-4 leading-relaxed">
+            <span className="text-accent">–</span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }
 
 function VisaPage({ visa }: { visa: Visa }) {
-  const others = visas.filter((v) => v.slug !== visa.slug).slice(0, 3);
+  const facts = visaFacts[visa.slug]?.facts ?? [["Length", visa.duration]];
+  const index = visas.findIndex((v) => v.slug === visa.slug);
+  const next = visas[(index + 1) % visas.length];
+
   return (
     <>
       <PageHero title={visa.title} subtitle={visa.short} crumb={{ label: "Visas", href: "/visas/" }} />
 
-      <section className="py-16">
-        <div className="container-x grid gap-12 lg:grid-cols-3">
-          <article className="space-y-12 lg:col-span-2">
-            <div className="space-y-4 text-lg leading-relaxed text-gray-700">
-              {visa.intro.map((p) => (
-                <p key={p}>{p}</p>
+      <div className="wrap grid gap-14 py-16 md:py-20 lg:grid-cols-12">
+        <aside className="lg:order-2 lg:col-span-4 lg:col-start-9">
+          <div className="border border-ink p-6 lg:sticky lg:top-24">
+            <p className="font-serif text-xl italic">Fact sheet</p>
+            <dl className="mt-4 divide-y divide-line text-sm">
+              {facts.map(([k, v]) => (
+                <div key={k} className="grid grid-cols-[7rem_1fr] gap-3 py-2.5">
+                  <dt className="text-muted">{k}</dt>
+                  <dd>{v}</dd>
+                </div>
               ))}
+            </dl>
+            {visa.highlight && <p className="mt-4 text-sm text-accent">{visa.highlight}</p>}
+            <div className="mt-6 flex flex-col gap-3">
+              <Link href="/contact/" className="btn justify-center">Ask us about this visa</Link>
+              <a href={`tel:${site.phoneIntl}`} className="btn-ghost justify-center tabular-nums">{site.phone}</a>
             </div>
+          </div>
+        </aside>
 
-            <div>
-              <h2 className="text-2xl font-bold text-navy">Who is this visa for?</h2>
-              <List items={visa.whoFor} />
-            </div>
-
-            <div>
-              <h2 className="text-2xl font-bold text-navy">Basic requirements</h2>
-              <List items={visa.requirements} />
-              <p className="mt-4 text-sm text-gray-500">
-                Requirements are set by the Thai authorities and may change. Contact us for the latest checklist for
-                your nationality and situation.
-              </p>
-            </div>
-
-            <div className="rounded-2xl bg-gray-50 p-8">
-              <h2 className="text-2xl font-bold text-navy">How Pro Visa Bangkok helps</h2>
-              <List items={visa.howWeHelp} />
-            </div>
-
-            {visa.slug === "retirement-visa" && (
-              <Link href="/o-retirement-visas-features-comparison-chart/" className="btn-dark">
-                Compare O, O-A and O-X retirement visas <Icon name="arrow" className="h-4 w-4" />
-              </Link>
-            )}
-          </article>
-
-          <aside className="space-y-6">
-            <div className="rounded-2xl bg-navy p-8 text-white">
-              <p className="text-sm text-white/70">Duration</p>
-              <p className="text-2xl font-bold text-gold">{visa.duration}</p>
-              {visa.highlight && <p className="mt-4 text-sm text-white/80">{visa.highlight}</p>}
-              <hr className="my-6 border-white/10" />
-              <p className="font-semibold">Apply with us</p>
-              <p className="mt-2 text-sm text-white/70">Free consultation — reply within one business day.</p>
-              <div className="mt-6 flex flex-col gap-3">
-                <Link href="/contact/" className="btn-primary justify-center">Get Started</Link>
-                <a href={`tel:${site.phoneIntl}`} className="btn-outline justify-center">Call {site.phone}</a>
-              </div>
-            </div>
-            <div className="rounded-2xl border border-gray-100 p-6">
-              <p className="font-semibold text-navy">Other visas</p>
-              <ul className="mt-4 space-y-2 text-sm">
-                {visas
-                  .filter((v) => v.slug !== visa.slug)
-                  .map((v) => (
-                    <li key={v.slug}>
-                      <Link href={`/${v.slug}/`} className="text-gray-600 hover:text-gold">{v.title}</Link>
-                    </li>
-                  ))}
-              </ul>
-            </div>
-          </aside>
-        </div>
-      </section>
-
-      <section className="bg-gray-50 py-16">
-        <div className="container-x">
-          <h2 className="section-title">You may also be interested in</h2>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
-            {others.map((v) => (
-              <VisaCard key={v.slug} visa={v} />
+        <article className="space-y-12 lg:order-1 lg:col-span-7">
+          <div className="prose-body text-xl leading-relaxed">
+            {visa.intro.map((p) => (
+              <p key={p}>{p}</p>
             ))}
           </div>
+          <Section title="Who it’s for" items={visa.whoFor} />
+          <Section title="What you’ll need" items={visa.requirements} />
+          <Section title="What we do" items={visa.howWeHelp} />
+          <p className="border-t border-line pt-6 text-sm text-muted">
+            Requirements are set by the Thai authorities and change from time to time. Talk to us for the current
+            checklist for your nationality.
+          </p>
+          {visa.slug === "retirement-visa" && (
+            <Link href="/o-retirement-visas-features-comparison-chart/" className="btn">
+              Compare O, O-A and O-X <Arrow />
+            </Link>
+          )}
+        </article>
+      </div>
+
+      <Link href={`/${next.slug}/`} className="group block border-t border-line">
+        <div className="wrap flex items-center justify-between gap-6 py-10">
+          <div>
+            <p className="label">Next visa</p>
+            <p className="mt-2 font-serif text-3xl group-hover:text-accent md:text-4xl">{next.title}</p>
+          </div>
+          <Arrow className="h-6 w-6 transition-transform group-hover:translate-x-1" />
         </div>
-      </section>
-      <CtaBanner />
+      </Link>
+
+      <ContactBlock />
     </>
   );
 }
 
 function PostPage({ post }: { post: Post }) {
+  const date = new Date(post.date).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
   return (
     <>
-      <PageHero title={post.title} subtitle={post.excerpt} crumb={{ label: "Blog", href: "/blog/" }} />
-      <article className="container-x max-w-3xl py-16">
-        <p className="text-sm text-gray-500">
-          {post.category} ·{" "}
-          {new Date(post.date).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}
+      <PageHero title={post.title} crumb={{ label: "Blog", href: "/blog/" }} />
+      <article className="wrap max-w-3xl py-16">
+        <p className="label">
+          {post.category} · {date}
         </p>
-        <div className="mt-8 space-y-6 text-lg leading-relaxed text-gray-700">
+        <p className="mt-6 font-serif text-2xl leading-snug">{post.excerpt}</p>
+        <div className="mt-10 space-y-8 text-lg leading-relaxed">
           {post.body.map((b, i) => (
             <div key={i}>
-              {b.heading && <h2 className="mb-3 text-2xl font-bold text-navy">{b.heading}</h2>}
+              {b.heading && <h2 className="mb-3 font-serif text-3xl">{b.heading}</h2>}
               <p>{b.text}</p>
             </div>
           ))}
         </div>
-        <Link href="/blog/" className="btn-outline-dark mt-12">← Back to blog</Link>
+        <Link href="/blog/" className="link mt-14 inline-block text-sm">Back to the blog</Link>
       </article>
-      <CtaBanner />
+      <ContactBlock heading="Have a question about your own visa?" />
     </>
   );
 }

@@ -10,21 +10,19 @@ export default function PageHero({
   crumb?: { label: string; href: string };
 }) {
   return (
-    <section className="hero-bg text-white">
-      <div className="container-x py-16 md:py-20">
-        <nav className="mb-4 text-sm text-white/70">
-          <Link href="/" className="hover:text-gold">Home</Link>
+    <section className="border-b border-line">
+      <div className="wrap pb-12 pt-10 md:pb-16 md:pt-14">
+        <nav className="label">
+          <Link href="/" className="hover:text-accent">Home</Link>
           {crumb && (
             <>
-              {" / "}
-              <Link href={crumb.href} className="hover:text-gold">{crumb.label}</Link>
+              <span className="mx-2">/</span>
+              <Link href={crumb.href} className="hover:text-accent">{crumb.label}</Link>
             </>
           )}
-          {" / "}
-          <span className="text-white">{title}</span>
         </nav>
-        <h1 className="max-w-3xl text-3xl font-bold md:text-5xl">{title}</h1>
-        {subtitle && <p className="mt-4 max-w-2xl text-lg text-white/80">{subtitle}</p>}
+        <h1 className="h-display mt-6 max-w-4xl text-5xl leading-[1.02] md:text-7xl">{title}</h1>
+        {subtitle && <p className="mt-6 max-w-2xl text-lg text-muted">{subtitle}</p>}
       </div>
     </section>
   );

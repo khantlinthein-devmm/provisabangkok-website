@@ -2,7 +2,6 @@ export type Visa = {
   slug: string;
   title: string;
   short: string;
-  icon: IconName;
   duration: string;
   intro: string[];
   whoFor: string[];
@@ -11,22 +10,12 @@ export type Visa = {
   highlight?: string;
 };
 
-export type IconName =
-  | "crown"
-  | "sun"
-  | "book"
-  | "glove"
-  | "chip"
-  | "family"
-  | "globe";
-
 export const visas: Visa[] = [
   {
     slug: "thailand-privilege-membership",
     title: "Thailand Privilege Membership",
     short:
       "Formerly the Thailand Elite Visa — long-stay residency of up to 20 years with VIP privileges.",
-    icon: "crown",
     duration: "5 – 20 years",
     highlight: "Registered Thailand Privilege Card agent",
     intro: [
@@ -57,7 +46,6 @@ export const visas: Visa[] = [
     title: "Retirement Visa",
     short:
       "Non-Immigrant O / O-A / O-X visas for people aged 50 and over who want to retire in Thailand.",
-    icon: "sun",
     duration: "1 – 10 years",
     intro: [
       "Thailand is one of the most popular retirement destinations in the world. The retirement visa allows foreigners aged 50 and over to stay in Thailand long-term, renewable every year.",
@@ -87,7 +75,6 @@ export const visas: Visa[] = [
     title: "Long-Term Resident (LTR) Visa",
     short:
       "10-year visa for wealthy global citizens, pensioners, remote workers and highly-skilled professionals.",
-    icon: "globe",
     duration: "10 years",
     intro: [
       "The Long-Term Resident (LTR) Visa is a 10-year visa introduced by the Thai Board of Investment (BOI) to attract high-potential foreigners to live and work in Thailand.",
@@ -117,7 +104,6 @@ export const visas: Visa[] = [
     title: "Education Visa",
     short:
       "Study Thai language or other courses in Thailand with a Non-Immigrant ED visa.",
-    icon: "book",
     duration: "Up to 1 year (renewable)",
     intro: [
       "The Education Visa (Non-Immigrant ED) allows you to stay in Thailand while studying at an accredited school, language institute or university.",
@@ -146,7 +132,6 @@ export const visas: Visa[] = [
     title: "Muay Thai Education Visa",
     short:
       "Train Muay Thai at a certified camp and stay in Thailand for up to one year.",
-    icon: "glove",
     duration: "1 year (90-day reporting)",
     intro: [
       "Muay Thai is Thailand's national sport and a way of life. The Muay Thai Education Visa allows you to stay in Thailand to study Muay Thai at a certified training centre.",
@@ -175,7 +160,6 @@ export const visas: Visa[] = [
     title: "SMART Visa",
     short:
       "For highly-skilled talents, investors, executives and startup entrepreneurs in targeted industries.",
-    icon: "chip",
     duration: "Up to 4 years",
     intro: [
       "The SMART Visa is designed to attract highly-skilled workers, investors, executives and startup entrepreneurs to work or invest in Thailand's targeted industries.",
@@ -206,7 +190,6 @@ export const visas: Visa[] = [
     title: "Follower Visa",
     short:
       "For spouses and children of retirees or expats who plan to live in Thailand for one year or more.",
-    icon: "family",
     duration: "1 year (renewable)",
     intro: [
       "The Follower Visa (Non-Immigrant O — dependent) allows the spouse or children of a retiree or expat with a valid long-term visa to live in Thailand together with them.",
@@ -234,3 +217,35 @@ export const visas: Visa[] = [
 export function getVisa(slug: string) {
   return visas.find((v) => v.slug === slug);
 }
+
+// Short "fact sheet" shown beside each visa page and in the visa index.
+export const visaFacts: Record<string, { forWhom: string; facts: [string, string][] }> = {
+  "thailand-privilege-membership": {
+    forWhom: "Anyone who wants a long, hassle-free stay",
+    facts: [["Length", "5 to 20 years"], ["Apply from", "Anywhere"], ["Age limit", "None"], ["Work allowed", "No"]],
+  },
+  "retirement-visa": {
+    forWhom: "People aged 50 and over",
+    facts: [["Length", "1 year, renewable (O-X up to 10)"], ["Minimum age", "50"], ["Apply from", "Thailand or abroad"], ["Work allowed", "No"]],
+  },
+  "ltr-visa": {
+    forWhom: "High earners, pensioners, remote workers, specialists",
+    facts: [["Length", "10 years"], ["Apply via", "BOI, online"], ["Reporting", "Once a year"], ["Work allowed", "Yes, with digital work permit"]],
+  },
+  "education-visa": {
+    forWhom: "Students of Thai or other accredited courses",
+    facts: [["Length", "Up to 1 year, renewable"], ["Requires", "Accredited school"], ["Reporting", "Every 90 days"], ["Work allowed", "No"]],
+  },
+  "muay-thai-education-visa": {
+    forWhom: "Anyone training at a certified Muay Thai camp",
+    facts: [["Length", "1 year"], ["Requires", "Certified camp"], ["Reporting", "Every 90 days"], ["Work allowed", "No"]],
+  },
+  "smart-visa": {
+    forWhom: "Specialists, investors, executives, startup founders",
+    facts: [["Length", "Up to 4 years"], ["Categories", "T, I, E, S, O"], ["Reporting", "Once a year"], ["Work allowed", "Yes, in the endorsed role"]],
+  },
+  "follower-visa": {
+    forWhom: "Spouses and children of long-stay visa holders",
+    facts: [["Length", "Follows the main visa"], ["Requires", "Marriage or birth certificate"], ["Reporting", "Every 90 days"], ["Work allowed", "No"]],
+  },
+};

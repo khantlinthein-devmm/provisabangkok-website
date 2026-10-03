@@ -1,205 +1,202 @@
 import Link from "next/link";
-import CtaBanner from "@/components/CtaBanner";
-import ContactForm from "@/components/ContactForm";
-import Icon from "@/components/Icon";
-import VisaCard from "@/components/VisaCard";
+import Arrow from "@/components/Arrow";
+import ContactBlock from "@/components/ContactBlock";
+import Stamp from "@/components/Stamp";
+import { posts } from "@/lib/posts";
 import { services } from "@/lib/services";
 import { site } from "@/lib/site";
-import { visas } from "@/lib/visas";
-import { posts } from "@/lib/posts";
+import { visaFacts, visas } from "@/lib/visas";
 
-const whyUs = [
-  { icon: "shield" as const, title: "Registered Agent", text: "Official registered agent for the Thailand Privilege Card." },
-  { icon: "star" as const, title: "Expert Guidance", text: "Experienced consultants who know Thai immigration rules inside out." },
-  { icon: "doc" as const, title: "Simplified Process", text: "We prepare your documents and deal with the paperwork for you." },
-  { icon: "family" as const, title: "Personalised Support", text: "Advice tailored to your situation — before, during and after your visa." },
+const process = [
+  {
+    title: "We talk first",
+    text: "Tell us your age, nationality, income and how long you want to stay. We’ll tell you honestly which visas you qualify for, and which ones aren’t worth the money.",
+  },
+  {
+    title: "You get one checklist",
+    text: "A single list of exactly what we need from you. We handle translations, forms, copies and photos, and we check everything before it is submitted.",
+  },
+  {
+    title: "We go to Immigration with you",
+    text: "Or for you, where the rules allow it. We know the offices, the queues and what the officers will ask.",
+  },
+  {
+    title: "We remind you what’s next",
+    text: "90-day reports, annual extensions, re-entry permits. We keep track of the dates so you don’t have to.",
+  },
 ];
 
-const steps = [
-  { title: "Free Consultation", text: "Tell us your goals and we recommend the best visa option." },
-  { title: "Document Preparation", text: "We give you a clear checklist and prepare your application." },
-  { title: "Submission", text: "We submit and follow up with the authorities on your behalf." },
-  { title: "Visa Approved", text: "Enjoy your stay — we remind you about renewals and 90-day reports." },
-];
+function fmt(date: string) {
+  return new Date(date).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" });
+}
 
 export default function Home() {
   return (
     <>
-      {/* Hero */}
-      <section className="hero-bg text-white">
-        <div className="container-x grid items-center gap-12 py-20 md:py-28 lg:grid-cols-2">
-          <div>
-            <p className="eyebrow">Trusted Visa Consultant in Thailand</p>
-            <h1 className="mt-4 text-4xl font-bold leading-tight md:text-6xl">
-              Your Thai Visa, <span className="text-gold">Made Simple.</span>
+      {/* Intro */}
+      <section className="border-b border-line">
+        <div className="wrap grid gap-12 pb-16 pt-12 md:pt-20 lg:grid-cols-12 lg:pb-24">
+          <div className="lg:col-span-8">
+            <p className="label">Visa agency · On Nut, Bangkok</p>
+            <h1 className="h-display mt-6 text-[3.25rem] leading-[0.98] sm:text-7xl lg:text-[5.5rem]">
+              Thai visas, sorted <em className="text-accent">properly</em>, by people who do this every day.
             </h1>
-            <p className="mt-6 max-w-xl text-lg text-white/80">
-              We specialise in Long Term Resident (LTR) visas, retirement visas, Thailand Privilege Membership and
-              other commonly sought-after visas — with expert guidance and personalised support every step of the way.
+            <p className="mt-8 max-w-xl text-lg leading-relaxed text-muted">
+              Retirement, LTR, Thailand Privilege, education and family visas. We prepare the paperwork, deal with
+              Immigration, and keep track of your renewals and 90-day reports.
             </p>
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link href="/contact/" className="btn-primary">
-                Free Consultation <Icon name="arrow" className="h-4 w-4" />
+            <div className="mt-10 flex flex-wrap items-center gap-4">
+              <Link href="/contact/" className="btn">
+                Book a free consultation <Arrow />
               </Link>
-              <Link href="/visas/" className="btn-outline">Explore Visas</Link>
-            </div>
-            <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm text-white/80">
-              <a href={`tel:${site.phoneIntl}`} className="flex items-center gap-2 hover:text-gold">
-                <Icon name="phone" className="h-5 w-5 text-gold" /> {site.phone}
-              </a>
-              <a href={`mailto:${site.email}`} className="flex items-center gap-2 hover:text-gold">
-                <Icon name="mail" className="h-5 w-5 text-gold" /> {site.email}
+              <a href={site.whatsapp} target="_blank" rel="noopener noreferrer" className="btn-ghost">
+                WhatsApp us
               </a>
             </div>
           </div>
 
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur">
-            <p className="text-lg font-semibold">Popular visas</p>
-            <ul className="mt-6 space-y-3">
-              {visas.slice(0, 5).map((v) => (
-                <li key={v.slug}>
-                  <Link
-                    href={`/${v.slug}/`}
-                    className="flex items-center justify-between rounded-xl bg-white/5 px-5 py-4 transition hover:bg-white/15"
-                  >
-                    <span className="flex items-center gap-3">
-                      <Icon name={v.icon} className="h-5 w-5 text-gold" />
-                      {v.title}
-                    </span>
-                    <span className="text-xs text-white/60">{v.duration}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
+          {/* Fact sheet */}
+          <aside className="relative self-end lg:col-span-4">
+            <div className="border border-ink bg-paper p-6">
+              <p className="font-serif text-xl italic">At a glance</p>
+              <dl className="mt-4 divide-y divide-line text-sm">
+                {[
+                  ["Office", `${site.address.line1}, Suan Luang`],
+                  ["Hours", site.hours],
+                  ["Phone", site.phone],
+                  ["Status", "Registered Thailand Privilege agent"],
+                ].map(([k, v]) => (
+                  <div key={k} className="grid grid-cols-[6.5rem_1fr] gap-3 py-2.5">
+                    <dt className="text-muted">{k}</dt>
+                    <dd>{v}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+            <Stamp className="absolute -top-14 right-2 h-28 w-28 rotate-[-12deg] text-accent opacity-85 md:-right-8" />
+          </aside>
         </div>
       </section>
 
-      {/* Why us */}
-      <section className="bg-gray-50 py-20">
-        <div className="container-x">
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="eyebrow">Why choose us</p>
-            <h2 className="section-title mt-3">Straightforward, simplified visa assistance</h2>
+      {/* Visa index */}
+      <section className="py-20 md:py-28">
+        <div className="wrap">
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <h2 className="h-display max-w-xl text-4xl leading-tight md:text-5xl">Which visa fits you?</h2>
+            <Link href="/visas/" className="link text-sm">All visas</Link>
           </div>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {whyUs.map((w) => (
-              <div key={w.title} className="rounded-2xl bg-white p-7 text-center shadow-sm">
-                <span className="mx-auto grid h-14 w-14 place-items-center rounded-full bg-gold/15 text-gold">
-                  <Icon name={w.icon} className="h-7 w-7" />
+
+          <div className="mt-12 border-t border-ink">
+            <div className="hidden grid-cols-12 gap-6 border-b border-line py-3 text-xs text-muted md:grid">
+              <span className="col-span-1">No.</span>
+              <span className="col-span-4">Visa</span>
+              <span className="col-span-4">Best for</span>
+              <span className="col-span-2">Length</span>
+            </div>
+            {visas.map((v, i) => (
+              <Link
+                key={v.slug}
+                href={`/${v.slug}/`}
+                className="group grid grid-cols-12 items-baseline gap-x-6 gap-y-1 border-b border-line py-6 transition-colors hover:bg-paper-2 md:px-2"
+              >
+                <span className="col-span-2 text-sm tabular-nums text-muted md:col-span-1">{String(i + 1).padStart(2, "0")}</span>
+                <span className="col-span-10 font-serif text-2xl group-hover:text-accent md:col-span-4 md:text-3xl">{v.title}</span>
+                <span className="col-span-10 col-start-3 text-sm text-muted md:col-span-4 md:col-start-auto md:text-base md:text-ink">
+                  {visaFacts[v.slug]?.forWhom}
                 </span>
-                <h3 className="mt-5 font-semibold text-navy">{w.title}</h3>
-                <p className="mt-2 text-sm text-gray-600">{w.text}</p>
-              </div>
+                <span className="col-span-10 col-start-3 text-sm text-muted md:col-span-2 md:col-start-auto">{v.duration}</span>
+                <span className="hidden justify-end md:col-span-1 md:flex">
+                  <Arrow className="h-5 w-5 transition-transform group-hover:translate-x-1" />
+                </span>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Visas */}
-      <section className="py-20">
-        <div className="container-x">
-          <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
-            <div>
-              <p className="eyebrow">Our visa services</p>
-              <h2 className="section-title mt-3">Find the right visa for you</h2>
+      {/* How we work */}
+      <section className="border-y border-line bg-paper-2/60 py-20 md:py-28">
+        <div className="wrap grid gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-4">
+            <div className="lg:sticky lg:top-28">
+              <h2 className="h-display text-4xl leading-tight md:text-5xl">How it works with us</h2>
+              <p className="mt-5 text-muted">
+                Four steps from the first conversation to your approved visa, and beyond.
+              </p>
             </div>
-            <Link href="/visas/" className="btn-outline-dark">View all visas</Link>
           </div>
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {visas.slice(0, 6).map((v) => (
-              <VisaCard key={v.slug} visa={v} />
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Process */}
-      <section className="bg-navy py-20 text-white">
-        <div className="container-x">
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="eyebrow">How it works</p>
-            <h2 className="mt-3 text-3xl font-bold md:text-4xl">Four simple steps</h2>
-          </div>
-          <ol className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {steps.map((s, i) => (
-              <li key={s.title} className="rounded-2xl border border-white/10 bg-white/5 p-7">
-                <span className="text-4xl font-bold text-gold">0{i + 1}</span>
-                <h3 className="mt-4 text-lg font-semibold">{s.title}</h3>
-                <p className="mt-2 text-sm text-white/70">{s.text}</p>
+          <ol className="lg:col-span-7 lg:col-start-6">
+            {process.map((p, i) => (
+              <li key={p.title} className="grid grid-cols-[3rem_1fr] border-t border-line py-8 first:border-t-0 first:pt-0">
+                <span className="font-serif text-2xl italic text-accent">{i + 1}.</span>
+                <div>
+                  <h3 className="text-xl font-medium">{p.title}</h3>
+                  <p className="mt-2 leading-relaxed text-muted">{p.text}</p>
+                </div>
               </li>
             ))}
           </ol>
         </div>
       </section>
 
-      {/* Additional services */}
-      <section className="py-20">
-        <div className="container-x grid gap-12 lg:grid-cols-2">
+      {/* Other services + retirement teaser */}
+      <section className="py-20 md:py-28">
+        <div className="wrap grid gap-16 lg:grid-cols-2">
           <div>
-            <p className="eyebrow">More than visas</p>
-            <h2 className="section-title mt-3">Additional services</h2>
-            <p className="mt-4 text-gray-600">
-              Settling in Thailand involves more than a visa. We help you with everything else you need to live, work
-              and do business here.
-            </p>
-            <Link href="/services/" className="btn-dark mt-8">All services</Link>
+            <h2 className="h-display text-4xl leading-tight">Beyond the visa</h2>
+            <p className="mt-4 max-w-md text-muted">The other things you’ll need once you’re living here.</p>
+            <ul className="mt-8 border-t border-line">
+              {services.map((s) => (
+                <li key={s.title} className="flex items-baseline justify-between gap-6 border-b border-line py-4">
+                  <span>{s.title}</span>
+                  <span className="hidden text-right text-sm text-muted sm:block">{s.short}</span>
+                </li>
+              ))}
+            </ul>
+            <Link href="/services/" className="link mt-6 inline-block text-sm">More about our services</Link>
           </div>
-          <ul className="grid gap-3 sm:grid-cols-2">
-            {services.map((s) => (
-              <li key={s.title} className="flex items-start gap-3 rounded-xl border border-gray-100 p-4">
-                <Icon name="check" className="mt-0.5 h-5 w-5 shrink-0 text-gold" />
-                <span className="text-sm font-medium text-navy">{s.title}</span>
-              </li>
-            ))}
-          </ul>
+
+          <div className="self-start bg-ink p-8 text-paper md:p-10">
+            <p className="text-xs text-paper/60">The question we hear most</p>
+            <h2 className="h-display mt-4 text-4xl leading-tight">
+              “O, O-A or O-X: which retirement visa should I get?”
+            </h2>
+            <p className="mt-5 text-paper/70">
+              They look similar, but they differ on where you apply, health insurance, how much money you need and how
+              long you can stay. We put them side by side.
+            </p>
+            <Link
+              href="/o-retirement-visas-features-comparison-chart/"
+              className="mt-8 inline-flex items-center gap-3 border-b border-paper/40 pb-1 text-sm hover:border-paper"
+            >
+              See the comparison <Arrow />
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* Blog */}
-      <section className="bg-gray-50 py-20">
-        <div className="container-x">
-          <p className="eyebrow">Latest articles</p>
-          <h2 className="section-title mt-3">Visa guides &amp; news</h2>
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
+      {/* Writing */}
+      <section className="border-t border-line py-20 md:py-28">
+        <div className="wrap">
+          <div className="flex flex-wrap items-end justify-between gap-6">
+            <h2 className="h-display text-4xl leading-tight md:text-5xl">From the blog</h2>
+            <Link href="/blog/" className="link text-sm">All articles</Link>
+          </div>
+          <div className="mt-12 grid gap-10 border-t border-ink pt-8 md:grid-cols-3">
             {posts.map((p) => (
-              <Link
-                key={p.slug}
-                href={`/${p.slug}/`}
-                className="group rounded-2xl bg-white p-7 shadow-sm transition hover:shadow-xl"
-              >
-                <p className="text-xs font-semibold uppercase tracking-wider text-gold">{p.category}</p>
-                <h3 className="mt-3 text-lg font-semibold text-navy group-hover:text-gold">{p.title}</h3>
-                <p className="mt-3 text-sm text-gray-600">{p.excerpt}</p>
+              <Link key={p.slug} href={`/${p.slug}/`} className="group">
+                <p className="text-xs text-muted">
+                  {p.category} · {fmt(p.date)}
+                </p>
+                <h3 className="mt-3 font-serif text-2xl leading-snug group-hover:text-accent">{p.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-muted">{p.excerpt}</p>
               </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Contact */}
-      <section className="py-20">
-        <div className="container-x grid gap-12 lg:grid-cols-5">
-          <div className="lg:col-span-2">
-            <p className="eyebrow">Get in touch</p>
-            <h2 className="section-title mt-3">Book your free consultation</h2>
-            <p className="mt-4 text-gray-600">
-              Send us a message and our team will get back to you as soon as possible.
-            </p>
-            <ul className="mt-8 space-y-4 text-sm text-gray-700">
-              <li className="flex gap-3"><Icon name="pin" className="h-5 w-5 text-gold" />{site.address.line1}, {site.address.line2}</li>
-              <li className="flex gap-3"><Icon name="phone" className="h-5 w-5 text-gold" />{site.phone}</li>
-              <li className="flex gap-3"><Icon name="mail" className="h-5 w-5 text-gold" />{site.email}</li>
-              <li className="flex gap-3"><Icon name="clock" className="h-5 w-5 text-gold" />{site.hours}</li>
-            </ul>
-          </div>
-          <div className="rounded-2xl bg-gray-50 p-8 lg:col-span-3">
-            <ContactForm />
-          </div>
-        </div>
-      </section>
-
-      <CtaBanner />
+      <ContactBlock />
     </>
   );
 }
