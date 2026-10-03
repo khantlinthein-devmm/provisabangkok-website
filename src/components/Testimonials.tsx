@@ -2,10 +2,11 @@
 
 import { useEffect, useState } from "react";
 import Ornament from "./Ornament";
-import { testimonials } from "@/lib/testimonials";
+import type { Dict } from "@/i18n/dictionaries/en";
 
 // One review at a time, changing every 8 seconds. Pauses on hover or keyboard focus.
-export default function Testimonials() {
+export default function Testimonials({ t: copy }: { t: Dict["testimonials"] }) {
+  const testimonials = copy.items;
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
 
@@ -13,7 +14,7 @@ export default function Testimonials() {
     if (paused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const id = setInterval(() => setIndex((i) => (i + 1) % testimonials.length), 8000);
     return () => clearInterval(id);
-  }, [paused]);
+  }, [paused, testimonials.length]);
 
   const go = (d: number) => setIndex((i) => (i + d + testimonials.length) % testimonials.length);
 
@@ -27,7 +28,7 @@ export default function Testimonials() {
     >
       <div className="wrap grid gap-10 lg:grid-cols-12">
         <div className="lg:col-span-3" data-reveal>
-          <p className="label text-gold-light">What our clients say</p>
+          <p className="label text-gold-light">{copy.title}</p>
           <Ornament className="mt-4 max-w-24" />
         </div>
         <div className="lg:col-span-9" data-reveal>
@@ -46,7 +47,7 @@ export default function Testimonials() {
             ))}
           </div>
           <div className="mt-10 flex items-center gap-6">
-            <button type="button" onClick={() => go(-1)} aria-label="Previous review" className="text-gold-light hover:text-paper">
+            <button type="button" onClick={() => go(-1)} aria-label={copy.prev} className="text-gold-light hover:text-paper">
               ←
             </button>
             <div className="flex gap-2">
@@ -55,14 +56,14 @@ export default function Testimonials() {
                   key={i}
                   type="button"
                   onClick={() => setIndex(i)}
-                  aria-label={`Show review ${i + 1}`}
+                  aria-label={`${copy.show} ${i + 1}`}
                   className={`h-px transition-all duration-500 ${i === index ? "w-10 bg-gold-light" : "w-5 bg-paper/30 hover:bg-paper/60"}`}
                 >
                   <span className="block h-3 -translate-y-1.5" />
                 </button>
               ))}
             </div>
-            <button type="button" onClick={() => go(1)} aria-label="Next review" className="text-gold-light hover:text-paper">
+            <button type="button" onClick={() => go(1)} aria-label={copy.next} className="text-gold-light hover:text-paper">
               →
             </button>
           </div>

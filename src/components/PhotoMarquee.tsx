@@ -1,10 +1,10 @@
 import Image from "next/image";
 
 // Endless, slowly moving strip of customer photos. Pauses on hover.
-export default function PhotoMarquee({ photos }: { photos: string[] }) {
+export default function PhotoMarquee({ photos, alt }: { photos: string[]; alt: string }) {
   const loop = [...photos, ...photos];
   return (
-    <div className="marquee overflow-hidden" aria-label="Photos of Pro Visa Bangkok customers">
+    <div className="marquee overflow-hidden" aria-label={alt}>
       <div className="marquee-track flex w-max gap-3">
         {loop.map((src, i) => (
           <div
@@ -14,7 +14,7 @@ export default function PhotoMarquee({ photos }: { photos: string[] }) {
           >
             <Image
               src={src}
-              alt={i < photos.length ? "Pro Visa Bangkok with a customer" : ""}
+              alt={i < photos.length ? alt : ""}
               fill
               sizes="16rem"
               className="object-cover transition-transform duration-500 hover:scale-105"

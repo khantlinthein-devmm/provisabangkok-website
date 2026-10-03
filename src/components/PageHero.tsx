@@ -1,10 +1,15 @@
 import Link from "next/link";
+import { localePath, type Locale } from "@/i18n/config";
 
 export default function PageHero({
+  lang,
+  homeLabel,
   title,
   subtitle,
   crumb,
 }: {
+  lang: Locale;
+  homeLabel: string;
   title: string;
   subtitle?: string;
   crumb?: { label: string; href: string };
@@ -13,11 +18,11 @@ export default function PageHero({
     <section className="border-b border-line">
       <div className="wrap pb-12 pt-10 md:pb-16 md:pt-14">
         <nav className="label hero-in">
-          <Link href="/" className="hover:text-accent">Home</Link>
+          <Link href={localePath(lang, "/")} className="hover:text-accent">{homeLabel}</Link>
           {crumb && (
             <>
               <span className="mx-2">/</span>
-              <Link href={crumb.href} className="hover:text-accent">{crumb.label}</Link>
+              <Link href={localePath(lang, crumb.href)} className="hover:text-accent">{crumb.label}</Link>
             </>
           )}
         </nav>

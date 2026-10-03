@@ -25,11 +25,10 @@ export const site = {
   ],
 };
 
-export const nav = [
-  { label: "Home", href: "/" },
-  { label: "Visas", href: "/service/" },
-  { label: "About", href: "/about/" },
-  { label: "Customers", href: "/customer/" },
-  { label: "Blog", href: "/blog/" },
-  { label: "Contact", href: "/contact-us/" },
-];
+// Consultation booking. Adjust to your real opening days and times.
+// Days use JavaScript numbering: 0 = Sunday, 1 = Monday ... 6 = Saturday.
+export const booking = {
+  days: [1, 2, 3, 4, 5, 6],
+  times: ["09:00", "10:00", "11:00", "13:00", "14:00", "15:00", "16:00"],
+  daysAhead: 21,
+};

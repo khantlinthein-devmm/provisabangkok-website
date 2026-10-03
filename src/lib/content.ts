@@ -51,14 +51,7 @@ export function getPost(slug: string) {
   return { meta: { slug, title, date, description, category, image } as Post, html: doc.html };
 }
 
-export function getVisaHtml(slug: string) {
-  return read("visas", slug)?.html ?? null;
-}
-
-export function getPageHtml(slug: string) {
-  return read("pages", slug)?.html ?? null;
-}
-
-export function formatDate(date: string) {
-  return new Date(date).toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+/** Visa page body in the requested language, falling back to English. */
+export function getVisaHtml(slug: string, lang: string) {
+  return (read(`visas/${lang}`, slug) ?? read("visas/en", slug))?.html ?? null;
 }

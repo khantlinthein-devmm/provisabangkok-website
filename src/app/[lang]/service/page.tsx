@@ -4,26 +4,28 @@ import Link from "next/link";
 import Arrow from "@/components/Arrow";
 import ContactBlock from "@/components/ContactBlock";
 import PageHero from "@/components/PageHero";
-import { services } from "@/lib/services";
-import { visas } from "@/lib/visas";
+import { getDictionary, localePath, type Locale } from "@/i18n";
+import { alternates } from "@/lib/seo";
+import { getVisas } from "@/lib/visas";
 
-export const metadata: Metadata = {
-  title: "Our Services",
-  description: "Retirement, Thailand Privilege, LTR, business, education, Muay Thai, Smart, marriage and follower visas.",
-};
+export async function generateMetadata(props: PageProps<"/[lang]/service">): Promise<Metadata> {
+  const { lang } = await props.params;
+  const dict = await getDictionary(lang);
+  return { title: dict.servicePage.title, description: dict.servicePage.subtitle, alternates: alternates(lang as Locale, "/service/") };
+}
 
-export default function ServicePage() {
+export default async function ServicePage(props: PageProps<"/[lang]/service">) {
+  const lang = (await props.params).lang as Locale;
+  const dict = await getDictionary(lang);
+  const sp = dict.servicePage;
   return (
     <>
-      <PageHero
-        title="Choose the visa you need"
-        subtitle="At Pro Visa Bangkok, we go beyond just visa processing. Not sure which visa applies to you? Ask us. The first consultation is free."
-      />
+      <PageHero lang={lang} homeLabel={dict.common.home} title={sp.title} subtitle={sp.subtitle} />
       <section className="wrap py-16">
-        {visas.map((v, i) => (
+        {getVisas(dict).map((v, i) => (
           <Link
             key={v.slug}
-            href={`/${v.slug}/`}
+            href={localePath(lang, `/${v.slug}/`)}
             data-reveal
             className="group grid gap-6 border-b border-line py-10 first:pt-0 md:grid-cols-12 md:gap-8"
           >
@@ -52,10 +54,10 @@ export default function ServicePage() {
 
       <section className="border-t border-line py-16 md:py-20">
         <div className="wrap">
-          <p className="label text-accent">Our services include</p>
-          <h2 className="h-display mt-3 text-4xl">Beyond the visa</h2>
+          <p className="label text-accent">{sp.includes}</p>
+          <h2 className="h-display mt-3 text-4xl">{sp.beyond}</h2>
           <div className="mt-10 grid gap-x-16 md:grid-cols-2">
-            {services.map((s, i) => (
+            {dict.services.map((s, i) => (
               <div
                 key={s.title}
                 data-reveal
@@ -72,7 +74,7 @@ export default function ServicePage() {
           </div>
         </div>
       </section>
-      <ContactBlock />
+      <ContactBlock dict={dict} />
     </>
   );
 }

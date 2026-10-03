@@ -1,23 +1,31 @@
 "use client";
 
 import { useState } from "react";
+import type { Dict } from "@/i18n/dictionaries/en";
 import { site } from "@/lib/site";
-import { visas } from "@/lib/visas";
 
 // No backend yet: the form opens the visitor's email app with the message pre-filled.
-export default function ContactForm({ dark = false }: { dark?: boolean }) {
+export default function ContactForm({
+  dark = false,
+  form,
+  visaTitles,
+}: {
+  dark?: boolean;
+  form: Dict["contact"]["form"];
+  visaTitles: string[];
+}) {
   const [sent, setSent] = useState(false);
 
   function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     const data = new FormData(e.currentTarget);
-    const subject = `Visa enquiry: ${data.get("visa")} (${data.get("name")})`;
+    const subject = `${form.subject}: ${data.get("visa")} (${data.get("name")})`;
     const body = [
-      `Name: ${data.get("name")}`,
-      `Email: ${data.get("email")}`,
-      `Phone: ${data.get("phone")}`,
-      `Nationality: ${data.get("nationality")}`,
-      `Visa of interest: ${data.get("visa")}`,
+      `${form.name}: ${data.get("name")}`,
+      `${form.email}: ${data.get("email")}`,
+      `${form.phone}: ${data.get("phone")}`,
+      `${form.nationality}: ${data.get("nationality")}`,
+      `${form.askingAbout}: ${data.get("visa")}`,
       "",
       String(data.get("message") ?? ""),
     ].join("\n");
@@ -33,35 +41,30 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
 
   return (
     <form onSubmit={onSubmit} className="grid gap-x-8 gap-y-6 sm:grid-cols-2">
-      <label className={label}>Name *<input name="name" required className={field} /></label>
-      <label className={label}>Email *<input name="email" type="email" required className={field} /></label>
-      <label className={label}>Phone or WhatsApp<input name="phone" className={field} /></label>
-      <label className={label}>Nationality<input name="nationality" className={field} /></label>
+      <label className={label}>{form.name} *<input name="name" required className={field} /></label>
+      <label className={label}>{form.email} *<input name="email" type="email" required className={field} /></label>
+      <label className={label}>{form.phone}<input name="phone" className={field} /></label>
+      <label className={label}>{form.nationality}<input name="nationality" className={field} /></label>
       <label className={`${label} sm:col-span-2`}>
-        I’m asking about
-        <select name="visa" defaultValue="Not sure yet" className={`${field} ${dark ? "[&>option]:text-ink" : ""}`}>
-          <option>Not sure yet</option>
-          {visas.map((v) => (
-            <option key={v.slug}>{v.title}</option>
+        {form.askingAbout}
+        <select name="visa" defaultValue={form.notSure} className={`${field} ${dark ? "[&>option]:text-ink" : ""}`}>
+          <option>{form.notSure}</option>
+          {visaTitles.map((t) => (
+            <option key={t}>{t}</option>
           ))}
-          <option>Extension / 90-day report</option>
-          <option>Something else</option>
+          <option>{form.extension}</option>
+          <option>{form.other}</option>
         </select>
       </label>
       <label className={`${label} sm:col-span-2`}>
-        Your situation (age, how long you want to stay, current visa)
+        {form.situation}
         <textarea name="message" rows={4} className={`${field} resize-none`} />
       </label>
       <div className="flex flex-wrap items-center gap-4 sm:col-span-2">
-        <button
-          type="submit"
-          className={dark ? "btn-gold" : "btn"}
-        >
-          Send message
-        </button>
+        <button type="submit" className={dark ? "btn-gold" : "btn"}>{form.send}</button>
         {sent && (
           <p className={`text-sm ${dark ? "text-paper/70" : "text-muted"}`}>
-            Your email app should open. If not, write to {site.email}.
+            {form.sent} {site.email}.
           </p>
         )}
       </div>

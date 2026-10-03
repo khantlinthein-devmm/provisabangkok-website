@@ -10,8 +10,8 @@
   --color-gold: #b08d3e;
   --color-gold-light: #d9be74;
   --color-deep: #15120e;
-  --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
-  --font-serif: var(--font-display), Georgia, serif;
+  --font-sans: var(--font-body), var(--font-body-alt, ui-sans-serif), system-ui, "PingFang SC", "Microsoft YaHei", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-serif: var(--font-display), var(--font-display-alt, Georgia), Georgia, "Songti SC", "AppleMyungjo", serif;
   --font-brand: var(--font-brand), Georgia, serif;
 }
 
@@ -308,5 +308,25 @@ body {
   }
   .marquee {
     overflow-x: auto;
+  }
+}
+
+/* Printing the document checklist: show only the list. */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  .print-area,
+  .print-area * {
+    visibility: visible;
+  }
+  .print-area {
+    position: absolute;
+    inset: 0 auto auto 0;
+    width: 100%;
+    padding: 2rem;
+  }
+  .print-area .no-print {
+    display: none;
   }
 }

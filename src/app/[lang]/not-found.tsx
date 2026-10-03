@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+// Shown for unknown URLs. Kept language-neutral because the language may be unknown here.
 export default function NotFound() {
   return (
     <section className="wrap py-32">
