@@ -67,19 +67,18 @@ export default function Home() {
           </div>
 
           <figure className="relative lg:col-span-5">
-            <div className="relative ml-auto aspect-[4/5] max-w-md overflow-hidden border border-gold/60 p-2">
+            <div className="relative ml-auto aspect-square max-w-lg overflow-hidden border border-gold/60 p-2">
               <div className="relative h-full w-full overflow-hidden">
                 <Image
-                  src="/images/customers/customer-13.jpg"
-                  alt="The Pro Visa Bangkok team with a client"
+                  src="/images/hero.webp"
+                  alt="Welcome to Pro Visa Bangkok"
                   fill
                   priority
-                  sizes="(min-width: 1024px) 28rem, 100vw"
+                  sizes="(min-width: 1024px) 32rem, 100vw"
                   className="object-cover"
                 />
               </div>
             </div>
-            <figcaption className="mt-3 text-right text-xs text-muted">With one of our clients in Bangkok</figcaption>
           </figure>
         </div>
       </section>
@@ -168,7 +167,7 @@ export default function Home() {
             <Link href="/customer/" className="link text-sm">See all customers</Link>
           </div>
           <div className="mt-12 grid grid-cols-2 gap-3 md:grid-cols-4">
-            {customerPhotos.slice(1, 9).map((src, i) => (
+            {customerPhotos.slice(0, 8).map((src, i) => (
               <div key={src} className={`relative aspect-[4/5] overflow-hidden ${i > 3 ? "hidden md:block" : ""}`}>
                 <Image src={src} alt="Pro Visa Bangkok with a client" fill sizes="(min-width: 768px) 25vw, 50vw" className="object-cover transition-transform duration-500 hover:scale-105" />
               </div>
