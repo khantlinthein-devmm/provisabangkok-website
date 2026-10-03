@@ -40,7 +40,9 @@ export default async function Home(props: PageProps<"/[lang]">) {
               style={{ "--d": "120ms" } as React.CSSProperties}
               className="hero-in h-display mt-6 text-[3.25rem] leading-[1.02] sm:text-7xl lg:text-[5.25rem]"
             >
-              {h.titleA} <em className="text-metal pr-1">{h.titleEm}</em> {h.titleB}
+              {h.titleA}
+              <em className="text-metal pr-1">{h.titleEm}</em>
+              {h.titleB}
             </h1>
             <p style={{ "--d": "260ms" } as React.CSSProperties} className="hero-in mt-8 max-w-xl text-lg leading-relaxed text-muted">
               {h.intro}

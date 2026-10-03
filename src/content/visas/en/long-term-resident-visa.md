@@ -133,8 +133,6 @@ Evidence of assets ownership with the value amount to declaration.
 
 ## Work From Thailand (Digital Nomads)
 
-Evidence of assets ownership with the value amount to declaration.
-
 - Targets professionals, freelancers, and remote workers
 - Minimum annual income of $80,000 for the past two years, or evidence of a master’s degree or above with income not less than $40,000 in the past two years
 - Own intellectual property

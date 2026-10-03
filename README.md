@@ -11,30 +11,48 @@ npm run build   # production build
 npm start       # serve the production build
 ```
 
-## Editing content
+## Languages
 
-The text, photos and blog posts were migrated from the original WordPress site.
+The site is in English, Thai, Russian, Chinese (Simplified) and Korean.
+
+- English keeps the original URLs: `/retirement-visa/`
+- Other languages add a prefix: `/th/retirement-visa/`, `/ru/…`, `/zh/…`, `/ko/…`
+
+`src/proxy.ts` maps un-prefixed URLs to the English pages. All pages live under `src/app/[lang]/`.
+
+## Editing content
 
 | Where | What it holds |
 | --- | --- |
-| `src/lib/site.ts` | Phone, email, address, LINE, WhatsApp, Facebook, the "25+ years" figures, navigation |
-| `src/lib/visas.ts` | Visa list: titles, short summaries, the "At a glance" facts, header photos |
-| `src/content/visas/*.md` | Full text of each visa page (Markdown) |
-| `src/content/posts/*.md` | Blog posts (Markdown, with title, date and image at the top) |
-| `src/lib/services.ts` | "We go beyond just visa processing" services |
-| `src/lib/testimonials.ts` | Client reviews and the customer photo list |
-| `public/images/` | Photos (customer photos are in `public/images/customers/`) |
+| `src/i18n/dictionaries/en.ts` | All English text: menus, home page, visa summaries and facts, tools, checklists. The other languages (`th.ts`, `ru.ts`, `zh.ts`, `ko.ts`) have exactly the same structure, and TypeScript flags any missing key. |
+| `src/content/visas/<lang>/*.md` | Full text of each visa page, per language (falls back to English if a file is missing) |
+| `src/content/posts/*.md` | Blog posts (English only, shown with a note in other languages) |
+| `src/lib/site.ts` | Phone, email, address, LINE, WhatsApp, Facebook, the "25+ years" figures, **booking days and times** |
+| `src/lib/visas.ts` | Visa order and header photos |
+| `src/lib/testimonials.ts` | Customer photo list |
+| `public/images/` | Photos |
 
 To add a blog post, copy any file in `src/content/posts/`, change the top block and the text, and save it under a new file name. The file name becomes the URL.
 
-All URLs match the original site, for example `/retirement-visa/`, `/contact-us/` and `/customer/`, so links from Google keep working. Old URLs such as `/blog-2/` and `/find-your-perfect-visa/` redirect (see `next.config.ts`).
+Old URLs such as `/blog-2/` redirect (see `next.config.ts`).
+
+## Free tools
+
+All tools run in the visitor's browser. Nothing is sent until the visitor chooses to message you.
+
+| URL | Tool |
+| --- | --- |
+| `/find-your-perfect-visa/` | Visa Finder: 4 questions, recommends up to 3 visas (logic in `components/tools/VisaFinder.tsx`) |
+| `/visa-funds-checker/` | Checks savings and income against the retirement, O-X and marriage visa rules |
+| `/document-checklist/` | Printable checklist per visa; ticks are saved on the device |
+| `/90-day-report-calculator/` | 90-day report dates and a calendar file (.ics) |
+| `/book-consultation/` | Pick a day, time and meeting type; sends the request by WhatsApp or email |
 
 ## Pages
 
-- `/` Home
-- `/service/` all visas and additional services, plus one page per visa at `/<slug>/`
-- `/about/`, `/customer/`, `/blog/` (with 21 posts at `/<slug>/`), `/contact-us/`, `/privacy-policy-2/`
-- `/sitemap.xml`, `/robots.txt`
+- `/` Home, `/service/` all visas, one page per visa at `/<slug>/`, `/tools/`
+- `/about/`, `/customer/`, `/blog/` (21 posts at `/<slug>/`), `/contact-us/`, `/privacy-policy-2/`
+- `/sitemap.xml` (all languages, with hreflang), `/robots.txt`
 
 ## Contact form
 

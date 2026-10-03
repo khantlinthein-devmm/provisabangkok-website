@@ -330,3 +330,20 @@ body {
     display: none;
   }
 }
+
+/* Wide letter-spacing suits Latin capitals but breaks up Thai syllables and CJK text. */
+:lang(th) .label,
+:lang(zh) .label,
+:lang(ko) .label {
+  letter-spacing: 0.02em;
+  text-transform: none;
+  font-size: 0.8rem;
+}
+:lang(th) .h-display,
+:lang(zh) .h-display,
+:lang(ko) .h-display {
+  letter-spacing: 0;
+}
+:lang(th) .h-display {
+  line-height: 1.25;
+}

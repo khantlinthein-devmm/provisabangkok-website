@@ -37,9 +37,9 @@ const en = {
   },
   home: {
     eyebrow: "Welcome to Pro Visa Bangkok",
-    titleA: "Your",
+    titleA: "Your ",
     titleEm: "trusted",
-    titleB: "visa consultant in Thailand.",
+    titleB: " visa consultant in Thailand.",
     intro:
       "Straightforward, simplified visa assistance from an experienced team. Registered agents for the Thailand Privilege Card, specialising in LTR, retirement and other long-stay visas.",
     stats: ["Years of experience", "Satisfied clients", "Countries"],
