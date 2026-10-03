@@ -1,0 +1,7 @@
+# Keep LF line endings so content files parse the same on every OS
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.ico binary

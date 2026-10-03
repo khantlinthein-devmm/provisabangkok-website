@@ -12,7 +12,8 @@ type FrontMatter = Record<string, string>;
 function read(dir: string, slug: string) {
   const file = path.join(root, dir, `${slug}.md`);
   if (!fs.existsSync(file)) return null;
-  const raw = fs.readFileSync(file, "utf8");
+  // Normalise Windows line endings (git may check files out with CRLF).
+  const raw = fs.readFileSync(file, "utf8").replace(/\r\n?/g, "\n");
   const match = raw.match(/^---\n([\s\S]*?)\n---\n?([\s\S]*)$/);
   const data: FrontMatter = {};
   let body = raw;
@@ -40,7 +41,7 @@ export function getAllPosts(): Post[] {
     .readdirSync(path.join(root, "posts"))
     .filter((f) => f.endsWith(".md"))
     .map((f) => getPost(f.replace(/\.md$/, ""))!.meta)
-    .sort((a, b) => b.date.localeCompare(a.date));
+    .sort((a, b) => (b.date ?? "").localeCompare(a.date ?? ""));
 }
 
 export function getPost(slug: string) {
