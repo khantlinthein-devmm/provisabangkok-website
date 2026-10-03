@@ -5,8 +5,6 @@ import {
   Cormorant_Garamond,
   Jost,
   Noto_Sans_Thai,
-  Noto_Serif_KR,
-  Noto_Serif_SC,
   Noto_Serif_Thai,
 } from "next/font/google";
 import "../globals.css";
@@ -27,16 +25,13 @@ const body = Jost({ variable: "--font-body", subsets: ["latin", "cyrillic"] });
 // Cinzel echoes the flared capitals of the logo; used for the wordmark only.
 const brand = Cinzel({ variable: "--font-brand", subsets: ["latin"] });
 
-// Fonts for scripts the Latin fonts don't cover. Only the current language's font is applied.
+// Thai needs its own font. Chinese and Korean use the serif fonts built into every OS
+// (see --font-serif in globals.css): CJK web fonts are huge and slow to download.
 const thaiDisplay = Noto_Serif_Thai({ variable: "--font-display-alt", subsets: ["thai"], weight: ["400", "500", "600"] });
 const thaiBody = Noto_Sans_Thai({ variable: "--font-body-alt", subsets: ["thai"], weight: ["400", "500", "600"] });
-const zhDisplay = Noto_Serif_SC({ variable: "--font-display-alt", subsets: ["latin"], weight: ["500"], preload: false });
-const koDisplay = Noto_Serif_KR({ variable: "--font-display-alt", subsets: ["latin"], weight: ["500"], preload: false });
 
 const scriptFonts: Partial<Record<Locale, string>> = {
   th: `${thaiDisplay.variable} ${thaiBody.variable}`,
-  zh: zhDisplay.variable,
-  ko: koDisplay.variable,
 };
 
 export const dynamicParams = false;

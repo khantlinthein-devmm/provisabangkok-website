@@ -10,8 +10,9 @@
   --color-gold: #b08d3e;
   --color-gold-light: #d9be74;
   --color-deep: #15120e;
-  --font-sans: var(--font-body), var(--font-body-alt, ui-sans-serif), system-ui, "PingFang SC", "Microsoft YaHei", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
-  --font-serif: var(--font-display), var(--font-display-alt, Georgia), Georgia, "Songti SC", "AppleMyungjo", serif;
+  --font-sans: var(--font-body), var(--font-body-alt, ui-sans-serif), system-ui, "PingFang SC", "Microsoft YaHei", "Noto Sans SC", "Apple SD Gothic Neo", "Malgun Gothic", "Noto Sans KR", sans-serif;
+  /* Chinese / Korean headings fall back to the system serif (Songti, SimSun / AppleMyungjo, Batang). */
+  --font-serif: var(--font-display), var(--font-display-alt, Georgia), Georgia, "Songti SC", "STSong", "SimSun", "Noto Serif SC", "Noto Serif CJK SC", "AppleMyungjo", "Batang", "Nanum Myeongjo", "Noto Serif KR", "Noto Serif CJK KR", serif;
   --font-brand: var(--font-brand), Georgia, serif;
 }
 
