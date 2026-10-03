@@ -6,7 +6,7 @@ import Arrow from "@/components/Arrow";
 import ContactBlock from "@/components/ContactBlock";
 import GoldFrame from "@/components/GoldFrame";
 import { formatDate, getDictionary, localePath, locales, type Dict, type Locale } from "@/i18n";
-import { getAllPosts, getPost, getVisaHtml } from "@/lib/content";
+import { getAllPosts, getPost, getVisaContent } from "@/lib/content";
 import { alternates } from "@/lib/seo";
 import { site } from "@/lib/site";
 import { getVisas, isVisaSlug, visaImages, visaSlugs, type LocalVisa } from "@/lib/visas";
@@ -52,7 +52,7 @@ export default async function Page(props: PageProps<"/[lang]/[slug]">) {
   if (isVisaSlug(slug)) {
     const visas = getVisas(dict);
     const visa = visas.find((v) => v.slug === slug)!;
-    return <VisaPage lang={lang} dict={dict} visa={visa} visas={visas} html={getVisaHtml(slug, lang) ?? ""} />;
+    return <VisaPage lang={lang} dict={dict} visa={visa} visas={visas} content={getVisaContent(slug, lang)} />;
   }
   const post = getPost(slug);
   if (post) return <PostPage lang={lang} dict={dict} post={post} />;
@@ -69,7 +69,35 @@ function Crumbs({ lang, home, label, href }: { lang: Locale; home: string; label
   );
 }
 
-function VisaPage({ lang, dict, visa, visas, html }: { lang: Locale; dict: Dict; visa: LocalVisa; visas: LocalVisa[]; html: string }) {
+function Toc({ headings }: { headings: { id: string; text: string }[] }) {
+  return (
+    <ol className="mt-3 space-y-0.5 text-sm">
+      {headings.map((h, i) => (
+        <li key={h.id}>
+          <a href={`#${h.id}`} className="flex gap-3 py-1.5 hover:text-accent">
+            <span className="w-5 shrink-0 tabular-nums text-muted">{i + 1}.</span>
+            <span>{h.text}</span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  );
+}
+
+function VisaPage({
+  lang,
+  dict,
+  visa,
+  visas,
+  content,
+}: {
+  lang: Locale;
+  dict: Dict;
+  visa: LocalVisa;
+  visas: LocalVisa[];
+  content: ReturnType<typeof getVisaContent>;
+}) {
+  const { html, headings } = content;
   const index = visas.findIndex((v) => v.slug === visa.slug);
   const next = visas[(index + 1) % visas.length];
   const p = (path: string) => localePath(lang, path);
@@ -77,7 +105,7 @@ function VisaPage({ lang, dict, visa, visas, html }: { lang: Locale; dict: Dict;
   return (
     <>
       <section className="border-b border-line">
-        <div className="wrap grid gap-10 py-12 md:py-16 lg:grid-cols-12 lg:items-end">
+        <div className="wrap grid gap-10 py-10 md:py-16 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
             <div className="hero-in">
               <Crumbs lang={lang} home={dict.common.home} label={dict.nav.visas} href="/service/" />
@@ -90,7 +118,7 @@ function VisaPage({ lang, dict, visa, visas, html }: { lang: Locale; dict: Dict;
               {visa.short}
             </p>
           </div>
-          <GoldFrame className="aspect-[4/5] w-full max-w-sm lg:col-span-4 lg:col-start-9 lg:justify-self-end">
+          <GoldFrame className="hidden aspect-[4/5] w-full max-w-sm lg:col-span-4 lg:col-start-9 lg:block lg:justify-self-end">
             <div className="frame-photo absolute inset-0">
               <Image src={visa.image} alt="" fill priority sizes="(min-width: 1024px) 24rem, 100vw" className="object-cover object-top" />
             </div>
@@ -98,9 +126,9 @@ function VisaPage({ lang, dict, visa, visas, html }: { lang: Locale; dict: Dict;
         </div>
       </section>
 
-      <div className="wrap grid gap-14 py-16 md:py-20 lg:grid-cols-12">
+      <div className="wrap grid gap-10 py-10 md:py-20 lg:grid-cols-12 lg:gap-14">
         <aside className="lg:order-2 lg:col-span-4 lg:col-start-9">
-          <div className="border border-gold/60 p-6 lg:sticky lg:top-28" data-reveal>
+          <div className="border border-gold/60 p-6 lg:sticky lg:top-24 lg:max-h-[calc(100vh-7rem)] lg:overflow-y-auto" data-reveal>
             <p className="label text-accent">{dict.common.atAGlance}</p>
             <dl className="mt-4 divide-y divide-line text-sm">
               {visa.facts.map(([k, v]) => (
@@ -120,10 +148,27 @@ function VisaPage({ lang, dict, visa, visas, html }: { lang: Locale; dict: Dict;
                 {dict.common.chatLine}
               </a>
             </div>
+            {headings.length > 2 && (
+              <div className="mt-6 hidden border-t border-line pt-5 lg:block">
+                <p className="label text-accent">{dict.common.onThisPage}</p>
+                <Toc headings={headings} />
+              </div>
+            )}
           </div>
         </aside>
 
         <article className="lg:order-1 lg:col-span-7">
+          {headings.length > 2 && (
+            <details className="mb-10 border border-line px-5 lg:hidden">
+              <summary className="flex min-h-12 cursor-pointer items-center justify-between font-medium">
+                {dict.common.onThisPage}
+                <span className="text-muted">{headings.length}</span>
+              </summary>
+              <div className="pb-4">
+                <Toc headings={headings} />
+              </div>
+            </details>
+          )}
           <div className="prose-content" dangerouslySetInnerHTML={{ __html: html }} />
           <p className="mt-12 border-t border-line pt-6 text-sm text-muted">{dict.common.changesNote}</p>
         </article>

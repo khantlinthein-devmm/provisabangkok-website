@@ -11,9 +11,9 @@ export default function Footer({ lang, dict }: { lang: Locale; dict: Dict }) {
   return (
     <footer className="bg-deep text-paper/80">
       <hr className="rule-gold" />
-      <div className="wrap grid gap-12 py-16 md:grid-cols-12">
-        <div className="md:col-span-4">
-          <Image src={logo} alt="Pro Visa Bangkok" className="h-auto w-40" />
+      <div className="wrap grid grid-cols-2 gap-x-6 gap-y-10 py-12 md:grid-cols-12 md:gap-12 md:py-16">
+        <div className="col-span-2 md:col-span-4">
+          <Image src={logo} alt="Pro Visa Bangkok" className="h-auto w-32 md:w-40" />
           <p className="mt-6 max-w-xs text-sm leading-relaxed text-paper/60">
             {site.address.line1}
             <br />
@@ -22,26 +22,26 @@ export default function Footer({ lang, dict }: { lang: Locale; dict: Dict }) {
         </div>
         <div className="md:col-span-4 md:col-start-6">
           <p className="label text-gold-light">{dict.footer.visas}</p>
-          <ul className="mt-4 space-y-2 text-sm">
+          <ul className="mt-3 text-sm">
             {visaSlugs.map((slug) => (
               <li key={slug}>
-                <Link href={p(`/${slug}/`)} className="hover:text-gold-light">{dict.visas[slug].title}</Link>
+                <Link href={p(`/${slug}/`)} className="inline-block py-1.5 hover:text-gold-light">{dict.visas[slug].title}</Link>
               </li>
             ))}
           </ul>
         </div>
         <div className="md:col-span-3">
           <p className="label text-gold-light">{dict.footer.contact}</p>
-          <ul className="mt-4 space-y-2 text-sm">
-            <li><a href={`tel:${site.phoneIntl}`} className="hover:text-gold-light">{site.phone}</a></li>
-            <li><a href={`mailto:${site.email}`} className="break-all hover:text-gold-light">{site.email}</a></li>
-            <li><a href={site.line} target="_blank" rel="noopener noreferrer" className="hover:text-gold-light">LINE</a></li>
-            <li><a href={site.whatsapp} target="_blank" rel="noopener noreferrer" className="hover:text-gold-light">WhatsApp</a></li>
-            <li><a href={site.facebook} target="_blank" rel="noopener noreferrer" className="hover:text-gold-light">Facebook</a></li>
-            <li><Link href={p("/tools/")} className="hover:text-gold-light">{dict.footer.tools}</Link></li>
-            <li><Link href={p("/about/")} className="hover:text-gold-light">{dict.nav.about}</Link></li>
-            <li><Link href={p("/customer/")} className="hover:text-gold-light">{dict.nav.customers}</Link></li>
-            <li><Link href={p("/blog/")} className="hover:text-gold-light">{dict.nav.blog}</Link></li>
+          <ul className="mt-3 text-sm">
+            <li><a href={`tel:${site.phoneIntl}`} className="inline-block py-1.5 hover:text-gold-light">{site.phone}</a></li>
+            <li><a href={`mailto:${site.email}`} className="break-all inline-block py-1.5 hover:text-gold-light">{site.email}</a></li>
+            <li><a href={site.line} target="_blank" rel="noopener noreferrer" className="inline-block py-1.5 hover:text-gold-light">LINE</a></li>
+            <li><a href={site.whatsapp} target="_blank" rel="noopener noreferrer" className="inline-block py-1.5 hover:text-gold-light">WhatsApp</a></li>
+            <li><a href={site.facebook} target="_blank" rel="noopener noreferrer" className="inline-block py-1.5 hover:text-gold-light">Facebook</a></li>
+            <li><Link href={p("/tools/")} className="inline-block py-1.5 hover:text-gold-light">{dict.footer.tools}</Link></li>
+            <li><Link href={p("/about/")} className="inline-block py-1.5 hover:text-gold-light">{dict.nav.about}</Link></li>
+            <li><Link href={p("/customer/")} className="inline-block py-1.5 hover:text-gold-light">{dict.nav.customers}</Link></li>
+            <li><Link href={p("/blog/")} className="inline-block py-1.5 hover:text-gold-light">{dict.nav.blog}</Link></li>
           </ul>
         </div>
       </div>
@@ -49,7 +49,7 @@ export default function Footer({ lang, dict }: { lang: Locale; dict: Dict }) {
         <span>© {new Date().getFullYear()} {site.name}</span>
         <span>
           {dict.footer.disclaimer} ·{" "}
-          <Link href={p("/privacy-policy-2/")} className="hover:text-gold-light">{dict.footer.privacy}</Link>
+          <Link href={p("/privacy-policy-2/")} className="inline-block py-1.5 hover:text-gold-light">{dict.footer.privacy}</Link>
         </span>
       </div>
     </footer>

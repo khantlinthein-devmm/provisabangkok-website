@@ -19,7 +19,9 @@ const th: Dict = {
     call: "โทร",
     language: "ภาษา",
   },
+  bar: { book: "นัดปรึกษา", line: "LINE", call: "โทร" },
   common: {
+    onThisPage: "ในหน้านี้",
     home: "หน้าแรก",
     bookFree: "นัดปรึกษาฟรี",
     chatLine: "แชทผ่าน LINE",
@@ -94,6 +96,7 @@ const th: Dict = {
     facebookCta: "ติดตามเรา",
     findOffice: "ที่ตั้งสำนักงาน",
     openMaps: "เปิดใน Google Maps",
+    writeMessage: "เขียนข้อความถึงเรา",
     form: {
       name: "ชื่อ",
       email: "อีเมล",

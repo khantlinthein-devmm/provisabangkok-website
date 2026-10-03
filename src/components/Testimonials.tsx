@@ -20,7 +20,7 @@ export default function Testimonials({ t: copy }: { t: Dict["testimonials"] }) {
 
   return (
     <section
-      className="bg-deep py-20 text-paper md:py-28"
+      className="bg-deep py-14 text-paper md:py-28"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
@@ -42,28 +42,32 @@ export default function Testimonials({ t: copy }: { t: Dict["testimonials"] }) {
                 aria-hidden={i !== index}
               >
                 <span className="text-metal block font-serif text-7xl leading-none">“</span>
-                <blockquote className="mt-2 font-serif text-2xl leading-relaxed text-paper/90 md:text-3xl">{t}</blockquote>
+                <blockquote className="mt-2 font-serif text-xl leading-relaxed text-paper/90 md:text-3xl">{t}</blockquote>
               </figure>
             ))}
           </div>
-          <div className="mt-10 flex items-center gap-6">
-            <button type="button" onClick={() => go(-1)} aria-label={copy.prev} className="text-gold-light hover:text-paper">
+          <div className="mt-8 flex items-center gap-2">
+            <button type="button" onClick={() => go(-1)} aria-label={copy.prev} className="grid h-11 w-11 place-items-center text-lg text-gold-light hover:text-paper">
               ←
             </button>
-            <div className="flex gap-2">
+            <div className="flex">
               {testimonials.map((_, i) => (
                 <button
                   key={i}
                   type="button"
                   onClick={() => setIndex(i)}
                   aria-label={`${copy.show} ${i + 1}`}
-                  className={`h-px transition-all duration-500 ${i === index ? "w-10 bg-gold-light" : "w-5 bg-paper/30 hover:bg-paper/60"}`}
+                  className="group grid h-11 place-items-center px-1.5"
                 >
-                  <span className="block h-3 -translate-y-1.5" />
+                  <span
+                    className={`block h-0.5 transition-all duration-500 ${
+                      i === index ? "w-10 bg-gold-light" : "w-5 bg-paper/30 group-hover:bg-paper/60"
+                    }`}
+                  />
                 </button>
               ))}
             </div>
-            <button type="button" onClick={() => go(1)} aria-label={copy.next} className="text-gold-light hover:text-paper">
+            <button type="button" onClick={() => go(1)} aria-label={copy.next} className="grid h-11 w-11 place-items-center text-lg text-gold-light hover:text-paper">
               →
             </button>
           </div>

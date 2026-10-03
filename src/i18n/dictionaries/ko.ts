@@ -19,7 +19,9 @@ const ko: Dict = {
     call: "전화하기",
     language: "언어",
   },
+  bar: { book: "상담 예약", line: "LINE", call: "전화" },
   common: {
+    onThisPage: "이 페이지 목차",
     home: "홈",
     bookFree: "무료 상담 예약",
     chatLine: "LINE으로 문의",
@@ -91,6 +93,7 @@ const ko: Dict = {
     facebookCta: "팔로우하기",
     findOffice: "사무실 위치",
     openMaps: "Google 지도에서 열기",
+    writeMessage: "메시지 작성하기",
     form: {
       name: "이름",
       email: "이메일",

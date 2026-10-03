@@ -18,7 +18,9 @@ const en = {
     call: "Call",
     language: "Language",
   },
+  bar: { book: "Book", line: "LINE", call: "Call" },
   common: {
+    onThisPage: "On this page",
     home: "Home",
     bookFree: "Book a free consultation",
     chatLine: "Chat on LINE",
@@ -93,6 +95,7 @@ const en = {
     facebookCta: "Follow us",
     findOffice: "Find our office",
     openMaps: "Open in Google Maps",
+    writeMessage: "Write us a message",
     form: {
       name: "Name",
       email: "Email",

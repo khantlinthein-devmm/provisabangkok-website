@@ -19,7 +19,9 @@ const ru: Dict = {
     call: "Позвонить",
     language: "Язык",
   },
+  bar: { book: "Записаться", line: "LINE", call: "Позвонить" },
   common: {
+    onThisPage: "На этой странице",
     home: "Главная",
     bookFree: "Бесплатная консультация",
     chatLine: "Написать в LINE",
@@ -94,6 +96,7 @@ const ru: Dict = {
     facebookCta: "Подписаться",
     findOffice: "Как нас найти",
     openMaps: "Открыть в Google Maps",
+    writeMessage: "Написать сообщение",
     form: {
       name: "Имя",
       email: "Email",

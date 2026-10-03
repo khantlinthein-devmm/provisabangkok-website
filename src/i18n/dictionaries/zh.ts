@@ -19,7 +19,9 @@ const zh: Dict = {
     call: "致电",
     language: "语言",
   },
+  bar: { book: "预约", line: "LINE", call: "致电" },
   common: {
+    onThisPage: "本页内容",
     home: "首页",
     bookFree: "预约免费咨询",
     chatLine: "LINE 咨询",
@@ -91,6 +93,7 @@ const zh: Dict = {
     facebookCta: "关注我们",
     findOffice: "办公室位置",
     openMaps: "在 Google 地图中打开",
+    writeMessage: "给我们留言",
     form: {
       name: "姓名",
       email: "电子邮件",

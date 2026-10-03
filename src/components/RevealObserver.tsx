@@ -33,6 +33,23 @@ export default function RevealObserver() {
     watch(document);
     document.documentElement.classList.add("reveal-ready");
 
+    // A fast flick can carry an element from below the screen to above it between two observer checks.
+    // Anything the visitor has already scrolled past is revealed too.
+    let frame = 0;
+    const onScroll = () => {
+      if (frame) return;
+      frame = requestAnimationFrame(() => {
+        frame = 0;
+        document.querySelectorAll<HTMLElement>("[data-reveal]:not(.is-visible)").forEach((el) => {
+          if (el.getBoundingClientRect().top < window.innerHeight) {
+            el.classList.add("is-visible");
+            io.unobserve(el);
+          }
+        });
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+
     // Content rendered later (tool results, menus) gets the same treatment.
     const mo = new MutationObserver((records) => {
       for (const rec of records) {
@@ -47,6 +64,8 @@ export default function RevealObserver() {
     return () => {
       io.disconnect();
       mo.disconnect();
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(frame);
     };
   }, []);
   return null;

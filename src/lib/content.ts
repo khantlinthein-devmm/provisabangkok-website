@@ -51,7 +51,14 @@ export function getPost(slug: string) {
   return { meta: { slug, title, date, description, category, image } as Post, html: doc.html };
 }
 
-/** Visa page body in the requested language, falling back to English. */
-export function getVisaHtml(slug: string, lang: string) {
-  return (read(`visas/${lang}`, slug) ?? read("visas/en", slug))?.html ?? null;
+/** Visa page body in the requested language (falling back to English), with ids on its h2 sections. */
+export function getVisaContent(slug: string, lang: string) {
+  const html = (read(`visas/${lang}`, slug) ?? read("visas/en", slug))?.html ?? "";
+  const headings: { id: string; text: string }[] = [];
+  const withIds = html.replace(/<h2>([\s\S]*?)<\/h2>/g, (_, inner: string) => {
+    const id = `section-${headings.length + 1}`;
+    headings.push({ id, text: inner.replace(/<[^>]+>/g, "").replace(/&amp;/g, "&").trim() });
+    return `<h2 id="${id}">${inner}</h2>`;
+  });
+  return { html: withIds, headings };
 }

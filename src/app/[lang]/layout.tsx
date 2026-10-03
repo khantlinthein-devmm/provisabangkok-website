@@ -11,6 +11,7 @@ import "../globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ChatButtons from "@/components/ChatButtons";
+import MobileActionBar from "@/components/MobileActionBar";
 import { site } from "@/lib/site";
 import { getDictionary, isLocale, localeInfo, locales, type Locale } from "@/i18n";
 import { alternates } from "@/lib/seo";
@@ -66,11 +67,12 @@ export default async function RootLayout(props: LayoutProps<"/[lang]">) {
       lang={localeInfo[lang].htmlLang}
       className={`${display.variable} ${body.variable} ${brand.variable} ${scriptFonts[lang] ?? ""} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col font-sans">
+      <body className="flex min-h-full flex-col pb-[calc(3.5rem+env(safe-area-inset-bottom))] font-sans md:pb-0">
         <Header lang={lang} nav={dict.nav} />
         <main className="flex-1">{props.children}</main>
         <Footer lang={lang} dict={dict} />
         <ChatButtons />
+        <MobileActionBar lang={lang} bar={dict.bar} label={dict.nav.contact} />
       </body>
     </html>
   );

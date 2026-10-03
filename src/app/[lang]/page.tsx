@@ -5,7 +5,6 @@ import Arrow from "@/components/Arrow";
 import ContactBlock from "@/components/ContactBlock";
 import CountUp from "@/components/CountUp";
 import GoldFrame from "@/components/GoldFrame";
-import Ornament from "@/components/Ornament";
 import PhotoMarquee from "@/components/PhotoMarquee";
 import Testimonials from "@/components/Testimonials";
 import ToolCards from "@/components/tools/ToolCards";
@@ -81,7 +80,7 @@ export default async function Home(props: PageProps<"/[lang]">) {
       </section>
 
       {/* Visa index */}
-      <section className="py-20 md:py-28">
+      <section className="py-14 md:py-28">
         <div className="wrap">
           <div className="flex flex-wrap items-end justify-between gap-6" data-reveal>
             <div>
@@ -104,23 +103,29 @@ export default async function Home(props: PageProps<"/[lang]">) {
                 href={p(`/${v.slug}/`)}
                 data-reveal
                 style={{ "--reveal-delay": `${i * 60}ms` } as React.CSSProperties}
-                className="group grid grid-cols-12 items-baseline gap-x-6 gap-y-1 border-b border-line py-6 transition-colors hover:bg-paper-2 md:px-2"
+                className="group grid grid-cols-12 items-baseline gap-x-6 gap-y-1 border-b border-line py-4 transition-colors hover:bg-paper-2 md:px-2 md:py-6"
               >
                 <span className="col-span-2 text-sm tabular-nums text-muted md:col-span-1">{String(i + 1).padStart(2, "0")}</span>
                 <span className="col-span-10 font-serif text-2xl group-hover:text-accent md:col-span-4 md:text-3xl">{v.title}</span>
                 <span className="col-span-10 col-start-3 text-sm text-muted md:col-span-4 md:col-start-auto md:text-base md:text-ink">{v.forWhom}</span>
-                <span className="col-span-10 col-start-3 text-sm text-muted md:col-span-2 md:col-start-auto">{v.duration}</span>
+                <span className="hidden text-sm text-muted md:col-span-2 md:block">{v.duration}</span>
                 <span className="hidden justify-end md:col-span-1 md:flex">
                   <Arrow className="h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </span>
               </Link>
             ))}
           </div>
+          <Link
+            href={p("/o-retirement-visas-features-comparison-chart/")}
+            className="mt-6 inline-flex min-h-11 items-center gap-3 text-sm font-medium hover:text-accent"
+          >
+            {h.compareTitle.replace(/[“”«»]/g, "")} <span className="text-accent">{h.compareLink}</span> <Arrow />
+          </Link>
         </div>
       </section>
 
       {/* Free tools */}
-      <section className="border-t border-line bg-paper-2/60 py-20 md:py-28">
+      <section className="border-t border-line bg-paper-2/60 py-14 md:py-28">
         <div className="wrap">
           <div className="max-w-2xl" data-reveal>
             <p className="label text-accent">{h.toolsEyebrow}</p>
@@ -132,14 +137,14 @@ export default async function Home(props: PageProps<"/[lang]">) {
       </section>
 
       {/* How we work */}
-      <section className="border-y border-line py-20 md:py-28">
+      <section className="border-y border-line py-14 md:py-28">
         <div className="wrap grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <div className="lg:sticky lg:top-28" data-reveal>
               <p className="label text-accent">{h.howEyebrow}</p>
               <h2 className="h-display mt-3 text-4xl leading-tight md:text-5xl">{h.howTitle}</h2>
               <p className="mt-5 text-muted">{h.howIntro}</p>
-              <ul className="mt-8 space-y-2 text-sm">
+              <ul className="mt-8 hidden space-y-2 text-sm lg:block">
                 {h.values.map((v) => (
                   <li key={v} className="flex items-center gap-3">
                     <span className="h-1.5 w-1.5 rotate-45 bg-gold" />
@@ -155,7 +160,7 @@ export default async function Home(props: PageProps<"/[lang]">) {
                 key={s.title}
                 data-reveal
                 style={{ "--reveal-delay": `${i * 90}ms` } as React.CSSProperties}
-                className="grid grid-cols-[3rem_1fr] border-t border-line py-8 first:border-t-0 first:pt-0"
+                className="grid grid-cols-[3rem_1fr] border-t border-line py-6 first:border-t-0 first:pt-0 md:py-8"
               >
                 <span className="font-serif text-3xl italic text-gold">{i + 1}.</span>
                 <div>
@@ -169,7 +174,7 @@ export default async function Home(props: PageProps<"/[lang]">) {
       </section>
 
       {/* Clients */}
-      <section className="py-20 md:py-28">
+      <section className="py-14 md:py-28">
         <div className="wrap">
           <div className="flex flex-wrap items-end justify-between gap-6" data-reveal>
             <div>
@@ -186,39 +191,8 @@ export default async function Home(props: PageProps<"/[lang]">) {
 
       <Testimonials t={dict.testimonials} />
 
-      {/* Other services + retirement comparison */}
-      <section className="py-20 md:py-28">
-        <div className="wrap grid gap-16 lg:grid-cols-2">
-          <div data-reveal>
-            <p className="label text-accent">{h.moreEyebrow}</p>
-            <h2 className="h-display mt-3 text-4xl leading-tight">{h.moreTitle}</h2>
-            <ul className="mt-8 border-t border-line">
-              {dict.services.map((s) => (
-                <li key={s.title} className="flex items-baseline justify-between gap-6 border-b border-line py-4">
-                  <span>{s.title}</span>
-                  <span className="hidden text-right text-sm text-muted sm:block">{s.short}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="self-start bg-deep p-8 text-paper md:p-10" data-reveal style={{ "--reveal-delay": "150ms" } as React.CSSProperties}>
-            <p className="label text-gold-light">{h.compareEyebrow}</p>
-            <Ornament className="mt-4 max-w-24" />
-            <h2 className="h-display mt-6 text-4xl leading-tight">{h.compareTitle}</h2>
-            <p className="mt-5 text-paper/70">{h.compareText}</p>
-            <Link
-              href={p("/o-retirement-visas-features-comparison-chart/")}
-              className="mt-8 inline-flex items-center gap-3 border-b border-gold-light/50 pb-1 text-sm text-gold-light hover:border-gold-light"
-            >
-              {h.compareLink} <Arrow />
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* Blog */}
-      <section className="border-t border-line py-20 md:py-28">
+      <section className="border-t border-line py-14 md:py-28">
         <div className="wrap">
           <div className="flex flex-wrap items-end justify-between gap-6" data-reveal>
             <div>
@@ -227,7 +201,7 @@ export default async function Home(props: PageProps<"/[lang]">) {
             </div>
             <Link href={p("/blog/")} className="link text-sm">{dict.common.allArticles}</Link>
           </div>
-          <div className="mt-12 grid gap-10 md:grid-cols-3">
+          <div className="mt-8 grid gap-6 border-t border-line pt-6 md:mt-12 md:gap-10 md:border-0 md:pt-0 md:grid-cols-3">
             {posts.map((post, i) => (
               <Link
                 key={post.slug}
@@ -237,11 +211,11 @@ export default async function Home(props: PageProps<"/[lang]">) {
                 style={{ "--reveal-delay": `${i * 120}ms` } as React.CSSProperties}
               >
                 {post.image && (
-                  <div className="relative aspect-[3/2] overflow-hidden">
+                  <div className="relative hidden aspect-[3/2] overflow-hidden md:block">
                     <Image src={post.image} alt="" fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
                   </div>
                 )}
-                <p className="mt-5 text-xs text-muted">{formatDate(post.date, lang)}</p>
+                <p className="text-xs text-muted md:mt-5">{formatDate(post.date, lang)}</p>
                 <h3 className="mt-2 font-serif text-2xl leading-snug group-hover:text-accent">{post.title}</h3>
               </Link>
             ))}

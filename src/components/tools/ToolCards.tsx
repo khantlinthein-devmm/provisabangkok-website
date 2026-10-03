@@ -16,13 +16,14 @@ export default function ToolCards({ lang, dict, className = "", exclude }: { lan
             href={localePath(lang, t.path)}
             data-reveal
             style={{ "--reveal-delay": `${i * 80}ms` } as React.CSSProperties}
-            className="group flex flex-col bg-paper p-7 transition-colors hover:bg-paper-2"
+            className="group flex items-center gap-4 bg-paper p-5 transition-colors hover:bg-paper-2 sm:flex-col sm:items-start sm:gap-0 sm:p-7"
           >
-            <span className="text-metal font-serif text-4xl lining-nums">{t.mark}</span>
-            <h3 className="mt-6 font-serif text-2xl leading-tight group-hover:text-accent">{copy.title}</h3>
-            <p className="mt-3 flex-1 text-sm leading-relaxed text-muted">{copy.short}</p>
-            <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium">
-              {dict.tools.open} <Arrow className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+            <span className="text-metal w-10 shrink-0 text-center font-serif text-3xl lining-nums sm:w-auto sm:text-left sm:text-4xl">{t.mark}</span>
+            <h3 className="flex-1 font-serif text-xl leading-tight group-hover:text-accent sm:mt-6 sm:flex-none sm:text-2xl">{copy.title}</h3>
+            <p className="mt-3 hidden flex-1 text-sm leading-relaxed text-muted sm:block">{copy.short}</p>
+            <span className="inline-flex items-center gap-2 text-sm font-medium sm:mt-6">
+              <span className="hidden sm:inline">{dict.tools.open}</span>
+              <Arrow className="h-4 w-4 transition-transform group-hover:translate-x-1" />
             </span>
           </Link>
         );

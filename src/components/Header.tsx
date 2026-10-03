@@ -76,7 +76,7 @@ export default function Header({ lang, nav }: { lang: Locale; nav: Dict["nav"] }
               onClick={() => setLangOpen((o) => !o)}
               aria-expanded={langOpen}
               aria-label={nav.language}
-              className="flex items-center gap-1.5 rounded-sm border border-line px-2.5 py-1.5 text-xs font-medium tracking-wide hover:border-gold"
+              className="flex min-h-10 items-center gap-1.5 rounded-sm border border-line px-3 text-xs font-medium tracking-wide hover:border-gold"
             >
               <svg viewBox="0 0 16 16" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="1.3" aria-hidden="true">
                 <circle cx="8" cy="8" r="6.5" />
@@ -92,7 +92,7 @@ export default function Header({ lang, nav }: { lang: Locale; nav: Dict["nav"] }
                       href={localePath(l, basePath)}
                       hrefLang={localeInfo[l].htmlLang}
                       onClick={() => setLangOpen(false)}
-                      className={`block px-4 py-2 text-sm hover:bg-paper-2 ${l === lang ? "text-accent" : ""}`}
+                      className={`block px-4 py-3 text-sm hover:bg-paper-2 ${l === lang ? "text-accent" : ""}`}
                     >
                       {localeInfo[l].label}
                     </Link>
@@ -104,7 +104,7 @@ export default function Header({ lang, nav }: { lang: Locale; nav: Dict["nav"] }
           <Link href={localePath(lang, "/book-consultation/")} className="btn hidden py-2 md:inline-flex">
             {nav.book}
           </Link>
-          <button type="button" className="text-sm font-medium xl:hidden" aria-expanded={open} onClick={() => setOpen((o) => !o)}>
+          <button type="button" className="-mr-3 min-h-11 px-3 text-sm font-medium xl:hidden" aria-expanded={open} onClick={() => setOpen((o) => !o)}>
             {open ? nav.close : nav.menu}
           </button>
         </div>
