@@ -1,19 +1,71 @@
+"use client";
+
+import { useEffect, useState } from "react";
 import Ornament from "./Ornament";
 import { testimonials } from "@/lib/testimonials";
 
+// One review at a time, changing every 8 seconds. Pauses on hover or keyboard focus.
 export default function Testimonials() {
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    if (paused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const id = setInterval(() => setIndex((i) => (i + 1) % testimonials.length), 8000);
+    return () => clearInterval(id);
+  }, [paused]);
+
+  const go = (d: number) => setIndex((i) => (i + d + testimonials.length) % testimonials.length);
+
   return (
-    <section className="bg-deep py-20 text-paper md:py-28">
-      <div className="wrap">
-        <p className="label text-gold-light">What our clients say</p>
-        <Ornament className="mt-4 max-w-24" />
-        <div className="mt-12 grid gap-12 md:grid-cols-3">
-          {testimonials.map((t, i) => (
-            <figure key={i}>
-              <span className="text-metal block font-serif text-6xl leading-none">“</span>
-              <blockquote className="mt-2 font-serif text-xl leading-relaxed text-paper/90">{t}</blockquote>
-            </figure>
-          ))}
+    <section
+      className="bg-deep py-20 text-paper md:py-28"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocus={() => setPaused(true)}
+      onBlur={() => setPaused(false)}
+    >
+      <div className="wrap grid gap-10 lg:grid-cols-12">
+        <div className="lg:col-span-3" data-reveal>
+          <p className="label text-gold-light">What our clients say</p>
+          <Ornament className="mt-4 max-w-24" />
+        </div>
+        <div className="lg:col-span-9" data-reveal>
+          <div className="grid" aria-live="polite">
+            {testimonials.map((t, i) => (
+              <figure
+                key={i}
+                className={`col-start-1 row-start-1 transition-all duration-700 ${
+                  i === index ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-3 opacity-0"
+                }`}
+                aria-hidden={i !== index}
+              >
+                <span className="text-metal block font-serif text-7xl leading-none">“</span>
+                <blockquote className="mt-2 font-serif text-2xl leading-relaxed text-paper/90 md:text-3xl">{t}</blockquote>
+              </figure>
+            ))}
+          </div>
+          <div className="mt-10 flex items-center gap-6">
+            <button type="button" onClick={() => go(-1)} aria-label="Previous review" className="text-gold-light hover:text-paper">
+              ←
+            </button>
+            <div className="flex gap-2">
+              {testimonials.map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => setIndex(i)}
+                  aria-label={`Show review ${i + 1}`}
+                  className={`h-px transition-all duration-500 ${i === index ? "w-10 bg-gold-light" : "w-5 bg-paper/30 hover:bg-paper/60"}`}
+                >
+                  <span className="block h-3 -translate-y-1.5" />
+                </button>
+              ))}
+            </div>
+            <button type="button" onClick={() => go(1)} aria-label="Next review" className="text-gold-light hover:text-paper">
+              →
+            </button>
+          </div>
         </div>
       </div>
     </section>

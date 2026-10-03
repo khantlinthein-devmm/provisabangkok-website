@@ -20,8 +20,13 @@ export default function CustomerPage() {
       />
       <section className="wrap py-16">
         <div className="columns-2 gap-3 md:columns-3 lg:columns-4 [&>*]:mb-3">
-          {customerPhotos.map((src) => (
-            <div key={src} className="relative aspect-[4/5] break-inside-avoid overflow-hidden">
+          {customerPhotos.map((src, i) => (
+            <div
+              key={src}
+              data-reveal
+              style={{ "--reveal-delay": `${(i % 4) * 80}ms` } as React.CSSProperties}
+              className="relative aspect-[4/5] break-inside-avoid overflow-hidden"
+            >
               <Image src={src} alt="Pro Visa Bangkok with a customer" fill sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw" className="object-cover" />
             </div>
           ))}

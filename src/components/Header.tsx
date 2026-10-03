@@ -2,20 +2,32 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { nav, site } from "@/lib/site";
 import Logo from "./Logo";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 24);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
   const links = nav.filter((n) => n.href !== "/");
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-paper/95 backdrop-blur">
-      <div className="wrap flex h-20 items-center justify-between gap-6">
+    <header
+      className={`sticky top-0 z-50 border-b bg-paper/95 backdrop-blur transition-shadow duration-500 ${
+        scrolled ? "border-transparent shadow-[0_8px_30px_-12px_rgba(23,20,15,0.25)]" : "border-line"
+      }`}
+    >
+      <div className={`wrap flex items-center justify-between gap-6 transition-[height] duration-500 ${scrolled ? "h-16" : "h-20"}`}>
         <Link href="/" onClick={() => setOpen(false)} aria-label="Pro Visa Bangkok, home">
-          <Logo />
+          <Logo compact={scrolled} />
         </Link>
 
         <nav className="hidden items-center gap-7 text-sm lg:flex">

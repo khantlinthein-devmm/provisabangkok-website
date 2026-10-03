@@ -24,6 +24,7 @@ export default function ServicePage() {
           <Link
             key={v.slug}
             href={`/${v.slug}/`}
+            data-reveal
             className="group grid gap-6 border-b border-line py-10 first:pt-0 md:grid-cols-12 md:gap-8"
           >
             <div className="relative hidden aspect-[4/5] overflow-hidden md:col-span-2 md:block">
@@ -55,7 +56,12 @@ export default function ServicePage() {
           <h2 className="h-display mt-3 text-4xl">Beyond the visa</h2>
           <div className="mt-10 grid gap-x-16 md:grid-cols-2">
             {services.map((s, i) => (
-              <div key={s.title} className="grid grid-cols-[3rem_1fr] border-t border-line py-7">
+              <div
+                key={s.title}
+                data-reveal
+                style={{ "--reveal-delay": `${(i % 2) * 100}ms` } as React.CSSProperties}
+                className="grid grid-cols-[3rem_1fr] border-t border-line py-7"
+              >
                 <span className="font-serif text-xl italic text-gold">{i + 1}.</span>
                 <div>
                   <h3 className="text-lg font-medium">{s.title}</h3>

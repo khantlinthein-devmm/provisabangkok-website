@@ -9,7 +9,7 @@ export default function ChatButtons() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat on LINE"
-        className="grid h-12 w-12 place-items-center rounded-full bg-[#06c755] text-white shadow-lg transition-transform hover:scale-105"
+        className="pulse-ring relative isolate grid h-12 w-12 place-items-center rounded-full bg-[#06c755] text-white shadow-lg transition-transform hover:scale-105"
       >
         <svg viewBox="0 0 24 24" className="h-7 w-7" fill="currentColor" aria-hidden="true">
           <path d="M12 3C6.48 3 2 6.63 2 11.1c0 4 3.55 7.36 8.35 8 .33.07.77.22.88.5.1.25.07.65.03.9l-.14.86c-.04.25-.2 1 .87.54 1.08-.45 5.8-3.42 7.92-5.85C21.36 14.43 22 12.84 22 11.1 22 6.63 17.52 3 12 3Zm-3.6 10.5H6.42a.53.53 0 0 1-.53-.52V9.02c0-.29.24-.52.53-.52.28 0 .52.23.52.52v3.43H8.4c.29 0 .52.24.52.53 0 .28-.23.52-.52.52Zm2.05-.52a.53.53 0 0 1-1.05 0V9.02a.53.53 0 0 1 1.05 0v3.96Zm4.77 0a.52.52 0 0 1-.95.31l-2.03-2.76v2.45a.53.53 0 0 1-1.05 0V9.02a.52.52 0 0 1 .95-.31l2.03 2.76V9.02a.53.53 0 0 1 1.05 0v3.96Zm3.2-2.5c.29 0 .52.24.52.53 0 .28-.23.52-.52.52H17v.93h1.42c.29 0 .52.24.52.53 0 .28-.23.52-.52.52h-1.95a.53.53 0 0 1-.52-.52V9.02c0-.29.23-.52.52-.52h1.95c.29 0 .52.23.52.52 0 .29-.23.53-.52.53H17v.93h1.42Z" />

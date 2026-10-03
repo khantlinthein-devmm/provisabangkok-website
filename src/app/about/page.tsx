@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import ContactBlock from "@/components/ContactBlock";
+import CountUp from "@/components/CountUp";
+import GoldFrame from "@/components/GoldFrame";
 import PageHero from "@/components/PageHero";
 import Testimonials from "@/components/Testimonials";
 import { site } from "@/lib/site";
@@ -16,7 +18,7 @@ export default function AboutPage() {
       <PageHero title="We are a trusted visa agent" crumb={{ label: "About", href: "/about/" }} />
 
       <section className="wrap grid gap-14 py-16 md:py-20 lg:grid-cols-12">
-        <div className="prose-content lg:col-span-7">
+        <div className="prose-content lg:col-span-7" data-reveal>
           <p className="font-serif text-2xl leading-snug">Welcome to Miss P’s ProVisa Bangkok information portal!</p>
           <p>
             Experience straightforward and simplified visa assistance with the expert team at ProVisa Bangkok. As
@@ -48,11 +50,11 @@ export default function AboutPage() {
 
         <aside className="lg:col-span-4 lg:col-start-9">
           <figure className="lg:sticky lg:top-28">
-            <div className="border border-gold/60 p-2">
-              <div className="relative aspect-[3/4] overflow-hidden">
+            <GoldFrame className="aspect-[3/4]">
+              <div className="frame-photo absolute inset-0">
                 <Image src="/images/miss-p.jpg" alt="Miss P, Managing Director of Pro Visa Bangkok" fill sizes="(min-width: 1024px) 24rem, 100vw" className="object-cover object-top" />
               </div>
-            </div>
+            </GoldFrame>
             <figcaption className="mt-4">
               <p className="font-serif text-3xl">Miss P</p>
               <p className="label mt-1 text-accent">Managing Director</p>
@@ -65,7 +67,9 @@ export default function AboutPage() {
         <dl className="wrap grid grid-cols-3 gap-6">
           {site.stats.map((s) => (
             <div key={s.label} className="flex flex-col gap-1">
-              <dd className="text-metal font-serif text-5xl lining-nums md:text-6xl">{s.value}</dd>
+              <dd className="text-metal font-serif text-5xl lining-nums md:text-6xl">
+                <CountUp value={s.value} />
+              </dd>
               <dt className="text-sm text-muted">{s.label}</dt>
             </div>
           ))}

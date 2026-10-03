@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Arrow from "@/components/Arrow";
+import GoldFrame from "@/components/GoldFrame";
 import ContactBlock from "@/components/ContactBlock";
 import { formatDate, getAllPosts, getPost, getVisaHtml } from "@/lib/content";
 import { site } from "@/lib/site";
@@ -59,22 +60,28 @@ function VisaPage({ visa, html }: { visa: Visa; html: string }) {
       <section className="border-b border-line">
         <div className="wrap grid gap-10 py-12 md:py-16 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
-            <Crumbs label="Visas" href="/service/" />
-            <h1 className="h-display mt-6 text-5xl leading-[1.02] md:text-7xl">{visa.title}</h1>
-            <div className="mt-8 h-px w-24 bg-gold" />
-            <p className="mt-6 max-w-xl text-lg text-muted">{visa.short}</p>
+            <div className="hero-in">
+              <Crumbs label="Visas" href="/service/" />
+            </div>
+            <h1 style={{ "--d": "120ms" } as React.CSSProperties} className="hero-in h-display mt-6 text-5xl leading-[1.02] md:text-7xl">
+              {visa.title}
+            </h1>
+            <div className="rule-draw mt-8 h-px w-24 bg-gold" data-reveal />
+            <p style={{ "--d": "260ms" } as React.CSSProperties} className="hero-in mt-6 max-w-xl text-lg text-muted">
+              {visa.short}
+            </p>
           </div>
-          <div className="relative aspect-[4/5] w-full max-w-sm overflow-hidden border border-gold/60 p-2 lg:col-span-4 lg:col-start-9 lg:justify-self-end">
-            <div className="relative h-full w-full overflow-hidden">
+          <GoldFrame className="aspect-[4/5] w-full max-w-sm lg:col-span-4 lg:col-start-9 lg:justify-self-end">
+            <div className="frame-photo absolute inset-0">
               <Image src={visa.image} alt="" fill priority sizes="(min-width: 1024px) 24rem, 100vw" className="object-cover object-top" />
             </div>
-          </div>
+          </GoldFrame>
         </div>
       </section>
 
       <div className="wrap grid gap-14 py-16 md:py-20 lg:grid-cols-12">
         <aside className="lg:order-2 lg:col-span-4 lg:col-start-9">
-          <div className="border border-gold/60 p-6 lg:sticky lg:top-28">
+          <div className="border border-gold/60 p-6 lg:sticky lg:top-28" data-reveal>
             <p className="label text-accent">At a glance</p>
             <dl className="mt-4 divide-y divide-line text-sm">
               {visa.facts.map(([k, v]) => (
@@ -125,8 +132,10 @@ function PostPage({ post }: { post: NonNullable<ReturnType<typeof getPost>> }) {
     <>
       <article>
         <header className="wrap max-w-4xl pb-10 pt-12 md:pt-16">
-          <Crumbs label="Blog" href="/blog/" />
-          <h1 className="h-display mt-6 text-4xl leading-[1.05] md:text-6xl">{meta.title}</h1>
+          <div className="hero-in">
+            <Crumbs label="Blog" href="/blog/" />
+          </div>
+          <h1 style={{ "--d": "120ms" } as React.CSSProperties} className="hero-in h-display mt-6 text-4xl leading-[1.05] md:text-6xl">{meta.title}</h1>
           <p className="mt-6 text-sm text-muted">
             {formatDate(meta.date)}
             {meta.category && <> · {meta.category}</>}
@@ -135,7 +144,7 @@ function PostPage({ post }: { post: NonNullable<ReturnType<typeof getPost>> }) {
         {meta.image && (
           <div className="wrap max-w-5xl">
             <div className="relative aspect-[16/9] overflow-hidden">
-              <Image src={meta.image} alt="" fill priority sizes="(min-width: 1024px) 64rem, 100vw" className="object-cover" />
+              <Image src={meta.image} alt="" fill priority sizes="(min-width: 1024px) 64rem, 100vw" className="frame-photo object-cover" />
             </div>
           </div>
         )}

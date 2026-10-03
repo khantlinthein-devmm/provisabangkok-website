@@ -12,7 +12,7 @@ export default function PageHero({
   return (
     <section className="border-b border-line">
       <div className="wrap pb-12 pt-10 md:pb-16 md:pt-14">
-        <nav className="label">
+        <nav className="label hero-in">
           <Link href="/" className="hover:text-accent">Home</Link>
           {crumb && (
             <>
@@ -21,9 +21,13 @@ export default function PageHero({
             </>
           )}
         </nav>
-        <h1 className="h-display mt-6 max-w-4xl text-5xl leading-[1.02] md:text-7xl">{title}</h1>
-        <div className="mt-8 h-px w-24 bg-gold" />
-        {subtitle && <p className="mt-6 max-w-2xl text-lg text-muted">{subtitle}</p>}
+        <h1 style={{ "--d": "120ms" } as React.CSSProperties} className="hero-in h-display mt-6 max-w-4xl text-5xl leading-[1.02] md:text-7xl">{title}</h1>
+        <div className="rule-draw mt-8 h-px w-24 bg-gold" data-reveal />
+        {subtitle && (
+          <p style={{ "--d": "260ms" } as React.CSSProperties} className="hero-in mt-6 max-w-2xl text-lg text-muted">
+            {subtitle}
+          </p>
+        )}
       </div>
     </section>
   );

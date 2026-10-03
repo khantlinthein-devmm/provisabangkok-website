@@ -13,7 +13,7 @@ export default function ContactBlock({
   return (
     <section className="bg-deep text-paper">
       <div className="wrap grid gap-14 py-20 md:py-24 lg:grid-cols-12">
-        <div className="lg:col-span-5">
+        <div className="lg:col-span-5" data-reveal>
           <p className="label text-gold-light">Free consultation</p>
           <Ornament className="mt-4 max-w-24" />
           <h2 className="h-display mt-6 text-4xl leading-tight md:text-5xl">{heading}</h2>
@@ -44,7 +44,7 @@ export default function ContactBlock({
             </div>
           </dl>
         </div>
-        <div className="lg:col-span-6 lg:col-start-7">
+        <div className="lg:col-span-6 lg:col-start-7" data-reveal style={{ "--reveal-delay": "150ms" } as React.CSSProperties}>
           <ContactForm dark />
         </div>
       </div>

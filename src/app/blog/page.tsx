@@ -16,7 +16,7 @@ export default function BlogPage() {
       <PageHero title="Latest news for you" subtitle="Guides on Thai visas, work permits, retirement and life in Thailand." crumb={{ label: "Blog", href: "/blog/" }} />
       <section className="wrap py-12">
         {posts.map((p) => (
-          <Link key={p.slug} href={`/${p.slug}/`} className="group grid gap-5 border-b border-line py-10 md:grid-cols-12 md:gap-8">
+          <Link key={p.slug} href={`/${p.slug}/`} data-reveal className="group grid gap-5 border-b border-line py-10 md:grid-cols-12 md:gap-8">
             <div className="relative aspect-[3/2] overflow-hidden md:col-span-3">
               {p.image && <Image src={p.image} alt="" fill sizes="(min-width: 768px) 20vw, 100vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />}
             </div>
