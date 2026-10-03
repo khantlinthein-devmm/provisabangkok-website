@@ -214,6 +214,19 @@ const en = {
         ["Work allowed", "Yes, with a digital work permit"],
       ],
     },
+    "dtv-visa": {
+      title: "Destination Thailand Visa (DTV)",
+      short: "A 5-year multiple-entry visa for remote workers, digital nomads and soft-power activities such as Muay Thai, with stays of up to 180 days per entry.",
+      forWhom: "Remote workers, digital nomads, Muay Thai and cooking students",
+      duration: "5 years, 180 days per entry",
+      facts: [
+        ["Validity", "5 years, multiple entry"],
+        ["Stay", "Up to 180 days per entry, extendable once by 180 days"],
+        ["Funds", "฿500,000 in savings"],
+        ["Visa fee", "฿10,000 (varies by embassy)"],
+        ["Work allowed", "Remote work for foreign employers or clients only"],
+      ],
+    },
     "business-visa": {
       title: "Business Visa",
       short: "Non-Immigrant “B” visa for working or doing business in Thailand, plus company registration and work permits.",
@@ -337,6 +350,7 @@ const en = {
         "retirement-visa": "You are 50 or over, and retirement visas are renewed every year.",
         "thailand-privilege-membership": "Lets you stay 5 to 20 years without yearly financial checks.",
         "long-term-resident-visa": "Your income or assets may qualify you for a 10-year visa with yearly reporting.",
+        "dtv-visa": "Stay up to 180 days at a time for 5 years while working remotely or training, for example in Muay Thai.",
         "business-visa": "For working or doing business in Thailand, together with a work permit.",
         "smart-visa": "If you are a specialist, investor or founder in a targeted industry.",
         "education-visa": "For studying at a recognised school or university.",
@@ -427,6 +441,15 @@ const en = {
           "Proof of investment in Thailand, if applicable",
           "Criminal record verification, if requested",
           "Visa fee of ฿50,000",
+        ],
+        "dtv-visa": [
+          "Passport valid for at least 6 months",
+          "Recent passport-size photo",
+          "Bank statements showing at least ฿500,000, usually for the last 6 months",
+          "Workcation: employment contract or letter from a company outside Thailand, or a freelance portfolio and client contracts",
+          "Soft power: enrolment letter from a registered Thai institution (e.g. Muay Thai camp, cooking school) or medical appointment letter",
+          "Family members: marriage or birth certificate and the main applicant’s DTV",
+          "Proof of your current location, if your embassy asks for it",
         ],
         "business-visa": [
           "Passport valid 6+ months beyond your stay, with 2 blank pages",

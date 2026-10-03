@@ -28,11 +28,12 @@ export function recommend(a: Answers): string[] {
       r.push("smart-visa");
       break;
     case "remote":
+      r.push("dtv-visa");
       if (high) r.push("long-term-resident-visa");
       r.push("thailand-privilege-membership");
       break;
     case "study":
-      r.push("education-visa", "muay-thai-education-visa");
+      r.push("education-visa", "muay-thai-education-visa", "dtv-visa");
       break;
     case "marriage":
       r.push("marriage-visa");
@@ -44,6 +45,7 @@ export function recommend(a: Answers): string[] {
     case "lifestyle":
       if (over50) r.push("retirement-visa");
       if (high) r.push("long-term-resident-visa");
+      if (!over50) r.push("dtv-visa");
       r.push("thailand-privilege-membership");
       break;
   }
