@@ -41,7 +41,7 @@ function Section({ title, items }: { title: string; items: string[] }) {
       <ul className="space-y-3">
         {items.map((item) => (
           <li key={item} className="flex gap-4 leading-relaxed">
-            <span className="text-accent">–</span>
+            <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rotate-45 bg-gold" />
             <span>{item}</span>
           </li>
         ))}
@@ -61,8 +61,8 @@ function VisaPage({ visa }: { visa: Visa }) {
 
       <div className="wrap grid gap-14 py-16 md:py-20 lg:grid-cols-12">
         <aside className="lg:order-2 lg:col-span-4 lg:col-start-9">
-          <div className="border border-ink p-6 lg:sticky lg:top-24">
-            <p className="font-serif text-xl italic">Fact sheet</p>
+          <div className="border border-gold/60 p-6 lg:sticky lg:top-28">
+            <p className="label text-accent">Fact sheet</p>
             <dl className="mt-4 divide-y divide-line text-sm">
               {facts.map(([k, v]) => (
                 <div key={k} className="grid grid-cols-[7rem_1fr] gap-3 py-2.5">

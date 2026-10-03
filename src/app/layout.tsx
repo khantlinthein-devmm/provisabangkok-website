@@ -1,12 +1,19 @@
 import type { Metadata } from "next";
-import { Hanken_Grotesk, Newsreader } from "next/font/google";
+import { Cinzel, Cormorant_Garamond, Jost } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { site } from "@/lib/site";
 
-const display = Newsreader({ variable: "--font-display", subsets: ["latin"], style: ["normal", "italic"] });
-const body = Hanken_Grotesk({ variable: "--font-body", subsets: ["latin"] });
+const display = Cormorant_Garamond({
+  variable: "--font-display",
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+});
+const body = Jost({ variable: "--font-body", subsets: ["latin"] });
+// Cinzel echoes the flared capitals of the logo; used for the wordmark only.
+const brand = Cinzel({ variable: "--font-brand", subsets: ["latin"] });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -20,7 +27,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${display.variable} ${body.variable} h-full antialiased`}>
+    <html lang="en" className={`${display.variable} ${body.variable} ${brand.variable} h-full antialiased`}>
       <body className="flex min-h-full flex-col font-sans">
         <Header />
         <main className="flex-1">{children}</main>

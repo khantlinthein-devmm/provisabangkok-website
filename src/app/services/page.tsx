@@ -18,7 +18,7 @@ export default function ServicesPage() {
       <section className="wrap grid gap-x-16 py-16 md:grid-cols-2">
         {services.map((s, i) => (
           <div key={s.title} className="grid grid-cols-[3rem_1fr] border-b border-line py-8">
-            <span className="font-serif text-xl italic text-accent">{i + 1}.</span>
+            <span className="font-serif text-xl italic text-gold">{i + 1}.</span>
             <div>
               <h2 className="text-xl font-medium">{s.title}</h2>
               <p className="mt-2 leading-relaxed text-muted">{s.text}</p>

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import ContactBlock from "@/components/ContactBlock";
 import PageHero from "@/components/PageHero";
-import Stamp from "@/components/Stamp";
+import Image from "next/image";
+import logo from "../../../public/brand/logo.png";
 
 export const metadata: Metadata = {
   title: "About Us",
@@ -34,7 +35,7 @@ export default function AboutPage() {
           </p>
         </div>
         <div className="flex justify-center lg:col-span-4 lg:col-start-9">
-          <Stamp className="h-48 w-48 rotate-[-8deg] text-accent" />
+          <Image src={logo} alt="Pro Visa Bangkok logo" className="h-auto w-64" />
         </div>
       </section>
       <section className="border-t border-line py-16 md:py-20">

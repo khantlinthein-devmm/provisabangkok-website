@@ -22,6 +22,7 @@ export default function PageHero({
           )}
         </nav>
         <h1 className="h-display mt-6 max-w-4xl text-5xl leading-[1.02] md:text-7xl">{title}</h1>
+        <div className="mt-8 h-px w-24 bg-gold" />
         {subtitle && <p className="mt-6 max-w-2xl text-lg text-muted">{subtitle}</p>}
       </div>
     </section>

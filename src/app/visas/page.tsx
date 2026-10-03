@@ -24,7 +24,7 @@ export default function VisasPage() {
             href={`/${v.slug}/`}
             className="group grid gap-4 border-b border-line py-10 first:pt-0 md:grid-cols-12 md:gap-8"
           >
-            <span className="font-serif text-xl italic text-accent md:col-span-1">{i + 1}.</span>
+            <span className="font-serif text-xl italic text-gold md:col-span-1">{i + 1}.</span>
             <div className="md:col-span-6">
               <h2 className="font-serif text-3xl group-hover:text-accent md:text-4xl">{v.title}</h2>
               <p className="mt-3 leading-relaxed text-muted">{v.short}</p>

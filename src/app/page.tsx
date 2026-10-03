@@ -1,7 +1,9 @@
 import Link from "next/link";
 import Arrow from "@/components/Arrow";
 import ContactBlock from "@/components/ContactBlock";
-import Stamp from "@/components/Stamp";
+import Image from "next/image";
+import Ornament from "@/components/Ornament";
+import mark from "../../public/brand/mark.png";
 import { posts } from "@/lib/posts";
 import { services } from "@/lib/services";
 import { site } from "@/lib/site";
@@ -39,7 +41,7 @@ export default function Home() {
           <div className="lg:col-span-8">
             <p className="label">Visa agency · On Nut, Bangkok</p>
             <h1 className="h-display mt-6 text-[3.25rem] leading-[0.98] sm:text-7xl lg:text-[5.5rem]">
-              Thai visas, sorted <em className="text-accent">properly</em>, by people who do this every day.
+              Thai visas, sorted <em className="text-metal pr-1">properly</em>, by people who do this every day.
             </h1>
             <p className="mt-8 max-w-xl text-lg leading-relaxed text-muted">
               Retirement, LTR, Thailand Privilege, education and family visas. We prepare the paperwork, deal with
@@ -56,24 +58,25 @@ export default function Home() {
           </div>
 
           {/* Fact sheet */}
-          <aside className="relative self-end lg:col-span-4">
-            <div className="border border-ink bg-paper p-6">
-              <p className="font-serif text-xl italic">At a glance</p>
-              <dl className="mt-4 divide-y divide-line text-sm">
+          <aside className="self-end lg:col-span-4">
+            <div className="relative overflow-hidden border border-gold/60 bg-paper p-7 shadow-[0_1px_0_#e3d9c4,0_20px_40px_-24px_rgba(23,20,15,0.25)]">
+              <Image src={mark} alt="" className="pointer-events-none absolute -bottom-10 -right-8 w-44 opacity-[0.12]" />
+              <p className="label text-accent">At a glance</p>
+              <Ornament className="mt-4" />
+              <dl className="relative mt-3 divide-y divide-line text-sm">
                 {[
                   ["Office", `${site.address.line1}, Suan Luang`],
                   ["Hours", site.hours],
                   ["Phone", site.phone],
                   ["Status", "Registered Thailand Privilege agent"],
                 ].map(([k, v]) => (
-                  <div key={k} className="grid grid-cols-[6.5rem_1fr] gap-3 py-2.5">
+                  <div key={k} className="grid grid-cols-[5.5rem_1fr] gap-3 py-3">
                     <dt className="text-muted">{k}</dt>
                     <dd>{v}</dd>
                   </div>
                 ))}
               </dl>
             </div>
-            <Stamp className="absolute -top-14 right-2 h-28 w-28 rotate-[-12deg] text-accent opacity-85 md:-right-8" />
           </aside>
         </div>
       </section>
@@ -128,7 +131,7 @@ export default function Home() {
           <ol className="lg:col-span-7 lg:col-start-6">
             {process.map((p, i) => (
               <li key={p.title} className="grid grid-cols-[3rem_1fr] border-t border-line py-8 first:border-t-0 first:pt-0">
-                <span className="font-serif text-2xl italic text-accent">{i + 1}.</span>
+                <span className="font-serif text-3xl italic text-gold">{i + 1}.</span>
                 <div>
                   <h3 className="text-xl font-medium">{p.title}</h3>
                   <p className="mt-2 leading-relaxed text-muted">{p.text}</p>
@@ -156,8 +159,9 @@ export default function Home() {
             <Link href="/services/" className="link mt-6 inline-block text-sm">More about our services</Link>
           </div>
 
-          <div className="self-start bg-ink p-8 text-paper md:p-10">
-            <p className="text-xs text-paper/60">The question we hear most</p>
+          <div className="self-start bg-deep p-8 text-paper md:p-10">
+            <p className="label text-gold-light">The question we hear most</p>
+            <Ornament className="mt-4 max-w-24" />
             <h2 className="h-display mt-4 text-4xl leading-tight">
               “O, O-A or O-X: which retirement visa should I get?”
             </h2>
@@ -167,7 +171,7 @@ export default function Home() {
             </p>
             <Link
               href="/o-retirement-visas-features-comparison-chart/"
-              className="mt-8 inline-flex items-center gap-3 border-b border-paper/40 pb-1 text-sm hover:border-paper"
+              className="mt-8 inline-flex items-center gap-3 border-b border-gold-light/50 pb-1 text-sm text-gold-light hover:border-gold-light"
             >
               See the comparison <Arrow />
             </Link>

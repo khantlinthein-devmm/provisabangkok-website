@@ -26,7 +26,7 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
   }
 
   const tone = dark
-    ? "border-paper/25 text-paper placeholder:text-paper/40 focus:border-paper"
+    ? "border-paper/25 text-paper placeholder:text-paper/40 focus:border-gold-light"
     : "border-line text-ink placeholder:text-muted/70 focus:border-ink";
   const field = `w-full border-0 border-b bg-transparent px-0 py-3 outline-none transition-colors ${tone}`;
   const label = `block text-xs ${dark ? "text-paper/50" : "text-muted"}`;
@@ -55,7 +55,7 @@ export default function ContactForm({ dark = false }: { dark?: boolean }) {
       <div className="flex flex-wrap items-center gap-4 sm:col-span-2">
         <button
           type="submit"
-          className={dark ? "btn bg-paper text-ink hover:bg-accent hover:text-paper" : "btn"}
+          className={dark ? "btn-gold" : "btn"}
         >
           Send message
         </button>

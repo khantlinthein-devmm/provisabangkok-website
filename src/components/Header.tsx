@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { nav, site } from "@/lib/site";
+import Logo from "./Logo";
 
 export default function Header() {
   const [open, setOpen] = useState(false);
@@ -12,9 +13,9 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-line bg-paper/95 backdrop-blur">
-      <div className="wrap flex h-16 items-center justify-between gap-6">
-        <Link href="/" onClick={() => setOpen(false)} className="font-serif text-2xl tracking-tight">
-          Pro Visa <em className="text-accent">Bangkok</em>
+      <div className="wrap flex h-20 items-center justify-between gap-6">
+        <Link href="/" onClick={() => setOpen(false)} aria-label="Pro Visa Bangkok, home">
+          <Logo />
         </Link>
 
         <nav className="hidden items-center gap-7 text-sm lg:flex">
@@ -51,7 +52,7 @@ export default function Header() {
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="border-b border-line py-3 font-serif text-2xl last:border-0"
+                className="border-b border-line py-3 font-serif text-3xl last:border-0"
               >
                 {item.label}
               </Link>

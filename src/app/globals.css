@@ -1,15 +1,18 @@
 @import "tailwindcss";
 
 @theme {
-  --color-paper: #f4efe6;
-  --color-paper-2: #ebe4d6;
-  --color-ink: #1b1a17;
-  --color-muted: #6b655a;
-  --color-line: #d6cebd;
-  --color-accent: #b4432a;
-  --color-deep: #1f2b25;
+  --color-paper: #faf7f0;
+  --color-paper-2: #f2ecdf;
+  --color-ink: #17140f;
+  --color-muted: #6e665a;
+  --color-line: #e3d9c4;
+  --color-accent: #8a6a22;
+  --color-gold: #b08d3e;
+  --color-gold-light: #d9be74;
+  --color-deep: #15120e;
   --font-sans: var(--font-body), ui-sans-serif, system-ui, sans-serif;
   --font-serif: var(--font-display), Georgia, serif;
+  --font-brand: var(--font-brand), Georgia, serif;
 }
 
 body {
@@ -43,10 +46,23 @@ body {
     @apply underline decoration-line decoration-1 underline-offset-4 transition-colors hover:text-accent hover:decoration-accent;
   }
   .label {
-    @apply text-xs font-medium tracking-wide text-muted;
+    @apply text-[0.7rem] font-medium uppercase tracking-[0.22em] text-muted;
   }
   .h-display {
-    @apply font-serif font-normal tracking-tight;
+    @apply font-serif font-medium tracking-tight lining-nums;
+  }
+  .btn-gold {
+    @apply inline-flex items-center gap-3 rounded-sm bg-gold-light px-5 py-3 text-sm font-medium text-deep transition-colors hover:bg-paper;
+  }
+  /* Metallic gold, matching the logo. Large text only. */
+  .text-metal {
+    background: linear-gradient(100deg, #7d5f1c 0%, #c9a24d 30%, #e6cf8a 48%, #a8832f 66%, #c9a24d 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .rule-gold {
+    @apply h-px border-0 bg-gradient-to-r from-transparent via-gold to-transparent;
   }
   .prose-body p + p {
     @apply mt-4;
