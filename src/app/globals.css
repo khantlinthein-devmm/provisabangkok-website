@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #0b2545;
+  --color-navy-light: #13315c;
+  --color-gold: #d4a017;
+  --color-gold-light: #f2c94c;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  background: #ffffff;
+  color: #1f2937;
+}
+
+@utility container-x {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 80rem;
+  padding-inline: 1rem;
+  @media (width >= 40rem) {
+    padding-inline: 1.5rem;
+  }
+}
+
+@utility hero-bg {
+  background:
+    radial-gradient(circle at 85% 20%, rgb(212 160 23 / 0.25), transparent 40%),
+    linear-gradient(135deg, #0b2545 0%, #13315c 60%, #1b4079 100%);
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center gap-2 rounded-full bg-gold px-6 py-3 text-sm font-semibold text-navy shadow-sm transition hover:bg-gold-light;
+  }
+  .btn-outline {
+    @apply inline-flex items-center gap-2 rounded-full border-2 border-white/70 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white hover:text-navy;
+  }
+  .btn-dark {
+    @apply inline-flex items-center gap-2 rounded-full bg-navy px-6 py-3 text-sm font-semibold text-white transition hover:bg-navy-light;
+  }
+  .btn-outline-dark {
+    @apply inline-flex items-center gap-2 rounded-full border-2 border-navy px-6 py-3 text-sm font-semibold text-navy transition hover:bg-navy hover:text-white;
+  }
+  .section-title {
+    @apply text-3xl font-bold text-navy md:text-4xl;
+  }
+  .eyebrow {
+    @apply text-sm font-semibold uppercase tracking-widest text-gold;
+  }
+}
