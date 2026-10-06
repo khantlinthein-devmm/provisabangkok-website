@@ -13,7 +13,7 @@ export const site = {
     country: "Thailand",
   },
   whatsapp: "https://wa.me/66659245509",
-  line: "https://line.me/ti/p/sZPhQ6dyJ7",
+  line: "https://line.me/R/ti/p/@398msqy",
   facebook: "https://www.facebook.com/profile.php?id=61559240948956",
   mapUrl:
     "https://www.google.com/maps/search/?api=1&query=300+Soi+Onnuch+10+Suan+Luang+Bangkok+10250",
