@@ -34,10 +34,10 @@ export default function ContactForm({
   }
 
   const tone = dark
-    ? "border-paper/25 text-paper placeholder:text-paper/40 focus:border-gold-light"
-    : "border-line text-ink placeholder:text-muted/70 focus:border-ink";
-  const field = `w-full border-0 border-b bg-transparent px-0 py-3 outline-none transition-colors ${tone}`;
-  const label = `block text-xs ${dark ? "text-paper/50" : "text-muted"}`;
+    ? "border-paper/45 text-paper placeholder:text-paper/50 focus:border-gold-light"
+    : "border-ink/35 text-ink placeholder:text-muted/70 focus:border-ink";
+  const field = `w-full border-0 border-b bg-transparent px-0 py-3 text-base outline-none transition-colors ${tone}`;
+  const label = `block text-sm font-medium ${dark ? "text-paper/80" : "text-ink/80"}`;
 
   return (
     <form onSubmit={onSubmit} className="grid gap-x-8 gap-y-6 sm:grid-cols-2">

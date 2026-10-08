@@ -117,9 +117,10 @@ export default async function Home(props: PageProps<"/[lang]">) {
           </div>
           <Link
             href={p("/o-retirement-visas-features-comparison-chart/")}
-            className="mt-6 inline-flex min-h-11 items-center gap-3 text-sm font-medium hover:text-accent"
+            className="mt-6 inline-flex min-h-11 flex-wrap items-center gap-x-3 gap-y-1 text-sm font-medium hover:text-accent"
           >
-            {h.compareTitle.replace(/[“”«»]/g, "")} <span className="text-accent">{h.compareLink}</span> <Arrow />
+            <span>{h.compareTitle.replace(/[“”«»]/g, "")}</span>
+            <span className="inline-flex items-center gap-2 whitespace-nowrap text-accent">{h.compareLink} <Arrow /></span>
           </Link>
         </div>
       </section>

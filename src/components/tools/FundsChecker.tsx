@@ -51,20 +51,20 @@ export default function FundsChecker({ t, ltrHref }: { t: Dict["tools"]["funds"]
     [t.ox, t.oxRule, r.ox],
     [t.marriage, t.marriageRule, r.marriage, r.marriage === "maybe" ? t.combo : undefined],
   ];
-  const field = "mt-2 w-full border-0 border-b border-line bg-transparent py-3 text-lg tabular-nums outline-none focus:border-ink";
+  const field = "mt-2 w-full border-0 border-b border-ink/35 bg-transparent py-3 text-lg tabular-nums outline-none focus:border-ink";
 
   return (
     <div className="grid gap-12 lg:grid-cols-12">
       <div className="space-y-6 lg:col-span-5">
-        <label className="block text-xs text-muted">
+        <label className="block text-sm font-medium text-ink/80">
           {t.age}
-          <input inputMode="numeric" value={age} onChange={(e) => setAge(e.target.value.replace(/\D/g, "").slice(0, 3))} className={field} />
+          <input inputMode="numeric" value={age} onChange={(e) => setAge(e.target.value.replace(/\D/g, "").slice(0, 3))} placeholder="55" className={field} />
         </label>
-        <label className="block text-xs text-muted">
+        <label className="block text-sm font-medium text-ink/80">
           {t.deposit}
           <input inputMode="numeric" value={fmt(deposit)} onChange={(e) => setDeposit(e.target.value)} placeholder="800,000" className={field} />
         </label>
-        <label className="block text-xs text-muted">
+        <label className="block text-sm font-medium text-ink/80">
           {t.income}
           <input inputMode="numeric" value={fmt(income)} onChange={(e) => setIncome(e.target.value)} placeholder="65,000" className={field} />
         </label>

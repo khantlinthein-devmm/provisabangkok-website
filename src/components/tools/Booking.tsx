@@ -57,7 +57,7 @@ export default function Booking({
     .filter(Boolean)
     .join("\n");
 
-  const field = "mt-2 w-full border-0 border-b border-line bg-transparent py-3 outline-none focus:border-ink";
+  const field = "mt-2 w-full border-0 border-b border-ink/35 bg-transparent py-3 outline-none focus:border-ink";
   const chip = (active: boolean) =>
     `border px-3 py-2 text-sm transition-colors ${active ? "border-gold bg-gold/15 text-ink" : "border-line hover:border-gold"}`;
 
@@ -91,7 +91,7 @@ export default function Booking({
         <section>
           <p className="label text-accent">3 · {b.step3}</p>
           <fieldset className="mt-4">
-            <legend className="text-xs text-muted">{b.mode}</legend>
+            <legend className="text-sm font-medium text-ink/80">{b.mode}</legend>
             <div className="mt-2 flex flex-wrap gap-2">
               {(Object.keys(b.modes) as (keyof typeof b.modes)[]).map((m) => (
                 <button key={m} type="button" onClick={() => setMode(m)} className={chip(mode === m)}>
@@ -101,7 +101,7 @@ export default function Booking({
             </div>
           </fieldset>
           <div className="mt-6 grid gap-6 sm:grid-cols-2">
-            <label className="block text-xs text-muted sm:col-span-2">
+            <label className="block text-sm font-medium text-ink/80 sm:col-span-2">
               {b.topic}
               <select value={topic} onChange={(e) => setTopic(e.target.value)} className={field}>
                 <option>{common.notSure}</option>
@@ -110,15 +110,15 @@ export default function Booking({
                 ))}
               </select>
             </label>
-            <label className="block text-xs text-muted">
+            <label className="block text-sm font-medium text-ink/80">
               {b.name} *
               <input value={name} onChange={(e) => setName(e.target.value)} className={field} />
             </label>
-            <label className="block text-xs text-muted">
+            <label className="block text-sm font-medium text-ink/80">
               {b.contact} *
               <input value={contact} onChange={(e) => setContact(e.target.value)} className={field} />
             </label>
-            <label className="block text-xs text-muted sm:col-span-2">
+            <label className="block text-sm font-medium text-ink/80 sm:col-span-2">
               {b.notes}
               <textarea value={notes} onChange={(e) => setNotes(e.target.value)} rows={3} className={`${field} resize-none`} />
             </label>
@@ -144,7 +144,7 @@ export default function Booking({
           <div className="mt-6">
             <SendButtons message={message} subject={b.title} whatsappLabel={t.sendWhatsapp} emailLabel={t.sendEmail} disabled={!ready} />
           </div>
-          <p className="mt-4 text-xs text-muted">{ready ? b.confirmNote : b.pickFirst}</p>
+          <p className="mt-4 text-sm text-muted">{ready ? b.confirmNote : b.pickFirst}</p>
         </div>
       </aside>
     </div>

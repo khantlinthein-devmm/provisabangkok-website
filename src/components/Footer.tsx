@@ -45,7 +45,7 @@ export default function Footer({ lang, dict }: { lang: Locale; dict: Dict }) {
           </ul>
         </div>
       </div>
-      <div className="wrap flex flex-col justify-between gap-2 border-t border-paper/10 py-6 text-xs text-paper/50 sm:flex-row">
+      <div className="wrap flex flex-col justify-between gap-2 border-t border-paper/10 py-6 text-sm text-paper/65 sm:flex-row">
         <span>© {new Date().getFullYear()} {site.name}</span>
         <span>
           {dict.footer.disclaimer} ·{" "}

@@ -36,7 +36,7 @@ For Non-Immigrant O-A and O-X Visas, apply at the Royal Thai Embassy/Consulate i
 
 **Non-Immigrant Visa O** visa applicants do not have to carry insurance coverage currently, but they are strongly encouraged to maintain valid insurance for medical reasons throughout their entire stay.
 
-**Non-Immigrant Visa O-A** visa applicants must carry insurance coverage for the duration of their stay for Outpatient and Inpatient Treatment of no less than 3,000,000 baht. or 100,000 USD.
+**Non-Immigrant Visa O-A** visa applicants must carry insurance coverage for the duration of their stay for Outpatient and Inpatient Treatment of no less than 3,000,000 baht or 100,000 USD.
 
 **Non-Immigrant Visa O-X** visa applicants must carry insurance coverage for the duration of their stay for outpatient treatment of no less than 40,000 baht and inpatient treatment of no less than 400,000 baht.
 
@@ -65,12 +65,6 @@ Immigration Officers have varied discretion to verify income sources as well as 
 Thailand bank requirements for foreigners vary.
 
 Please contact us to learn more.
-
-## Health Insurance Requirements
-
-The O Visa does not currently require health insurance coverage
-
-Non-Immigrant Visa O-A visa applicants must carry insurance coverage for the duration of their stay for Outpatient and Inpatient Treatment of no less than 3,000,000 baht or 100,000 USD and Non-Immigrant Visa O-X visa applicants must carry insurance coverage for the duration of their stay for outpatient treatment of no less than 40,000 baht and inpatient treatment of no less than 400,000 baht
 
 ## Additional Considerations
 

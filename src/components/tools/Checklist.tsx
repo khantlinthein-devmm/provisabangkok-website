@@ -109,7 +109,7 @@ export default function Checklist({ t, visas }: { t: Dict["tools"]["checklist"];
           <button type="button" onClick={() => window.print()} className="btn">{t.print}</button>
           <button type="button" onClick={() => writeRaw(slug, [])} className="link text-sm">{t.reset}</button>
         </div>
-        <p className="no-print mt-4 text-xs text-muted">{t.note}</p>
+        <p className="no-print mt-4 text-sm text-muted">{t.note}</p>
       </div>
     </div>
   );

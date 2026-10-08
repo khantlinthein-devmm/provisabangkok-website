@@ -69,21 +69,21 @@ export default function NinetyDay({ t, dateLocale, helpHref }: { t: Dict["tools"
     <div className="grid gap-12 lg:grid-cols-12">
       <div className="lg:col-span-7">
         <div className="grid gap-6 sm:grid-cols-[1fr_auto]">
-          <label className="block text-xs text-muted">
+          <label className="block text-sm font-medium text-ink/80">
             {t.arrival}
             <input
               type="date"
               value={arrival}
               onChange={(e) => setArrival(e.target.value)}
-              className="mt-2 w-full border-0 border-b border-line bg-transparent py-3 text-lg outline-none focus:border-ink"
+              className="mt-2 w-full border-0 border-b border-ink/35 bg-transparent py-3 text-lg outline-none focus:border-ink"
             />
           </label>
-          <label className="block text-xs text-muted">
+          <label className="block text-sm font-medium text-ink/80">
             {t.count}
             <select
               value={count}
               onChange={(e) => setCount(Number(e.target.value))}
-              className="mt-2 w-full border-0 border-b border-line bg-transparent py-3 text-lg outline-none focus:border-ink"
+              className="mt-2 w-full border-0 border-b border-ink/35 bg-transparent py-3 text-lg outline-none focus:border-ink"
             >
               {[4, 8, 12].map((n) => (
                 <option key={n}>{n}</option>
