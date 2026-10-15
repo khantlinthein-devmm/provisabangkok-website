@@ -142,7 +142,15 @@ export default function Booking({
             ))}
           </dl>
           <div className="mt-6">
-            <SendButtons message={message} subject={b.title} whatsappLabel={t.sendWhatsapp} emailLabel={t.sendEmail} disabled={!ready} />
+            <SendButtons
+              message={message}
+              kind="booking"
+              whatsappLabel={t.sendWhatsapp}
+              emailLabel={t.sendEmail}
+              labels={t.email}
+              sender={{ name, contact }}
+              disabled={!ready}
+            />
           </div>
           <p className="mt-4 text-sm text-muted">{ready ? b.confirmNote : b.pickFirst}</p>
         </div>

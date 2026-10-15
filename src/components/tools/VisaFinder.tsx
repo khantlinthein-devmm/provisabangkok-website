@@ -108,7 +108,7 @@ export default function VisaFinder({
         </div>
         <div className="mt-10 border-t border-line pt-8">
           <p className="mb-4 font-medium">{t.talkToUs}</p>
-          <SendButtons message={message} subject={f.title} whatsappLabel={t.sendWhatsapp} emailLabel={t.sendEmail} />
+          <SendButtons message={message} kind="finder" whatsappLabel={t.sendWhatsapp} emailLabel={t.sendEmail} labels={t.email} />
           <button type="button" onClick={() => { setAnswers({}); setStep(0); }} className="link mt-6 text-sm">
             {f.restart}
           </button>

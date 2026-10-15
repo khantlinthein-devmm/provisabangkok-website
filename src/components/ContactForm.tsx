@@ -4,7 +4,7 @@ import { useState } from "react";
 import type { Dict } from "@/i18n/dictionaries/en";
 import { site } from "@/lib/site";
 
-// No backend yet: the form opens the visitor's email app with the message pre-filled.
+// Sends the message to /api/contact, which emails it to the office.
 export default function ContactForm({
   dark = false,
   form,
@@ -14,23 +14,24 @@ export default function ContactForm({
   form: Dict["contact"]["form"];
   visaTitles: string[];
 }) {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
-  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const data = new FormData(e.currentTarget);
-    const subject = `${form.subject}: ${data.get("visa")} (${data.get("name")})`;
-    const body = [
-      `${form.name}: ${data.get("name")}`,
-      `${form.email}: ${data.get("email")}`,
-      `${form.phone}: ${data.get("phone")}`,
-      `${form.nationality}: ${data.get("nationality")}`,
-      `${form.askingAbout}: ${data.get("visa")}`,
-      "",
-      String(data.get("message") ?? ""),
-    ].join("\n");
-    window.location.href = `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    setSent(true);
+    const el = e.currentTarget;
+    setStatus("sending");
+    try {
+      const res = await fetch("/api/contact/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(Object.fromEntries(new FormData(el))),
+      });
+      if (!res.ok) throw new Error(String(res.status));
+      el.reset();
+      setStatus("sent");
+    } catch {
+      setStatus("error");
+    }
   }
 
   const tone = dark
@@ -60,13 +61,21 @@ export default function ContactForm({
         {form.situation}
         <textarea name="message" rows={4} className={`${field} resize-none`} />
       </label>
+      {/* Honeypot for spam bots, hidden from people and screen readers. */}
+      <input name="website" tabIndex={-1} autoComplete="off" aria-hidden="true" className="hidden" />
       <div className="flex flex-wrap items-center gap-4 sm:col-span-2">
-        <button type="submit" className={dark ? "btn-gold" : "btn"}>{form.send}</button>
-        {sent && (
-          <p className={`text-sm ${dark ? "text-paper/70" : "text-muted"}`}>
-            {form.sent} {site.email}.
-          </p>
-        )}
+        <button type="submit" disabled={status === "sending"} className={`${dark ? "btn-gold" : "btn"} disabled:opacity-60`}>
+          {status === "sending" ? form.sending : form.send}
+        </button>
+        <p role="status" className={`text-sm ${dark ? "text-paper/70" : "text-muted"}`}>
+          {status === "sent" && form.sent}
+          {status === "error" && (
+            <>
+              {form.error}{" "}
+              <a href={`mailto:${site.email}`} className="underline">{site.email}</a>
+            </>
+          )}
+        </p>
       </div>
     </form>
   );

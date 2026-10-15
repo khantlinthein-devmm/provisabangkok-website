@@ -56,7 +56,16 @@ All tools run in the visitor's browser. Nothing is sent until the visitor choose
 
 ## Contact form
 
-There's no backend yet. The form opens the visitor's email app with the message filled in, addressed to the email in `site.ts`. To receive submissions directly, connect a service such as Formspree or Resend, or add a Next.js route handler.
+The form posts to `/api/contact/` (`src/app/api/contact/route.ts`), which emails the message to `support@provisabangkok.com` through Hostinger SMTP. Replying to the email goes straight to the visitor.
+
+Set these environment variables (locally in `.env.local`, see `.env.example`; on the host in its project settings):
+
+| Variable | Value |
+| --- | --- |
+| `SMTP_USER` | `support@provisabangkok.com` |
+| `SMTP_PASS` | the mailbox password from Hostinger |
+
+If sending fails, the visitor is shown the email address to write to instead.
 
 ## Deploy
 

@@ -6,7 +6,7 @@ export const site = {
     "Pro Visa Bangkok is a trusted visa agent in Thailand and a registered agent for the Thailand Privilege Card. We specialise in Long Term Resident (LTR) visas, retirement visas and other commonly sought-after visas.",
   phone: "065-924-5509",
   phoneIntl: "+66659245509",
-  email: "provisabangkok@gmail.com",
+  email: "support@provisabangkok.com",
   address: {
     line1: "300 Soi Onnuch 10",
     line2: "Suan Luang, Bangkok 10250",
