@@ -3,6 +3,8 @@ import type { NextConfig } from "next";
 const nextConfig: NextConfig = {
   // Keep the same URL style as the original WordPress site (e.g. /retirement-visa/)
   trailingSlash: true,
+  // Keystatic opens the editor on 127.0.0.1 during `npm run dev` (needed for GitHub sign-in).
+  allowedDevOrigins: ["127.0.0.1"],
   async redirects() {
     // Old WordPress pages, plus URLs used by earlier drafts of this site.
     return [
