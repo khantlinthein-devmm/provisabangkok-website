@@ -7,6 +7,14 @@ const PREFIXED = /^\/(th|ru|zh|ko)(\/|$)/;
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  // Site URLs end with a slash (/retirement-visa/), as on the original WordPress site.
+  if (!pathname.endsWith("/")) {
+    // A plain URL: NextURL would format the path back without the slash.
+    const url = new URL(request.url);
+    url.pathname = `${pathname}/`;
+    return NextResponse.redirect(url, 308);
+  }
+
   if (PREFIXED.test(pathname)) return NextResponse.next();
 
   // /en/... is the same page as /... : redirect so there is only one English URL.
