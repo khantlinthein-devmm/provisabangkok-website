@@ -5,9 +5,11 @@ import { notFound } from "next/navigation";
 import Arrow from "@/components/Arrow";
 import ContactBlock from "@/components/ContactBlock";
 import GoldFrame from "@/components/GoldFrame";
+import JsonLd from "@/components/JsonLd";
 import { formatDate, getDictionary, localePath, locales, type Dict, type Locale } from "@/i18n";
 import { getAllPosts, getPost, getVisaContent } from "@/lib/content";
 import { alternates } from "@/lib/seo";
+import { articleSchema, breadcrumbSchema } from "@/lib/schema";
 import { site } from "@/lib/site";
 import { getVisas, isVisaSlug, visaImages, visaSlugs, type LocalVisa } from "@/lib/visas";
 
@@ -104,6 +106,13 @@ function VisaPage({
 
   return (
     <>
+      <JsonLd
+        data={breadcrumbSchema(lang, [
+          { name: dict.common.home, path: "/" },
+          { name: dict.nav.visas, path: "/service/" },
+          { name: visa.title, path: `/${visa.slug}/` },
+        ])}
+      />
       <section className="border-b border-line">
         <div className="wrap grid gap-10 py-10 md:py-16 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
@@ -195,6 +204,14 @@ function PostPage({ lang, dict, post }: { lang: Locale; dict: Dict; post: NonNul
   const p = (path: string) => localePath(lang, path);
   return (
     <>
+      <JsonLd data={articleSchema(meta)} />
+      <JsonLd
+        data={breadcrumbSchema(lang, [
+          { name: dict.common.home, path: "/" },
+          { name: dict.nav.blog, path: "/blog/" },
+          { name: meta.title, path: `/${meta.slug}/` },
+        ])}
+      />
       <article>
         <header className="wrap max-w-4xl pb-10 pt-12 md:pt-16">
           <div className="hero-in">

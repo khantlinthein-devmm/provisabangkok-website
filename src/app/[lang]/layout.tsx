@@ -15,6 +15,8 @@ import MobileActionBar from "@/components/MobileActionBar";
 import { site } from "@/lib/site";
 import { getDictionary, isLocale, localeInfo, locales, type Locale } from "@/i18n";
 import { alternates } from "@/lib/seo";
+import { businessSchema } from "@/lib/schema";
+import JsonLd from "@/components/JsonLd";
 
 const display = Cormorant_Garamond({
   variable: "--font-display",
@@ -68,6 +70,7 @@ export default async function RootLayout(props: LayoutProps<"/[lang]">) {
       className={`${display.variable} ${body.variable} ${brand.variable} ${scriptFonts[lang] ?? ""} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col pb-[calc(3.5rem+env(safe-area-inset-bottom))] font-sans md:pb-0">
+        <JsonLd data={businessSchema(lang, dict.meta.description)} />
         <Header lang={lang} nav={dict.nav} />
         <main className="flex-1">{props.children}</main>
         <Footer lang={lang} dict={dict} />
