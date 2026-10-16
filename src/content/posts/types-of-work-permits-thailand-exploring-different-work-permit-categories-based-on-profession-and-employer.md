@@ -3,7 +3,7 @@ title: "Types of Work Permits Thailand: Exploring Different Work Permit Categori
 date: "2024-05-28"
 description: "Thailand, with its booming economy, vibrant culture, and stunning landscapes, has become a magnet for skilled professionals seeking exciting career"
 category: "Visa Thailand"
-image: "/images/work-permit-thailand.jpeg"
+image: "/images/blog/types-of-work-permits-thailand-exploring-different-work-permit-categories-based-on-profession-and-employer/image.jpeg"
 ---
 Thailand, with its booming economy, vibrant culture, and stunning landscapes, has become a magnet for skilled professionals seeking exciting career opportunities. But before you can embark on your professional journey in the Land of Smiles, securing the appropriate Work Permit Thailand is crucial. This permit allows foreign nationals to legally work in Thailand for a specific employer and position. However, navigating the different Work Permit Thailand categories can be confusing. This blog post will serve as your guide, demystifying the various work permit categories based on profession and employer type.
 

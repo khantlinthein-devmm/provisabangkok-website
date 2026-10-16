@@ -3,7 +3,7 @@ title: "Thailand Visa Types"
 date: "2024-05-28"
 description: "The Thailand Elite Visa is a long-term visa under the Privilege Entry Visa category. It offers residency in Thailand for periods ranging from 5 to 20 years,"
 category: "Visa Thailand"
-image: "/images/Thailand-Visa-Types.jpg"
+image: "/images/blog/thailand-visa-types/image.jpg"
 ---
 ## Thai Elite Visa
 

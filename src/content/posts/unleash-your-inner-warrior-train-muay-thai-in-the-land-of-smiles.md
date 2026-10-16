@@ -3,7 +3,7 @@ title: "From Novice to Nak Muay: Your Muay Thai Transformation in Thailand"
 date: "2024-06-03"
 description: "Imagine yourself in a plane over the beautiful blue Adaman Sea. You are almost there. You did it. You have your visa, and you are about to land in Thailand!"
 category: "Visa Thailand"
-image: "/images/27101110.jpg"
+image: "/images/blog/unleash-your-inner-warrior-train-muay-thai-in-the-land-of-smiles/image.jpg"
 ---
 **Nak Muay literally translates to “Thai Boxer”.**
 

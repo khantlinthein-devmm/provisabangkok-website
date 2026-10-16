@@ -3,7 +3,7 @@ title: "Comprehensive Guide to Obtaining Permanent Residency in Thailand"
 date: "2024-06-20"
 description: "Permanent Residence in Thailand"
 category: "Retirement Visa Thailand"
-image: "/images/permanent-residence-In-thailand.webp"
+image: "/images/blog/comprehensive-guide-to-obtaining-permanent-residency-in-thailand/image.webp"
 ---
 **Permanent Residence in Thailand**
 

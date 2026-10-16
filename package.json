@@ -9,11 +9,17 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@keystar/ui": "^0.10.0",
+    "@keystatic/core": "^0.6.9",
+    "@keystatic/next": "^5.0.5",
     "marked": "^18.0.14",
     "next": "16.3.8",
     "nodemailer": "^10.1.1",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-aria": "^3.50.0",
+    "react-dom": "19.2.8",
+    "react-stately": "^3.48.0",
+    "yaml": "^2.9.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",

@@ -3,7 +3,7 @@ title: "90-Day Visa Thailand: Your Complete Guide to Long-Term Stay"
 date: "2024-09-02"
 description: "If you're planning a longer stay in Thailand beyond the typical 30-day visa, the 90-day visa Thailand is your best option. This visa allows you to stay in the"
 category: "Thai Elite Visa"
-image: "/images/2149117778.jpg"
+image: "/images/blog/90-day-visa-thailand-your-complete-guide-to-long-term-stay/image.jpg"
 ---
 If you’re planning a longer stay in Thailand beyond the typical 30-day visa, the 90-day visa Thailand is your best option. This visa allows you to stay in the Land of Smiles for up to 90 days and is an excellent alternative for those who need more than just a short tourist visit. Unlike a regular tourist visa, this visa grants you the flexibility to extend your stay or transition to a longer-term visa for specific purposes.
 

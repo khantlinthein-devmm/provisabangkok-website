@@ -3,7 +3,7 @@ title: "Common Mistakes to Avoid During Your Thailand Retirement Visa Applicatio
 date: "2024-05-14"
 description: "Thailand, with its stunning beaches, delicious cuisine, and rich culture, is a dream destination for many retirees. The country offers a welcoming environment"
 category: "Retirement Visa"
-image: "/images/2148641932.jpg"
+image: "/images/blog/common-mistakes-to-avoid-during-your-thailand-retirement-visa-application/image.jpg"
 ---
 Thailand, with its stunning beaches, delicious cuisine, and rich culture, is a dream destination for many retirees. The country offers a welcoming environment for those seeking a comfortable and affordable retirement lifestyle. To enjoy this tropical paradise long term, obtaining a Thailand Retirement Visa is essential. While the application process may seem straightforward, there are some common pitfalls that can lead to delays or even rejection.
 

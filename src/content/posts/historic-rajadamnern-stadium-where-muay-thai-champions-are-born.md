@@ -3,7 +3,7 @@ title: "Historic Rajadamnern Stadium: Where Muay Thai Champions are Born"
 date: "2024-07-01"
 description: "Amidst this backdrop and deep in the heart of Bangkok, Thailand, a unique building that has stood the test of time was being born. That building houses the"
 category: "Retirement Visa Thailand"
-image: "/images/big-History-page3_1080x1080.jpg"
+image: "/images/blog/historic-rajadamnern-stadium-where-muay-thai-champions-are-born/image.jpg"
 ---
 On December 23rd, 1945, the world was still greatly unstable despite the recent end of World War II. The United States was in a delicate period of transition as it demobilized its vast wartime military force and adjusted to a peacetime economy. In devastated Europe as well as many of the countries that were devastated by the war, was grappling with food shortages, homelessness, and political instability. The Nuremberg trials of Nazi war criminals were ongoing in Germany.
 

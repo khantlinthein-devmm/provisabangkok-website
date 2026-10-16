@@ -3,7 +3,7 @@ title: "Navigating the Work Permit Process in Thailand: A Guide for Foreigners."
 date: "2024-07-24"
 description: "Planning to work in Thailand? Here's your essential guide to securing a work permit."
 category: "Work permit Visa"
-image: "/images/work-permit-visa.jpg"
+image: "/images/blog/navigating-the-work-permit-process-in-thailand-a-guide-for-foreigners/image.jpg"
 ---
 Planning to work in Thailand? Here’s your essential guide to securing a work permit.
 

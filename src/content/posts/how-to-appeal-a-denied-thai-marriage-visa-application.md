@@ -3,7 +3,7 @@ title: "How to Appeal a Denied Thai Marriage Visa Application"
 date: "2024-06-28"
 description: "Navigating the visa process can be a complex and sometimes frustrating journey. If your Thai Marriage Visa application has been denied, it's important to know"
 category: "Retirement Visa Thailand"
-image: "/images/Married-visa.jpg"
+image: "/images/blog/how-to-appeal-a-denied-thai-marriage-visa-application/image.jpg"
 ---
 Navigating the visa process can be a complex and sometimes frustrating journey. If your Thai Marriage Visa application has been denied, it’s important to know that you have options and steps you can take to appeal the decision. In this blog post, we’ll walk you through the essential steps to take and the legal options available if your Marriage Visa application is denied. Our goal is to help you understand the process and guide you through each step to increase your chances of a successful appeal.
 

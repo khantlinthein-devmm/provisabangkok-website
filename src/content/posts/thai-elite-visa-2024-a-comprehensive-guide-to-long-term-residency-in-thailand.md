@@ -3,7 +3,7 @@ title: "Thai Elite Visa 2024: A Comprehensive Guide to Long-Term Residency in Th
 date: "2024-07-18"
 description: "Dreaming of a long-term stay in Thailand? The Thai Elite Visa program might be the perfect solution. This program offers a range of exclusive benefits and"
 category: "Thai Elite Visa"
-image: "/images/Thai-Elite-Visa.jpg"
+image: "/images/blog/thai-elite-visa-2024-a-comprehensive-guide-to-long-term-residency-in-thailand/image.jpg"
 ---
 Dreaming of a long-term stay in Thailand? The Thai Elite Visa program might be the perfect solution. This program offers a range of exclusive benefits and long-term residency options tailored for various needs, from business travelers to retirees. Managed by Thailand Privilege Card Company Limited, the Thai Elite Visa provides a seamless and luxurious experience for those looking to make Thailand their home away from home.
 

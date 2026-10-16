@@ -3,7 +3,7 @@ title: "Fight for Fitness, Not Fights at Any Age with Muay Thai in Thailand"
 date: "2024-06-27"
 description: "While Muay Thai gyms can be found worldwide, but there's something truly special about training in its birthplace, Thailand. With various visa options your"
 category: "Retirement Visa Thailand"
-image: "/images/12688.jpg"
+image: "/images/blog/fight-for-fitness-not-fights-at-any-age-with-muay-thai-in-thailand/image.jpg"
 ---
 While Muay Thai gyms can be found worldwide, but there’s something truly special about training in its birthplace, Thailand. With various visa options your Muay Thai fitness adventure is closer than ever!
 

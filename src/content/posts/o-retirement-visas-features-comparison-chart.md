@@ -3,7 +3,7 @@ title: "O Retirement Visas Features Comparison Chart"
 date: "2024-06-26"
 description: "Retiring in Thailand has become an attractive option for many expatriates due to its warm climate, affordable living costs, and rich cultural heritage."
 category: "Retirement Visa Thailand"
-image: "/images/retirement-visa.jpg"
+image: "/images/blog/o-retirement-visas-features-comparison-chart/image.jpg"
 ---
 Retiring in Thailand has become an attractive option for many expatriates due to its warm climate, affordable living costs, and rich cultural heritage. Understanding the different types of O Retirement Visas available is essential for anyone considering a long-term stay in the country. This article provides a comprehensive comparison of the features of various O Retirement Visas to help you make an informed decision.
 

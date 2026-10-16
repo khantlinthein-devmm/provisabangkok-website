@@ -3,7 +3,7 @@ title: "Navigating the Thai Marriage Visa 2024 Update: A Step-by-Step Guide"
 date: "2024-07-24"
 description: "Congratulations on your marriage! Now that you’ve tied the knot with your Thai partner, it’s time to apply for a Thai Marriage Visa. This long-stay visa"
 category: "Thai Elite Visa"
-image: "/images/Married-visa.jpg"
+image: "/images/blog/navigating-the-thai-marriage-visa-2024-update-a-step-by-step-guide/image.jpg"
 ---
 Congratulations on your marriage! Now that you’ve tied the knot with your Thai partner, it’s time to apply for a Thai Marriage Visa. This long-stay visa allows you to live with your spouse in Thailand and paves the way for potential permanent residency.
 

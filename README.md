@@ -26,13 +26,29 @@ The site is in English, Thai, Russian, Chinese (Simplified) and Korean.
 | --- | --- |
 | `src/i18n/dictionaries/en.ts` | All English text: menus, home page, visa summaries and facts, tools, checklists. The other languages (`th.ts`, `ru.ts`, `zh.ts`, `ko.ts`) have exactly the same structure, and TypeScript flags any missing key. |
 | `src/content/visas/<lang>/*.md` | Full text of each visa page, per language (falls back to English if a file is missing) |
-| `src/content/posts/*.md` | Blog posts (English only, shown with a note in other languages) |
+| `src/content/posts/*.md` | Blog posts, edited at `/keystatic/` (English only, shown with a note in other languages). Cover images in `public/images/blog/<post>/` |
 | `src/lib/site.ts` | Phone, email, address, LINE, WhatsApp, Facebook, the "25+ years" figures, **booking days and times** |
 | `src/lib/visas.ts` | Visa order and header photos |
 | `src/lib/testimonials.ts` | Customer photo list |
 | `public/images/` | Photos |
 
-To add a blog post, copy any file in `src/content/posts/`, change the top block and the text, and save it under a new file name. The file name becomes the URL.
+## Blog editor (Keystatic)
+
+Blog posts are written at **`/keystatic/`** — no code needed. Sign in with GitHub, open **Blog posts**, then **Add**. Fill in the title, date, summary, category and cover image, write the post, and press **Save**. Each save is a commit to GitHub, and Vercel puts it live in 1–2 minutes. The URL is made from the title; don't change it after publishing.
+
+Anyone who writes posts needs a GitHub account with write access to this repository (GitHub → Settings → Collaborators).
+
+Running `npm run dev` locally, `/keystatic/` edits the files on disk instead.
+
+### One-time setup (GitHub App)
+
+1. Locally, add `NEXT_PUBLIC_KEYSTATIC_STORAGE=github` to `.env.local`, run `npm run dev` and open http://localhost:3000/keystatic/.
+2. Click **Create GitHub App**, give it a name (e.g. `provisabangkok-blog`) and create it. Keystatic writes four keys into `.env`: `KEYSTATIC_GITHUB_CLIENT_ID`, `KEYSTATIC_GITHUB_CLIENT_SECRET`, `KEYSTATIC_SECRET`, `NEXT_PUBLIC_KEYSTATIC_GITHUB_APP_SLUG`.
+3. Install the app on the `provisabangkok-website` repository when GitHub asks.
+4. In the GitHub App settings, add these callback URLs: `https://provisabangkok-website.vercel.app/api/keystatic/github/oauth/callback` and `https://provisabangkok.com/api/keystatic/github/oauth/callback`.
+5. Copy the four keys into Vercel → Settings → Environment Variables (Production), then redeploy. Remove `NEXT_PUBLIC_KEYSTATIC_STORAGE` from `.env.local` afterwards.
+
+Until the keys are set, `/keystatic/` on the live site shows "not set up yet"; the rest of the site works normally.
 
 Old URLs such as `/blog-2/` redirect (see `next.config.ts`).
 

@@ -3,7 +3,7 @@ title: "A Step-by-Step Guide to Obtaining a Thailand Work Permit"
 date: "2024-06-13"
 description: "The Land of Smiles, Thailand, beckons with its vibrant culture, stunning beaches, and delicious cuisine. But for those seeking professional opportunities,"
 category: "Work permit Thailand"
-image: "/images/work_permit_Thailand.jpeg"
+image: "/images/blog/a-step-by-step-guide-to-obtaining-a-thailand-work-permit/image.jpeg"
 ---
 The Land of Smiles, Thailand, beckons with its vibrant culture, stunning beaches, and delicious cuisine. But for those seeking professional opportunities, Thailand also offers a thriving job market in various sectors. If you’ve secured an exciting position in this Southeast Asian nation, congratulations! However, before you pack your bags and head over, understanding the process of obtaining a Work Permit Thailand is crucial.
 

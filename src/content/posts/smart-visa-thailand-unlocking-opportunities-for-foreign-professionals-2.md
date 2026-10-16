@@ -3,7 +3,7 @@ title: "Smart Visa Thailand: Unlocking Opportunities for Foreign Professionals"
 date: "2024-08-04"
 description: "Thailand's Smart Visa program is a game-changer for foreign professionals, investors, and entrepreneurs looking to make a mark in the country’s booming"
 category: "Smart Visa"
-image: "/images/Smart-Visa.jpg"
+image: "/images/blog/smart-visa-thailand-unlocking-opportunities-for-foreign-professionals-2/image.jpg"
 ---
 Thailand’s Smart Visa program is a game-changer for foreign professionals, investors, and entrepreneurs looking to make a mark in the country’s booming targeted industries. This blog post will dive deep into the Smart Visa, its benefits, application process, and everything you need to know to get started. Let’s explore how this initiative can be your gateway to success in Thailand.
 

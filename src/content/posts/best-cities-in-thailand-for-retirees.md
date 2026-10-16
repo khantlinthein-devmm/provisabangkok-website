@@ -3,7 +3,7 @@ title: "Best Cities in Thailand for Retirees"
 date: "2024-06-30"
 description: "Thailand has long been a favorite destination for retirees from around the world. With its beautiful landscapes, affordable cost of living, and rich cultural"
 category: "Retirement Visa Thailand"
-image: "/images/530.jpg"
+image: "/images/blog/best-cities-in-thailand-for-retirees/image.jpg"
 ---
 ## Introduction
 

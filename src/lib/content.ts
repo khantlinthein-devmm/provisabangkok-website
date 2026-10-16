@@ -1,9 +1,10 @@
 import fs from "node:fs";
 import path from "node:path";
 import { marked } from "marked";
+import { parse as parseYaml } from "yaml";
 
 // Markdown content in src/content, migrated from the original WordPress site.
-// Each file starts with a front-matter block of `key: "json string"` lines.
+// Each file starts with a YAML front-matter block. Blog posts are edited with Keystatic (/keystatic/).
 
 const root = path.join(process.cwd(), "src", "content");
 
@@ -18,10 +19,8 @@ function read(dir: string, slug: string) {
   const data: FrontMatter = {};
   let body = raw;
   if (match) {
-    for (const line of match[1].split("\n")) {
-      const i = line.indexOf(":");
-      if (i > 0) data[line.slice(0, i).trim()] = JSON.parse(line.slice(i + 1).trim());
-    }
+    const parsed: Record<string, unknown> = parseYaml(match[1]) ?? {};
+    for (const [key, value] of Object.entries(parsed)) if (value != null) data[key] = String(value);
     body = match[2];
   }
   return { data, html: marked.parse(body, { async: false }) };
