@@ -12,7 +12,7 @@ import { formatDate, getDictionary, localePath, type Locale } from "@/i18n";
 import { getAllPosts } from "@/lib/content";
 import { alternates } from "@/lib/seo";
 import { site } from "@/lib/site";
-import { customerPhotos } from "@/lib/testimonials";
+import { getTeam } from "@/lib/team";
 import { getVisas } from "@/lib/visas";
 
 export async function generateMetadata(props: PageProps<"/[lang]">): Promise<Metadata> {
@@ -24,6 +24,7 @@ export default async function Home(props: PageProps<"/[lang]">) {
   const lang = (await props.params).lang as Locale;
   const dict = await getDictionary(lang);
   const h = dict.home;
+  const { groupPhotos } = await getTeam();
   const p = (path: string) => localePath(lang, path);
   const visas = getVisas(dict);
   const posts = getAllPosts().slice(0, 3);
@@ -174,21 +175,23 @@ export default async function Home(props: PageProps<"/[lang]">) {
         </div>
       </section>
 
-      {/* Clients */}
-      <section className="py-14 md:py-28">
-        <div className="wrap">
-          <div className="flex flex-wrap items-end justify-between gap-6" data-reveal>
-            <div>
-              <p className="label text-accent">{h.customersEyebrow}</p>
-              <h2 className="h-display mt-3 max-w-2xl text-4xl leading-tight md:text-5xl">{h.customersTitle}</h2>
+      {/* Team and office photos (edited in Keystatic) */}
+      {groupPhotos.length > 0 && (
+        <section className="py-14 md:py-28">
+          <div className="wrap">
+            <div className="flex flex-wrap items-end justify-between gap-6" data-reveal>
+              <div>
+                <p className="label text-accent">{h.customersEyebrow}</p>
+                <h2 className="h-display mt-3 max-w-2xl text-4xl leading-tight md:text-5xl">{h.customersTitle}</h2>
+              </div>
+              <Link href={p("/customer/")} className="link text-sm">{h.seeAllCustomers}</Link>
             </div>
-            <Link href={p("/customer/")} className="link text-sm">{h.seeAllCustomers}</Link>
           </div>
-        </div>
-        <div className="mt-12" data-reveal>
-          <PhotoMarquee photos={customerPhotos} alt={dict.customer.photoAlt} />
-        </div>
-      </section>
+          <div className="mt-12" data-reveal>
+            <PhotoMarquee photos={groupPhotos.map((g) => ({ src: g.photo, alt: g.caption || dict.customer.photoAlt }))} />
+          </div>
+        </section>
+      )}
 
       <Testimonials t={dict.testimonials} />
 

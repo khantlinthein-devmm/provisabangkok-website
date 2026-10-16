@@ -1,12 +1,12 @@
 import Image from "next/image";
 
-// Endless, slowly moving strip of customer photos. Pauses on hover.
-export default function PhotoMarquee({ photos, alt }: { photos: string[]; alt: string }) {
+// Endless, slowly moving strip of photos. Pauses on hover.
+export default function PhotoMarquee({ photos }: { photos: { src: string; alt: string }[] }) {
   const loop = [...photos, ...photos];
   return (
-    <div className="marquee overflow-hidden" aria-label={alt}>
+    <div className="marquee overflow-hidden">
       <div className="marquee-track flex w-max gap-3">
-        {loop.map((src, i) => (
+        {loop.map(({ src, alt }, i) => (
           <div
             key={`${src}-${i}`}
             className="relative aspect-[4/5] w-52 shrink-0 overflow-hidden md:w-64"

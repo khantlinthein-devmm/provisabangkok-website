@@ -29,12 +29,12 @@ The site is in English, Thai, Russian, Chinese (Simplified) and Korean.
 | `src/content/posts/*.md` | Blog posts, edited at `/keystatic/` (English only, shown with a note in other languages). Cover images in `public/images/blog/<post>/` |
 | `src/lib/site.ts` | Phone, email, address, LINE, WhatsApp, Facebook, the "25+ years" figures, **booking days and times** |
 | `src/lib/visas.ts` | Visa order and header photos |
-| `src/lib/testimonials.ts` | Customer photo list |
+| `src/content/team.yaml` | Staff and group photos, edited at `/keystatic/` under **Team & photos** (images in `public/images/team/`) |
 | `public/images/` | Photos |
 
 ## Blog editor (Keystatic)
 
-Blog posts are written at **`/keystatic/`** — no code needed. Sign in with GitHub, open **Blog posts**, then **Add**. Fill in the title, date, summary, category and cover image, write the post, and press **Save**. Each save is a commit to GitHub, and Vercel puts it live in 1–2 minutes. The URL is made from the title; don't change it after publishing.
+Blog posts, and the staff and group photos (**Team & photos**), are edited at **`/keystatic/`** — no code needed. Sign in with GitHub, open **Blog posts**, then **Add**. Fill in the title, date, summary, category and cover image, write the post, and press **Save**. Each save is a commit to GitHub, and Vercel puts it live in 1–2 minutes. The URL is made from the title; don't change it after publishing.
 
 Anyone who writes posts needs a GitHub account with write access to this repository (GitHub → Settings → Collaborators).
 

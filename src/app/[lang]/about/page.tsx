@@ -8,6 +8,7 @@ import Testimonials from "@/components/Testimonials";
 import { getDictionary, type Locale } from "@/i18n";
 import { alternates } from "@/lib/seo";
 import { site } from "@/lib/site";
+import { getTeam } from "@/lib/team";
 
 export async function generateMetadata(props: PageProps<"/[lang]/about">): Promise<Metadata> {
   const { lang } = await props.params;
@@ -19,6 +20,7 @@ export default async function AboutPage(props: PageProps<"/[lang]/about">) {
   const lang = (await props.params).lang as Locale;
   const dict = await getDictionary(lang);
   const a = dict.about;
+  const { staff } = await getTeam();
   return (
     <>
       <PageHero lang={lang} homeLabel={dict.common.home} title={a.title} crumb={{ label: dict.nav.about, href: "/about/" }} />
@@ -45,6 +47,28 @@ export default async function AboutPage(props: PageProps<"/[lang]/about">) {
           </figure>
         </aside>
       </section>
+
+      {staff.length > 0 && (
+        <section className="border-t border-line py-16 md:py-20">
+          <div className="wrap">
+            <div data-reveal>
+              <p className="label text-accent">{a.teamEyebrow}</p>
+              <h2 className="h-display mt-3 max-w-2xl text-4xl leading-tight md:text-5xl">{a.teamTitle}</h2>
+            </div>
+            <ul className="mt-12 grid grid-cols-2 gap-x-4 gap-y-10 md:grid-cols-3 lg:grid-cols-4">
+              {staff.map((person, i) => (
+                <li key={person.photo} data-reveal style={{ "--reveal-delay": `${(i % 4) * 80}ms` } as React.CSSProperties}>
+                  <div className="frame-photo relative aspect-[3/4] overflow-hidden">
+                    <Image src={person.photo} alt={person.name} fill sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw" className="object-cover object-top" />
+                  </div>
+                  <p className="mt-4 font-serif text-2xl leading-tight">{person.name}</p>
+                  {person.role && <p className="label mt-1 text-accent">{person.role}</p>}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+      )}
 
       <section className="border-t border-line py-14">
         <dl className="wrap grid grid-cols-3 gap-6">

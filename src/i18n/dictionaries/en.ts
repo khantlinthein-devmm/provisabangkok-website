@@ -65,9 +65,9 @@ const en = {
       { title: "Submit your documents", text: "Take the guesswork out of gathering paperwork. You get a checklist specific to your visa, so nothing is missing." },
       { title: "Visa success and delivery", text: "As soon as your visa is approved, we let you know straight away." },
     ],
-    customersEyebrow: "Our customers",
-    customersTitle: "Visa in hand, with people from all over the world",
-    seeAllCustomers: "See all customers",
+    customersEyebrow: "Our team",
+    customersTitle: "The people behind your visa",
+    seeAllCustomers: "See all photos",
     moreEyebrow: "More than visas",
     moreTitle: "We go beyond just visa processing",
     compareEyebrow: "Retirement visas compared",
@@ -158,12 +158,14 @@ const en = {
     ],
     role: "Managing Director",
     portraitAlt: "Miss P, Managing Director of Pro Visa Bangkok",
+    teamEyebrow: "Our team",
+    teamTitle: "Meet the people who handle your visa",
   },
   customer: {
     title: "Thank you",
     subtitle:
       "We sincerely appreciate your trust in our services. It’s been our pleasure assisting you with your visa needs, and we look forward to serving you again.",
-    photoAlt: "Pro Visa Bangkok with a customer",
+    photoAlt: "The Pro Visa Bangkok team",
   },
   blog: {
     title: "Latest news for you",
