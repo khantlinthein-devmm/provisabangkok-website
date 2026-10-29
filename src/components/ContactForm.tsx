@@ -44,7 +44,7 @@ export default function ContactForm({
   const field = `w-full border-0 border-b bg-transparent px-0 py-3 text-base outline-none transition-colors ${tone}`;
   const label = `block text-sm font-medium ${dark ? "text-paper/80" : "text-ink/80"}`;
 
-  const whatsappFallbackUrl = `https://wa.me/66659245509?text=${encodeURIComponent(
+  const whatsappFallbackUrl = `${site.whatsapp}?text=${encodeURIComponent(
     `Hello Pro Visa Bangkok, I am inquiring from your website:\n- Name: ${lastData.name || ""}\n- Visa: ${lastData.visa || ""}\n- Phone: ${lastData.phone || ""}\n- Message: ${lastData.message || ""}`
   )}`;
 
