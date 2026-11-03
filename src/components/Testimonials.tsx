@@ -28,7 +28,13 @@ export default function Testimonials({ t: copy }: { t: Dict["testimonials"] }) {
     >
       <div className="wrap grid gap-10 lg:grid-cols-12">
         <div className="lg:col-span-3" data-reveal>
-          <p className="label text-gold-light">{copy.title}</p>
+          <div className="inline-flex items-center gap-1.5 rounded-full border border-gold/40 bg-gold/15 px-3 py-1 text-xs font-bold text-gold-light">
+            <span>⭐ 4.9/5 Google Reviews</span>
+          </div>
+          <p className="label text-gold-light mt-3">{copy.title}</p>
+          <p className="mt-2 text-xs text-paper/70 font-medium">
+            Over 200+ verified expats, retirees & digital nomads trust Pro Visa Bangkok.
+          </p>
           <Ornament className="mt-4 max-w-24" />
         </div>
         <div className="lg:col-span-9" data-reveal>
