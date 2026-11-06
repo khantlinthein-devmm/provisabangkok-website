@@ -98,15 +98,24 @@ export default function SendButtons({
         </form>
       )}
 
-      <p role="status" className="mt-4 text-sm text-muted">
+      <div role="status" className="mt-4 text-sm text-muted">
         {status === "sent" && labels.sent}
         {status === "error" && (
-          <>
-            {labels.error}{" "}
-            <a href={`mailto:${site.email}`} className="underline">{site.email}</a>
-          </>
+          <div className="rounded-lg border border-amber-400/40 bg-amber-500/10 p-3 mt-2">
+            <p className="text-amber-700 font-medium mb-2">
+              {labels.error} You can send your booking directly via WhatsApp:
+            </p>
+            <a
+              href={wa}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded bg-[#25d366] px-3.5 py-1.5 text-xs font-semibold text-white shadow hover:opacity-90 transition"
+            >
+              Send on WhatsApp Now
+            </a>
+          </div>
         )}
-      </p>
+      </div>
     </div>
   );
 }
