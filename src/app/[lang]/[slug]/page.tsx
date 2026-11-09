@@ -229,7 +229,7 @@ function PostPage({ lang, dict, post }: { lang: Locale; dict: Dict; post: NonNul
         {meta.image && (
           <div className="wrap max-w-5xl">
             <div className="relative aspect-[16/9] overflow-hidden">
-              <Image src={meta.image} alt="" fill priority sizes="(min-width: 1024px) 64rem, 100vw" className="frame-photo object-cover" />
+              <Image src={meta.image} alt={meta.title} fill priority sizes="(min-width: 1024px) 64rem, 100vw" className="frame-photo object-cover" />
             </div>
           </div>
         )}

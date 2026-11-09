@@ -1,9 +1,9 @@
 // English source dictionary. Every other language copies this exact shape (see type Dict).
 const en = {
   meta: {
-    title: "Pro Visa Bangkok: Thailand visa agency",
+    title: "Pro Visa Bangkok | Thailand Visa Agency & Work Permit Services",
     description:
-      "Pro Visa Bangkok is a trusted visa agent in Thailand and a registered agent for the Thailand Privilege Card. We specialise in Long Term Resident (LTR) visas, retirement visas and other commonly sought-after visas.",
+      "Trusted Thailand visa agency in Bangkok. Expert assistance for ED visa, Retirement visa, Non-B work permit, LTR visa and 90-day report. Free consultation.",
   },
   nav: {
     visas: "Visas",

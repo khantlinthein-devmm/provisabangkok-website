@@ -83,7 +83,7 @@ export default function ContactForm({
       {status === "error" && (
         <div className="sm:col-span-2 rounded-lg border border-amber-400/40 bg-amber-500/10 p-4 text-sm mt-2">
           <p className="font-semibold text-amber-500 mb-2">
-            ⚠️ Mail server is temporarily busy. Please send your message directly to our visa team on WhatsApp or LINE:
+            Mail server is temporarily busy. Please send your message directly to our visa team on WhatsApp or LINE:
           </p>
           <div className="flex flex-wrap items-center gap-3">
             <a

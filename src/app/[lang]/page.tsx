@@ -248,7 +248,7 @@ export default async function Home(props: PageProps<"/[lang]">) {
               >
                 {post.image && (
                   <div className="relative hidden aspect-[3/2] overflow-hidden md:block">
-                    <Image src={post.image} alt="" fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                    <Image src={post.image} alt={post.title} fill sizes="(min-width: 768px) 33vw, 100vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
                   </div>
                 )}
                 <p className="text-xs text-muted md:mt-5">{formatDate(post.date, lang)}</p>
