@@ -6,32 +6,32 @@ import type { LocalVisa } from "@/lib/visas";
 
 const HIGHLIGHT_BADGES: Record<string, Record<Locale, string>> = {
   "retirement-visa": {
-    en: "⭐ Most Popular",
-    th: "⭐ ยอดนิยมอันดับ 1",
-    zh: "⭐ 最受欢迎",
-    ru: "⭐ Популярно",
-    ko: "⭐ 가장 인기",
+    en: "Most Popular",
+    th: "ยอดนิยมอันดับ 1",
+    zh: "最受欢迎",
+    ru: "Популярно",
+    ko: "가장 인기",
   },
   "thailand-privilege-membership": {
-    en: "👑 VIP 5–20 Years",
-    th: "👑 สิทธิพิเศษ 5–20 ปี",
-    zh: "👑 5–20年贵宾尊享",
-    ru: "👑 VIP 5–20 лет",
-    ko: "👑 VIP 5–20년",
+    en: "VIP 5–20 Years",
+    th: "สิทธิพิเศษ 5–20 ปี",
+    zh: "5–20年贵宾尊享",
+    ru: "VIP 5–20 лет",
+    ko: "VIP 5–20년",
   },
   "dtv-visa": {
-    en: "🔥 New 5-Year Nomad",
-    th: "🔥 วีซ่ามาแรง 5 ปี",
-    zh: "🔥 热门数字游民签",
-    ru: "🔥 Хит: виза номада",
-    ko: "🔥 핫한 5년 노마드",
+    en: "New 5-Year Nomad",
+    th: "วีซ่ามาแรง 5 ปี",
+    zh: "热门数字游民签",
+    ru: "Хит: виза номада",
+    ko: "핫한 5년 노마드",
   },
   "long-term-resident-visa": {
-    en: "✨ 10-Year High Earner",
-    th: "✨ สิทธิ์พำนัก 10 ปี",
-    zh: "✨ 10年高净值尊享",
-    ru: "✨ 10 лет резиденции",
-    ko: "✨ 10년 장기 거주",
+    en: "10-Year High Earner",
+    th: "สิทธิ์พำนัก 10 ปี",
+    zh: "10年高净值尊享",
+    ru: "10 лет резиденции",
+    ko: "10년 장기 거주",
   },
 };
 
@@ -87,7 +87,7 @@ export default function FeaturedVisaCards({
                   </span>
                 )}
                 <span className="absolute bottom-2.5 left-3 text-xs font-semibold text-white/95">
-                  ⏱️ {v.duration}
+                  {v.duration}
                 </span>
               </div>
 
@@ -97,7 +97,7 @@ export default function FeaturedVisaCards({
                   {v.title}
                 </h3>
                 <p className="mt-2 text-xs font-medium text-gold-dark">
-                  🎯 {v.forWhom}
+                  {v.forWhom}
                 </p>
                 <p className="mt-2.5 text-sm leading-relaxed text-muted line-clamp-3">
                   {v.short}

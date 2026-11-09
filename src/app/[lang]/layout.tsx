@@ -54,6 +54,15 @@ export async function generateMetadata(props: LayoutProps<"/[lang]">): Promise<M
       siteName: site.name,
       type: "website",
       locale: isLocale(lang) ? localeInfo[lang].ogLocale : "en_US",
+      title: dict.meta.title,
+      description: dict.meta.description,
+      images: [{ url: "/images/hero.webp", width: 1200, height: 630, alt: dict.meta.title }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: dict.meta.title,
+      description: dict.meta.description,
+      images: ["/images/hero.webp"],
     },
     alternates: alternates(isLocale(lang) ? lang : "en", "/"),
   };

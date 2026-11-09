@@ -34,7 +34,7 @@ export default async function BlogPage(props: PageProps<"/[lang]/blog">) {
           >
             <div className="relative aspect-[3/2] overflow-hidden md:col-span-3">
               {post.image && (
-                <Image src={post.image} alt="" fill sizes="(min-width: 768px) 20vw, 100vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
+                <Image src={post.image} alt={post.title} fill sizes="(min-width: 768px) 20vw, 100vw" className="object-cover transition-transform duration-500 group-hover:scale-105" />
               )}
             </div>
             <div className="md:col-span-8" lang="en">

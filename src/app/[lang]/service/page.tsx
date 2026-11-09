@@ -30,7 +30,7 @@ export default async function ServicePage(props: PageProps<"/[lang]/service">) {
             className="group grid gap-6 border-b border-line py-10 first:pt-0 md:grid-cols-12 md:gap-8"
           >
             <div className="relative hidden aspect-[4/5] overflow-hidden md:col-span-2 md:block">
-              <Image src={v.image} alt="" fill sizes="12rem" className="object-cover transition-transform duration-500 group-hover:scale-105" />
+              <Image src={v.image} alt={v.title} fill sizes="12rem" className="object-cover transition-transform duration-500 group-hover:scale-105" />
             </div>
             <div className="md:col-span-5">
               <span className="font-serif text-xl italic text-gold">{i + 1}.</span>
