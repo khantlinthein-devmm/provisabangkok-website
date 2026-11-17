@@ -234,6 +234,18 @@ function PostPage({ lang, dict, post }: { lang: Locale; dict: Dict; post: NonNul
           </div>
         )}
         <div className="wrap max-w-3xl py-14" lang="en">
+          {/* AI Answer Snippet / Key Takeaway for GEO Search */}
+          {meta.description && (
+            <div className="mb-10 rounded border border-gold/60 bg-paper-2 p-6 shadow-sm">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-accent">
+                <span className="h-2 w-2 rounded-full bg-gold" />
+                Quick Answer & Executive Summary
+              </div>
+              <p className="mt-2 text-base font-medium leading-relaxed text-ink">
+                {meta.description}
+              </p>
+            </div>
+          )}
           <div className="prose-content" dangerouslySetInnerHTML={{ __html: html }} />
         </div>
       </article>

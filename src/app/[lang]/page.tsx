@@ -8,6 +8,7 @@ import GoldFrame from "@/components/GoldFrame";
 import PhotoMarquee from "@/components/PhotoMarquee";
 import Testimonials from "@/components/Testimonials";
 import ToolCards from "@/components/tools/ToolCards";
+import VisaFinder from "@/components/tools/VisaFinder";
 import FeaturedVisaCards from "@/components/FeaturedVisaCards";
 import TrustBar from "@/components/TrustBar";
 import { formatDate, getDictionary, localePath, type Locale } from "@/i18n";
@@ -158,15 +159,30 @@ export default async function Home(props: PageProps<"/[lang]">) {
         </div>
       </section>
 
-      {/* Free tools */}
-      <section className="border-t border-line bg-paper-2/60 py-14 md:py-28">
+      {/* Interactive Visa Assessment & Free tools */}
+      <section className="border-t border-line bg-paper-2/60 py-14 md:py-24">
         <div className="wrap">
-          <div className="max-w-2xl" data-reveal>
-            <p className="label text-accent">{h.toolsEyebrow}</p>
-            <h2 className="h-display mt-3 text-4xl leading-tight md:text-5xl">{h.toolsTitle}</h2>
-            <p className="mt-4 text-muted">{h.toolsIntro}</p>
+          <div className="grid gap-12 lg:grid-cols-12 lg:items-start">
+            <div className="lg:col-span-5" data-reveal>
+              <p className="label text-accent">{h.toolsEyebrow}</p>
+              <h2 className="h-display mt-3 text-4xl leading-tight md:text-5xl">{dict.tools.finder.title}</h2>
+              <p className="mt-4 text-muted leading-relaxed">{dict.tools.finder.short}</p>
+              <div className="mt-8 border-t border-line pt-6">
+                <ToolCards lang={lang} dict={dict} exclude="finder" />
+              </div>
+            </div>
+            <div className="lg:col-span-7 bg-paper border border-gold/40 p-6 md:p-10 shadow-lg" data-reveal>
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-gold/50 bg-paper-2 px-3 py-1 text-xs font-semibold text-accent">
+                <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+                {lang === "th" ? "แบบประเมินวีซ่าออนไลน์ (3 นาทีรู้ผล)" : "Instant Online Eligibility Checker"}
+              </div>
+              <VisaFinder
+                lang={lang}
+                t={dict.tools}
+                visas={Object.fromEntries(visas.map((v) => [v.slug, { title: v.title, short: v.short }]))}
+              />
+            </div>
           </div>
-          <ToolCards lang={lang} dict={dict} className="mt-12" />
         </div>
       </section>
 

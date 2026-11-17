@@ -1,4 +1,7 @@
+"use client";
+
 import { site } from "@/lib/site";
+import { trackEvent } from "./Analytics";
 
 // Floating LINE and WhatsApp buttons, like the chat widget on the original site.
 export default function ChatButtons() {
@@ -9,6 +12,7 @@ export default function ChatButtons() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat on LINE"
+        onClick={() => trackEvent("click_line", "desktop_floating", "LINE")}
         className="pulse-ring relative isolate grid h-12 w-12 place-items-center rounded-full bg-[#06c755] text-white shadow-lg transition-transform hover:scale-105"
       >
         <svg viewBox="0 0 24 24" className="h-7 w-7" fill="currentColor" aria-hidden="true">
@@ -20,6 +24,7 @@ export default function ChatButtons() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat on WhatsApp"
+        onClick={() => trackEvent("click_whatsapp", "desktop_floating", "WhatsApp")}
         className="grid h-12 w-12 place-items-center rounded-full bg-[#25d366] text-white shadow-lg transition-transform hover:scale-105"
       >
         <svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor" aria-hidden="true">
