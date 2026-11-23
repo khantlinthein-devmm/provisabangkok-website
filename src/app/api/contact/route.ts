@@ -79,5 +79,45 @@ export async function POST(request: Request) {
     return Response.json({ ok: false }, { status: 502 });
   }
 
+  // Asynchronous forward to ProVisa CRM v2 (fire-and-forget, non-blocking)
+  const crmUrl = process.env.CRM_API_URL || process.env.NEXT_PUBLIC_CRM_URL || "https://provisa-crm-v2-production.up.railway.app";
+  try {
+    if (kind === "booking") {
+      fetch(`${crmUrl}/api/public/bookings`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          contactName: data.name,
+          phone: data.phone || data.email,
+          email: data.email || null,
+          visaInterest: data.visa || "Consultation",
+          meetingMode: data.message.toLowerCase().includes("online") ? "online" : "office",
+          bookingAt: new Date(Date.now() + 24 * 3600 * 1000).toISOString(),
+          notes: data.message,
+        }),
+      }).catch(() => undefined);
+    } else {
+      const publicToken = process.env.PUBLIC_LEAD_TOKEN;
+      fetch(`${crmUrl}/api/public/leads`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          ...(publicToken ? { "X-Public-Token": publicToken } : {}),
+        },
+        body: JSON.stringify({
+          name: data.name,
+          phone: data.phone,
+          email: data.email,
+          nationality: data.nationality,
+          visa: data.visa,
+          message: data.message,
+          source: "website",
+        }),
+      }).catch(() => undefined);
+    }
+  } catch {
+    // Non-blocking
+  }
+
   return Response.json({ ok: true });
 }
