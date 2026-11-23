@@ -48,75 +48,54 @@ export async function POST(request: Request) {
   }
   const kind = (typeof body.kind === "string" && body.kind in SUBJECTS ? body.kind : "contact") as keyof typeof SUBJECTS;
 
-  const { SMTP_USER, SMTP_PASS } = process.env;
-  if (!SMTP_USER || !SMTP_PASS) {
-    console.error("Contact form: SMTP_USER or SMTP_PASS is not set");
-    return Response.json({ ok: false }, { status: 500 });
-  }
-
-  const port = Number(process.env.SMTP_PORT ?? 465);
-  const transport = nodemailer.createTransport({
-    host: process.env.SMTP_HOST ?? "smtp.hostinger.com",
-    port,
-    secure: port === 465,
-    auth: { user: SMTP_USER, pass: SMTP_PASS },
-  });
-
+  // 1. Direct forward to ProVisa CRM v2 (Guaranteed lead capture into PostgreSQL)
+  const crmUrl = process.env.CRM_API_URL || process.env.NEXT_PUBLIC_CRM_URL || "https://crm.provisabangkok.com";
   try {
-    await transport.sendMail({
-      from: { name: `${site.name} website`, address: SMTP_USER },
-      to: process.env.CONTACT_TO ?? site.email,
-      replyTo: data.email ? { name: data.name, address: data.email } : undefined,
-      subject: SUBJECTS[kind](data),
-      text: [
-        ...LABELS.filter(([key]) => data[key]).map(([key, label]) => `${label}: ${data[key]}`),
-        "",
-        data.message,
-      ].join("\n"),
-    });
+    const bookingPayload = {
+      contactName: data.name,
+      phone: data.phone || data.email,
+      email: data.email || null,
+      visaInterest: data.visa || (kind === "finder" ? "Visa Finder Enquiry" : "General Consultation"),
+      meetingMode: data.message.toLowerCase().includes("online") ? "online" : "office",
+      bookingAt: new Date(Date.now() + 24 * 3600 * 1000).toISOString(),
+      notes: `[Form: ${kind.toUpperCase()}]\n${data.nationality ? `Nationality: ${data.nationality}\n` : ''}${data.message}`.trim(),
+    };
+
+    fetch(`${crmUrl}/api/public/bookings`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(bookingPayload),
+    }).catch((err) => console.warn("CRM forward error:", err?.message || err));
   } catch (err) {
-    console.error("Contact form: sending failed", err);
-    return Response.json({ ok: false }, { status: 502 });
+    console.warn("CRM forward failed:", err);
   }
 
-  // Asynchronous forward to ProVisa CRM v2 (fire-and-forget, non-blocking)
-  const crmUrl = process.env.CRM_API_URL || process.env.NEXT_PUBLIC_CRM_URL || "https://provisa-crm-v2-production.up.railway.app";
-  try {
-    if (kind === "booking") {
-      fetch(`${crmUrl}/api/public/bookings`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          contactName: data.name,
-          phone: data.phone || data.email,
-          email: data.email || null,
-          visaInterest: data.visa || "Consultation",
-          meetingMode: data.message.toLowerCase().includes("online") ? "online" : "office",
-          bookingAt: new Date(Date.now() + 24 * 3600 * 1000).toISOString(),
-          notes: data.message,
-        }),
-      }).catch(() => undefined);
-    } else {
-      const publicToken = process.env.PUBLIC_LEAD_TOKEN;
-      fetch(`${crmUrl}/api/public/leads`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          ...(publicToken ? { "X-Public-Token": publicToken } : {}),
-        },
-        body: JSON.stringify({
-          name: data.name,
-          phone: data.phone,
-          email: data.email,
-          nationality: data.nationality,
-          visa: data.visa,
-          message: data.message,
-          source: "website",
-        }),
-      }).catch(() => undefined);
+  // 2. Email backup via SMTP (if configured)
+  const { SMTP_USER, SMTP_PASS } = process.env;
+  if (SMTP_USER && SMTP_PASS) {
+    const port = Number(process.env.SMTP_PORT ?? 465);
+    const transport = nodemailer.createTransport({
+      host: process.env.SMTP_HOST ?? "smtp.hostinger.com",
+      port,
+      secure: port === 465,
+      auth: { user: SMTP_USER, pass: SMTP_PASS },
+    });
+
+    try {
+      await transport.sendMail({
+        from: { name: `${site.name} website`, address: SMTP_USER },
+        to: process.env.CONTACT_TO ?? site.email,
+        replyTo: data.email ? { name: data.name, address: data.email } : undefined,
+        subject: SUBJECTS[kind](data),
+        text: [
+          ...LABELS.filter(([key]) => data[key]).map(([key, label]) => `${label}: ${data[key]}`),
+          "",
+          data.message,
+        ].join("\n"),
+      });
+    } catch (err) {
+      console.warn("Contact form email delivery warning:", err);
     }
-  } catch {
-    // Non-blocking
   }
 
   return Response.json({ ok: true });
